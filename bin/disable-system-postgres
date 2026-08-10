@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Free port 5432 for the geripsy-postgres Docker container by disabling
+# the system PostgreSQL service (requires sudo once).
+
+if [[ "${EUID}" -ne 0 ]]; then
+  echo "This script must be run with sudo:"
+  echo "  sudo bin/disable-system-postgres"
+  exit 1
+fi
+
+systemctl stop postgresql 2>/dev/null || true
+systemctl disable postgresql
+
+echo "System PostgreSQL disabled. Port 5432 is free for geripsy-postgres."
+echo "Start GeriPSY databases with: docker start geripsy-postgres geripsy-redis"

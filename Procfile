@@ -1,0 +1,3 @@
+web: bundle exec passenger start -p $PORT --max-pool-size 5
+worker: bundle exec sidekiq
+cron: sh start-cron.sh

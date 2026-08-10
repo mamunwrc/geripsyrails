@@ -1,0 +1,32 @@
+%div(layout="row" flex)
+  %span(flex)
+    %span.md-caption Clinician NAME:
+    %span.md-caption(ng-if="!(encresource.incident_to_provider && encresource.incident_to_provider.value)")
+      {{ ::encresource.signer.user.full_name }}, {{ ::format(encresource.signer.degree) }}
+    %span.md-caption(ng-if="encresource.incident_to_provider && encresource.incident_to_provider.value")
+      {{ ::encresource.signer.linked_provider.full_name }}, {{ ::format(encresource.signer.linked_provider.degree) }}
+  %span(flex)
+    %span.md-caption Date of Service:
+    %span.md-caption  {{ ::encounter.referral.service_date | dateonly}}
+  %span(flex layout-align="end")
+    %span.md-caption Date Signed:
+    %span.md-caption {{ ::encresource.signed_on | dateonly }}
+%div(layout="row" flex)
+  %span(flex)
+    %span.md-caption Start time:
+    %span.md-caption  {{ ::encounter.certification.start_time | timeonly }}
+  %span(flex)
+    %span.md-caption End time:
+    %span.md-caption {{ ::encounter.certification.end_time | timeonly }}
+  %span(flex)
+    %span.md-caption Total minutes:
+    %span.md-caption {{ totalMins }}
+
+%div(ng-if="encresource.incident_to_provider && encresource.incident_to_provider.value")
+  %div(layout="row" flex)
+    %span(flex)
+      %span.md-caption Incident to clinician name:
+      %span.md-caption {{ ::encresource.incident_to_provider.value }}, {{ ::encresource.incident_to_provider.degree }}
+  %div(layout="row" flex)
+    %span(flex)
+      %span.md-caption Clinical service is provided under general supervision by the psychologist clinician Supervision is provided on a regular basis and documented by the psychologist clinician.

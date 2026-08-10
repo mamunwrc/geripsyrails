@@ -1,0 +1,22 @@
+%gd-tslider(opts="testing.impairments" label="Level of Impairment" ng-model="myEncounter.functional_status" model-container="impairments" is-edit="isEditing")
+
+%hr
+
+%div(layout-gt-xs="row" layout-xs="column" layout-padding)
+  %gd-drop-down(form="formsec.sections.summary.form" ng-blur="formsec.sections.summary.revalidate" ng-required="true" is-edit="isEditing" dd-type="encounter" keyprefix="CAPFUNC" label="Capacity for independent functioning" ng-model="myEncounter.functional_status.independent_capacity" flex)
+  %gd-input(form="formsec.sections.summary.form" is-edit="isEditing" label="Comments" ng-model="myEncounter.functional_status.independent_capacity_comments" flex)
+
+%div(layout-gt-xs="row" layout-xs="column" layout-padding)
+  %gd-drop-down(form="formsec.sections.summary.form" ng-blur="formsec.sections.summary.revalidate" ng-required="true" is-edit="isEditing" dd-type="encounter" keyprefix="STATDUR" label="Estimated duration of current status" ng-model="myEncounter.functional_status.duration" flex)
+  %gd-input(form="formsec.sections.summary.form" is-edit="isEditing" label="Comments" ng-model="myEncounter.functional_status.duration_comment" flex)
+
+%hr
+
+%gd-tslider(opts="testing.interferences" label="Degree of Interference" ng-model="myEncounter.functional_status" model-container="interferences" is-edit="isEditing")
+
+%hr
+
+%div(layout-gt-xs="row" layout-xs="column" layout-padding)
+  %gd-input(form="formsec.sections.summary.form" is-edit="isEditing" label="Comments" ng-model="myEncounter.functional_status.extra_comments" ng-required="true" flex)
+
+%hr

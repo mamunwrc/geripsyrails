@@ -1,0 +1,8 @@
+.odd(layout-gt-xs="row" layout-padding)
+  %gd-drop-down(form="formsec.sections.diagnosis.form" ng-blur="formsec.sections.diagnosis.revalidate" ng-required="true" is-edit="isEditing" filterable dd-type="icds" label="Primary Diagnosis" ng-model="myEncounter.diagnosis.primary" flex)
+  %gd-drop-down(form="formsec.sections.diagnosis.form" is-edit="isEditing" filterable dd-type="icds" label="Secondary Diagnosis" ng-model="myEncounter.diagnosis.secondary" flex)
+.even(layout-gt-xs="row" layout-padding)
+  %gd-input(form="formsec.sections.diagnosis.form" ng-blur="formsec.sections.diagnosis.revalidate" ng-required="true" is-edit="isEditing" label="General goals (subject to treatment plan)" ng-model="myEncounter.diagnosis.general_goals" flex)
+.odd(layout-gt-xs="row" layout-padding)
+  %gd-input(form="formsec.sections.diagnosis.form" placeholder="{{myEncounter.diagnosis.session_goals_prev}}" ng-blur="formsec.sections.diagnosis.revalidate" ng-required="true" is-edit="isEditing" label="Goals for this session" ng-model="myEncounter.diagnosis.session_goals" flex)
+  %gd-drop-down(form="formsec.sections.diagnosis.form" ng-blur="formsec.sections.diagnosis.revalidate" ng-required="true" is-edit="isEditing" dd-type="encounter" keyprefix="PROGNOSIS" label="Prognosis" ng-model="myEncounter.diagnosis.prognosis" flex)

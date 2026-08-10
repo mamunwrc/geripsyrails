@@ -1,0 +1,106 @@
+[
+  {
+    "id":1,
+    "name":"Medicare NY Downstate"
+  },
+  {
+    "id":2,
+    "name":"Medicare NY Queens"
+  },
+  {
+    "id":3,
+    "name":"Medicaid NY CSC"
+  },
+  {
+    "id":4,
+    "name":"Centerlight Healthcare"
+  },
+  {
+    "id":5,
+    "name":"Optum UHC"
+  },
+  {
+    "id":6,
+    "name":"Archcare"
+  },
+  {
+    "id":7,
+    "name":"Healthfirst"
+  },
+  {
+    "id":8,
+    "name":"Empire BCBS of NY"
+  },
+  {
+    "id":9,
+    "name":"Aetna Health Plans"
+  },
+  {
+    "id":10,
+    "name":"Elderplan Inc"
+  },
+  {
+    "id":11,
+    "name":"Fidelis Care of NY"
+  },
+  {
+    "id":12,
+    "name":"GHI Medicare Choice PPO"
+  },
+  {
+    "id":13,
+    "name":"HIP of Greater NY"
+  },
+  {
+    "id":14,
+    "name":"Oxford Health Plan"
+  },
+  {
+    "id":15,
+    "name":"Value Options"
+  },
+  {
+    "id":16,
+    "name":"VNS Choice Medicare"
+  },
+  {
+    "id":17,
+    "name":"AARP UHC"
+  },
+  {
+    "id":18,
+    "name":"Railroad Medicare Palmetto GBA"
+  },
+  {
+    "id":19,
+    "name":"American Postal Worker Union - APWU"
+  },
+  {
+    "id":20,
+    "name":"Health Care Partners"
+  },
+  {
+    "id":21,
+    "name":"Beacon Health Strategies Affinity Health Plan"
+  },
+  {
+    "id":22,
+    "name":"ICS FIDA MMP"
+  },
+  {
+    "id":23,
+    "name":"Liberty Health Advantage"
+  },
+  {
+    "id":24,
+    "name":"BC BS EMPIRE of NY"
+  },
+  {
+    "id":25,
+    "name":"Amerigroup"
+  },
+  {
+    "id":26,
+    "name":"MVP Health Plan"
+  }
+]

@@ -1,0 +1,11 @@
+%div(layout-gt-xs="row" layout-xs="column" layout-padding)
+  %div(flex)
+    %h4 Place of Service Value:
+    %span Value in patient file: {{$root.globalPatients.currentPatient.facility_pos_code}}
+
+  %div(flex)
+    %md-radio-group(ng-model="ngModel" layout="column")
+      %md-radio-button(ng-value=31 flex) Part "A" Stay (POS 31)
+      %md-radio-button(ng-value=32 flex) Non "A" Stay (POS 32)
+      %md-radio-button(ng-value=95 flex) Medicare Telehealth (modifier 95)
+

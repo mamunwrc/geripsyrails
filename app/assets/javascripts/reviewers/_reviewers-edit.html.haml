@@ -1,0 +1,42 @@
+.md-inline-form(layout="column" ng-cloak)
+  %form.gd-form(name="ctrl.reviewerForm")
+    %md-content(layout-padding layout-gt-xs="row")
+      %div(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-input(label="First Name" is-edit="isEditing" ng-model="reviewer.user.first_name" field-name="first_name" ng-required="true" form="ctrl.reviewerForm" flex)
+
+          %gd-input(label="Last Name" is-edit="isEditing" ng-model="reviewer.user.last_name" field-name="last_name" ng-required="true" form="ctrl.reviewerForm" flex)
+
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-input(label="Email" type="email" is-edit="isEditing" ng-model="reviewer.user.email" field-name="email" ng-required="true" form="ctrl.reviewerForm" flex)
+          %gd-input(label="Password" type="password" minlength="8" is-edit="isEditing" ng-required="pwreq" ng-model="reviewer.user.password" field-name="password" form="ctrl.reviewerForm"  flex)
+
+        %fieldset.standard
+          %legend Permissions
+
+          %div(flex)
+            %gd-drop-down(label="Type" is-edit="isEditing" ng-model="reviewer.reviewer_type" collection="reviewerTypes" flex)
+
+          %div(layout-padding ng-if="reviewer.reviewer_type.name == 'facility'")
+            %md-list
+              %md-list-item.md-2-line(ng-repeat="facility in facilities")
+                %md-checkbox(aria-label="facility" ng-disabled="!isEditing" value="facility.id" ng-checked="reviewer.associated_facilities.indexOf(facility.id) > -1" ng-click="isEditing && toggleObject(reviewer.associated_facilities, facility.id)")
+                .md-list-item-text
+                  %h3 {{ facility.name }}
+
+          %div(layout-padding ng-if="reviewer.reviewer_type.name == 'patient'")
+            %md-list
+              %md-list-item.md-2-line(ng-repeat="patient in globalPatients.patients")
+                %md-checkbox(aria-label="patient" ng-disabled="!isEditing" value="patient.id" ng-checked="reviewer.associated_patients.indexOf(patient.id) > -1" ng-click="isEditing && toggleObject(reviewer.associated_patients, patient.id)")
+                .md-list-item-text
+                  %h3 {{ patient.full_name }}
+                  %p {{ patient.dob | dateonly }}
+
+          %div(layout-padding ng-if="reviewer.reviewer_type.name == 'provider'")
+            %md-list
+              %md-list-item.md-2-line(ng-repeat="provider in providers")
+                %md-checkbox(aria-label="provider" ng-disabled="!isEditing" value="provider.id" ng-checked="reviewer.associated_providers.indexOf(provider.id) > -1" ng-click="isEditing && toggleObject(reviewer.associated_providers, provider.id)")
+                .md-list-item-text
+                  %h3 {{ provider.full_name }}
+                  %p
+

@@ -1,0 +1,5 @@
+%div(ng-if="!formsec.competency.hide")
+  .odd(layout-gt-xs="row" layout-padding)
+    %gd-drop-down(form="formsec.sections.competency.form" ng-blur="formsec.sections.competency.revalidate" ng-required="" is-edit="isEditing" dd-type="encounter" keyprefix="COMPETENCYFINDINGS" label="Findings" ng-model="myEncounter.competency.findings" freetext="true" ft-model="myEncounter.competency.findings_text" flex)
+  .even(layout-gt-xs="row" layout-padding)
+    %gd-input(form="formsec.sections.competency.form" is-edit="isEditing" label="Comments" ng-model="myEncounter.competency.comment" flex)

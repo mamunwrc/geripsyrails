@@ -1,0 +1,34 @@
+.odd(layout-gt-xs="row" layout-padding)
+  %gd-drop-down(form="formsec.sections.diagnosis.form" ng-blur="formsec.sections.diagnosis.revalidate" ng-required="true" is-edit="isEditing" filterable dd-type="icds" label="Primary Diagnosis" ng-model="myEncounter.diagnosis.primary" flex)
+  %gd-drop-down(form="formsec.sections.diagnosis.form" is-edit="isEditing" filterable dd-type="icds" label="Secondary Diagnosis" ng-model="myEncounter.diagnosis.secondary" flex)
+
+.even(layout-gt-xs="row" layout-padding)
+  %gd-drop-down(form="formsec.sections.diagnosis.form" ng-blur="formsec.sections.diagnosis.revalidate" ng-required="true" is-edit="isEditing" dd-type="encounter" keyprefix="PROGNOSIS" label="Prognosis" ng-model="myEncounter.diagnosis.prognosis" flex)
+
+.odd(layout-gt-xs="row" layout-padding)
+  %gd-input(form="formsec.sections.diagnosis.form" ng-blur="formsec.sections.diagnosis.revalidate" ng-required="true" is-edit="isEditing" label="Relevant Medical Diagnosis/Condition" ng-model="myEncounter.diagnosis.medical_conditions" flex)
+
+.even(layout-gt-xs="row" layout-padding)
+  %div(flex)
+    %fieldset(name="assessment-ability-respond")
+      %legend
+        Assement of patient's ability to respond to treatment
+      %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+        %div(flex="50")
+          %gd-drop-down(form="formsec.sections.diagnosis.form" ng-blur="formsec.sections.diagnosis.revalidate" ng-required="true" freetext="true" is-edit="isEditing" dd-type="encounter" keyprefix="RESPONDTREATMNT" label="Dementia Screening" ng-model="myEncounter.functional_status.respondtreatment" flex)
+          %div(layout-gt-xs="row" layout-xs="column" layout-padding ng-if="respondtreatmentLinks.display && isEditing")
+            %span(flex ng-if="respondtreatmentLinks.url[0] != '#'")
+              %a(href="{{respondtreatmentLinks.url}}" target="_TREATTAB")
+                {{respondtreatmentLinks.title}}
+            %span(flex ng-if="respondtreatmentLinks.url[0] == '#'")
+              %a(href="{{respondtreatmentLinks.url}}" ng-click="doScreening($event)")
+                {{respondtreatmentLinks.title}}
+
+        %div(flex="50")
+          %gd-input(form="formsec.sections.diagnosis.form" ng-blur="formsec.sections.diagnosis.revalidate" ng-required="true" is-edit="isEditing" label="Cognitive Screen Score" ng-model="myEncounter.functional_status.cognitive_screen" flex)
+      %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+        %gd-drop-down(form="formsec.sections.diagnosis.form" ng-blur="formsec.sections.diagnosis.revalidate" ng-required="true" freetext="true" ft-model="myEncounter.functional_status.respondtreatment_desc_text" is-edit="isEditing" dd-type="encounter" keyprefix="RESPNDTREATMNTDESC" label="Description" ng-model="myEncounter.functional_status.respondtreatment_desc" flex)
+      %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+        %gd-drop-down(form="formsec.sections.diagnosis.form" ng-blur="formsec.sections.diagnosis.revalidate" ng-required="true" is-edit="isEditing" dd-type="encounter" keyprefix="RECALL" label="Memory/Recall" ng-model="myEncounter.functional_status.recall" flex)
+      %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+        %gd-input(is-edit="isEditing" label="Comments" ng-model="myEncounter.functional_status.respondtreatment_comments" flex)

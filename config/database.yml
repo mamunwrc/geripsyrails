@@ -1,0 +1,16 @@
+local: &local
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: localhost
+  port: 5432
+  username: deploy
+  password: deploy
+
+development:
+  <<: *local
+  database: geripsy_development
+
+test:
+  <<: *local
+  database: geripsy_test

@@ -1,0 +1,26 @@
+.odd(layout-gt-xs="row" layout-padding)
+  %gd-drop-down(form="formsec.sections.treatment.form" ng-blur="formsec.sections.treatment.revalidate" ng-required="true" is-edit="isEditing" dd-type="encounter" keyprefix="CRISISPSYCH" label="Psychotherapy" ng-model="myEncounter.plan.crisis_psychotherapy" flex)
+  %gd-input(form="formsec.sections.treatment.form" is-edit="isEditing" label="Comments" ng-model="myEncounter.plan.crisis_psychotherapy_comment" flex)
+
+.even(layout-gt-xs="row" layout-padding)
+  %gd-dd-multiselect(form="formsec.sections.treatment.form" ng-blur="formsec.sections.treatment.revalidate" ng-required="true" freetext="true" is-edit="isEditing" dd-type="encounter" keyprefix="CRISISMOBILIZATION" label="Mobilization of resources to defuse crisis and restore safety" ng-model="myEncounter.plan.crisis_mobilization" flex)
+  %gd-input(form="formsec.sections.treatment.form" is-edit="isEditing" label="Comments" ng-model="myEncounter.plan.crisis_mobilization_comment" flex)
+
+.odd(layout-gt-xs="row" layout-padding)
+  %div(flex)
+    %fieldset(name="crisis-procedures")
+      %legend
+        Procedures to minimize potential for psychological trauma
+      %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+        %gd-input(form="formsec.sections.treatment.form" ng-blur="formsec.sections.treatment.revalidate" is-edit="isEditing" label="Describe and summarize intervention" ng-required="true" ng-model="myEncounter.plan.crisis_intervention_summary" flex)
+      %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+        %gd-drop-down(form="formsec.sections.treatment.form" ng-blur="formsec.sections.treatment.revalidate" ng-required="true" is-edit="isEditing" dd-type="encounter" keyprefix="CRISISRISK" label="Assessment of suicide/homicide risk" ng-model="myEncounter.plan.crisis_risk_assessment" flex)
+        %gd-input(form="formsec.sections.treatment.form" is-edit="isEditing" label="Comments" ng-model="myEncounter.plan.crisis_risk_assessment_comment" flex)
+      %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+        %gd-drop-down(form="formsec.sections.treatment.form" ng-blur="formsec.sections.treatment.revalidate" ng-required="true" is-edit="isEditing" dd-type="encounter" keyprefix="CRISISRECS" label="Recommendations" ng-model="myEncounter.plan.crisis_recommendations" flex)
+        %gd-input(form="formsec.sections.treatment.form" is-edit="isEditing" label="1:1 staff coverage until" ng-model="myEncounter.plan.crisis_recommendation_until" ng-required="myEncounter.plan.crisis_recommendations.name=='1'" ng-if="myEncounter.plan.crisis_recommendations.name=='1'" flex)
+
+      %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+        %gd-bool(form="formsec.sections.treatment.form" ng-blur="formsec.sections.treatment.revalidate" ng-required="true" is-edit="isEditing" label="Did the intervention require additional time?" ng-model="myEncounter.plan.crisis_additional_time" flex)
+        %gd-drop-down(form="formsec.sections.treatment.form" is-edit="isEditing" label="amount of additional time required" dd-type="encounter" keyprefix="CRISISTIME" ng-model="myEncounter.plan.crisis_additional_time_minutes" ng-required="myEncounter.plan.crisis_additional_time.name=='Y'" ng-if="myEncounter.plan.crisis_additional_time.name=='Y'" flex)
+

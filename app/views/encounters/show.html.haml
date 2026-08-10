@@ -1,0 +1,43 @@
+.layout-fill.layout-column
+  .layout-fill.flex
+    .layout-wrap.layout-row.flex
+      %h2.layout-align-center-stretch.flex-100
+        PSYCHOLOGY INITIAL EVALUATION (90791)
+
+      - @sections.each do |section|
+        %h4.flex-100= section.title
+        - section.rows.each do |row|
+          - row.cols.each do |col|
+            %div{class: col.class_name}
+              - unless col.blank
+                %strong.md-caption= col.label
+                %span.md-caption= col.text
+
+      - if @encounter.plan_recommended?
+        .certification.flex-100
+          I certify that the above services were conducted as documented with a reasonable expectation of improvement. In addition, I also certify that, in my professional opinion, the medical record supports that senile dementia has not produced a severe enough cognitive deficit to prevent psychotherapy from being effective.
+      - else
+        .certification.flex-100
+          I certify that the above services were conducted as documented.
+
+  %div
+    .layout-row.flex
+      %span.flex
+        %span.flex
+          %span.md-caption Clinician Name:
+          %span.md-caption= @encounter.signer.user.full_name
+      %span.layout-row.flex
+        %span.flex
+          %span.md-caption Date of Service:
+          %span.md-caption= @encounter.service_date
+        %span.flex.layout-align-end-stretch
+          %span.md-caption Date Signed:
+          %span.md-caption= @encounter.signed_on.to_date
+
+    .layout-row.flex
+      %span.flex
+        %span.md-caption Start Time:
+        %span.md-caption= @encounter.start_time
+      %span.flex
+        %span.md-caption End Time:
+        %span.md-caption= @encounter.end_time

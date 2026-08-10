@@ -1,0 +1,11 @@
+%md-divider
+%div(layout="row" layout-fill)
+  %div(flex)
+    %md-toolbar.md-primary(layout="row")
+      .md-toolbar-tools
+        %span Shipping
+        %span(flex)
+    %md-content.md-padding(flex)
+      %md-button.md-raised.md-ink-ripple.md-primary(aria-label="Ship claims" ng-disabled="claimsShipped" ng-click="shipClaims()")
+        %md-icon(md-svg-icon="communication:ic_rss_feed_24px" aria-label="Ship claims")
+        Ship claims

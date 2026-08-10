@@ -1,0 +1,103 @@
+.md-inline-form(layout="column" ng-cloak)
+  %form.gd-form(name="ctrl.providerForm")
+    %md-content(layout-padding layout-gt-xs="row")
+      %div(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-input(label="First Name" is-edit="isEditing" ng-model="provider.user.first_name" field-name="first_name" ng-required="true" form="ctrl.providerForm" flex)
+
+          %gd-input(label="Last Name" is-edit="isEditing" ng-model="provider.user.last_name" field-name="last_name" ng-required="true" form="ctrl.providerForm" flex)
+
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-input(label="Email" type="email" is-edit="isEditing" ng-model="provider.user.email" field-name="email" ng-required="true" form="ctrl.providerForm" flex)
+          %gd-input(label="Password" type="password" minlength="8" is-edit="isEditing" ng-required="pwreq" ng-model="provider.user.password" field-name="password" form="ctrl.providerForm"  flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-input(label="NPI #" is-edit="isEditing" ng-model="provider.npi" field-name="npi_number" flex)
+          %gd-input(label="PTAN #" ng-if="provider.incident_to_provider == null" is-edit="isEditing" ng-model="provider.ptan" field-name="ptan_number" flex)
+          %gd-drop-down(collection="providers" freetext="false" label="Linked Provider" is-edit="isEditing" ng-model="provider.linked_provider" field-name="linked_provider" form="ctrl.providerForm" flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-input(label="Medicaid ID" ng-if="provider.incident_to_provider == null" is-edit="isEditing" ng-model="provider.medicaid_id" field-name="medicaid_id" flex)
+          %gd-input(label="HP Account #" is-edit="isEditing" ng-model="provider.hp_account" field-name="hp_account" flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-input(label="Tax number" is-edit="isEditing" ng-model="provider.tax_number" field-name="tax_number" form="ctrl.providerForm" flex)
+          %gd-drop-down(collection="provider.incident_to_provider == null ? degrees : incidentToDegrees" freetext="true" label="Degree" is-edit="isEditing" ng-model="provider.degree" field-name="degree" form="ctrl.providerForm" ng-required="true" flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-input(label="Address" is-edit="isEditing" ng-model="provider.user.address1" field-name="address" form="ctrl.providerForm" flex)
+          %gd-input(label="City" is-edit="isEditing" ng-model="provider.user.city" field-name="city" form="ctrl.providerForm" flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-drop-down(label="State" is-edit="isEditing" dd-menu="main" keyprefix="STATES" ng-model="provider.user.state" field-name="state" form="ctrl.providerForm" flex)
+          %gd-input(label="Zip" is-edit="isEditing" ng-model="provider.user.zip" field-name="zip" form="ctrl.providerForm" flex)
+
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-input(label="Home Phone #" is-edit="isEditing" ng-model="provider.user.home_phone" field-name="home_phone" flex)
+          %gd-input(label="Work Phone #" is-edit="isEditing" ng-model="provider.user.work_phone" field-name="work_phone" flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %md-input-container(flex)
+            %md-switch(ng-model="provider.tp_required" ng-disabled="!isEditing")
+              Needs to complete TP when applicable?
+          %md-input-container(flex)
+            %md-switch(ng-model="provider.hold_claims" ng-disabled="!isEditing")
+              Hold claims from processing?
+
+        %md-divider
+
+        %md-subheader.md-primary Licenses
+
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding ng-repeat="license in provider.licenses")
+          %gd-input(label="License #" is-edit="isEditing" ng-model="license.number" field-name="license_number" ng-required="true" form="ctrl.providerForm" flex)
+          %gd-drop-down(label="State" is-edit="isEditing" dd-menu="main" keyprefix="STATES" ng-model="license.state" field-name="license_state" ng-required="true" form="ctrl.providerForm" flex)
+          %gd-date(label="Expiration" is-edit="isEditing" ng-model="license.expiration" field-name="license_expiration" flex)
+          %md-icon(md-svg-icon="content:ic_remove_circle_24px" aria-label="x" ng-click="rmLicense(this)" ng-if="isEditing")
+
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding ng-show="isEditing")
+          %span(flex)
+          %span(flex)
+          %md-button(flex ng-click="addLicense()") Add another license
+
+%md-divider
+
+%md-content(layout-padding)
+  %md-subheader.md-no-sticky
+    %span Patients under charge
+    %md-button.md-raised.md-secondary(ng-if="!(arePatientsLoading || arePatientsVisible)" ng-click="showAllPatients()")
+      Show all
+      {{patientChips.groupPatients.length}}
+      patients
+    = image_tag('spinner.gif', height: '36', width: '36', style: 'margin-bottom:-14px', 'ng-if': 'arePatientsLoading && !arePatientsVisible')
+  %div(ng-if="arePatientsVisible")
+    %md-content.md-padding.autocomplete(layout="column" style="padding-bottom: 300px;")
+      %md-chips(ng-model="patientChips.groupPatients" md-autocomplete-snap md-transform-chip="patientChips.transformChip($chip)" md-require-match="true" readonly="!isEditing")
+        %md-autocomplete(md-selected-item="patientChips.selectedItem" md-search-text="patientChips.searchText" md-items="patient in patientChips.query(patientChips.searchText)" md-item-text="patient.name" placeholder="Add patient to list...")
+          %span(md-highlight-text="patientChips.searchText") {{patient.name}} ({{patient.dob | dateonly}})
+        %md-chip-template
+          %span
+            %strong {{$chip.name}}
+            %em {{$chip.dob|dateonly}}
+
+%md-divider
+
+%div(layout-padding ng-if="!isEditing")
+  %md-content(layout-padding ng-if="!isEditing")
+    %md-subheader
+      %span Billing Printout
+    %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+      %md-input-container.md-block(flex)
+        %label Patient(s)
+        %md-select(ng-model="searchObj.patient" multiple)
+          %md-button(ng-click="selectAll()" style="float:right") Select All
+          %md-optgroup(label="Patients")
+            %md-option(ng-repeat="patient in provider.patients" value="{{patient.id}}")
+              {{ patient.full_name }}
+
+    %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+      %gd-date(ng-model="searchObj.from" is-edit="true" label="From" field-name="from" flex)
+      %gd-date(ng-model="searchObj.to" is-edit="true" label="To" field-name="to" flex)
+
+    %div(flex layout="row")
+      %md-button.md-raised.md-primary(ng-click="filter()") Submit
+
+  %md-divider
+
+  %div(layout="column")
+    %md-button.md-raised(ng-click="print()") Print
+    %div(layout="fill")
+      %iframe(name="billingcontent" ng-src="{{billingUrl}}" frameborder="0" style="height:10.8in;width:8in" flex)

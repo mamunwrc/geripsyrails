@@ -1,0 +1,26 @@
+%md-divider
+%div(layout="row" layout-fill)
+  %div(flex)
+    %md-toolbar.md-primary(layout="row")
+      .md-toolbar-tools
+        %span {{ title }}
+        %span(flex)
+        %md-button.md-raised.md-ink-ripple.md-primary(ng-if="addRoute && createable" aria-label="Add new" ui-sref="{{ addRoute }}" )
+          %md-icon(md-svg-icon="content:ic_add_24px" aria-label="x")
+    %md-content.md-padding(flex)
+      %bgf-pagination(url-params="global.search" collection="sectionList" url="'/api/'+apiRoute" page="global.pagination.page" per-page="global.pagination.perPage" client-limit="global.pagination.clientLimit" link-group-size="2")
+      %md-list
+        %md-list-item.md-3-line.md-accent(ng-repeat="item in sectionList" ui-sref="{{ showRoute }}")
+          -#%md-icon.md-avatar.md-default-theme(hide-sm md-svg-icon="{{patient.avatar}}")
+          .md-list-item-text(layout-padding)
+            %h3
+              {{ listData(item).first }}
+              %p(style="display: inline-block; margin-left: 10px;" ng-if="!!listData(item).firstAddendum") {{ listData(item).firstAddendum }}
+            %h4 {{ listData(item).second }}
+            %p {{ listData(item).third }}
+          %md-divider(md-inset hide-sm ng-if="!$last")
+          %md-divider(hide-gt-sm ng-if="!$last")
+        %md-list-item.md-2-line(ng-if="sectionList.length == 0")
+          .md-list-item-text
+            %h3 Nothing to display
+        %md-divider

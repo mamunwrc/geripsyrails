@@ -1,0 +1,18 @@
+02:37:25 12 Nov 17  Page 1          0000767178   Unposted Listing by Check Number       Batch:11122017A
+IJM                           BEACON HEALTH OPTIONS, INC.
+CHECK          ACCOUNT        PATIENT             DATE        PROC  MODS       CHARGE   ALLOWED    DEDUCT     COINS   PAYMENT   REASONS        REMARKS
+
+0000767178    000.1542360014    PATIENT, TEST   10/17/17    90834            150.00     89.00               20.00     69.00   CO45 PR3 UNIDENTIFIED ACCOUNT/SERVICE
+                              Unidentified Account: 000.1542360014
+               Claim Total Charges:     $150.00   Claim Total Payment:      $69.00   Claim Status Code:1   PRIMARY
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+                                                                               150.00     89.00      0.00     20.00     69.00
+-----------------------------------------------------------------------------------------------------------------------------
+Account/Claim Payments Not Posted                               $69.00
+
+PLB (Takeback/Refund/Interest/etc) Not Posted                         
+Total Unposted Payments                                         $69.00
+
+

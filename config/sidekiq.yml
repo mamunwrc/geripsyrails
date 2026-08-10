@@ -1,0 +1,6 @@
+---
+:concurrency: 6
+:queues:
+  - [default, 4]
+  - [hp_billing, 1]
+  - [hp_daily_shipper, 1]

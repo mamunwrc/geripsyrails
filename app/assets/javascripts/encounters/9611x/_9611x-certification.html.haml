@@ -1,0 +1,12 @@
+%div(layout-gt-xs="row" layout-padding)
+  %h3
+    Certification
+
+%div(layout-gt-xs="row" layout-padding)
+  %span(flex)
+    I certify that the above services were conducted as reported and that the patient provided assent for the assessment and evaluation conducted. I also certify that the services met criteria for medical necessity as documented in the record above
+
+%div(layout-gt-xs="row" layout-padding)
+  %md-button.md-raised(ng-disabled="formsec.submitted || !formsec.certifiable()" ng-click="formsec.certify()") Submit
+  %md-button.md-raised.md-warn(ng-if="isEditing" ng-disabled="formsec.certifiable()" ng-click="formsec.showErrors()") Show Error Fields
+

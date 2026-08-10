@@ -1,0 +1,17 @@
+.even(layout-gt-xs="row" layout-padding)
+  %gd-dd-multiselect(form="formsec.sections.necessity.form" ng-blur="formsec.sections.necessity.revalidate" ng-required="true" freetext="true" is-edit="isEditing" dd-type="encounter" keyprefix="CRISISSTATES" label="Crisis state due to" ng-model="myEncounter.problem.crisis_state" flex)
+  %gd-drop-down(form="formsec.sections.necessity.form" ng-blur="formsec.sections.necessity.revalidate" ng-required="true" freetext="true" is-edit="isEditing" dd-type="encounter" keyprefix="PROBLEMINTENSITY" label="Problem Intensity" ng-model="myEncounter.problem.intensity" flex)
+
+.odd(layout-gt-xs="row" layout-padding)
+  %div(flex)
+    %fieldset(name="crisis-assessment")
+      %legend
+        Assessment and history of crisis state
+      %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+        %gd-drop-down(form="formsec.sections.necessity.form" ng-blur="formsec.sections.necessity.revalidate" ng-required="true" is-edit="isEditing" dd-type="encounter" keyprefix="CRISISHIST" label="History - when did this issue present itself?" ng-model="myEncounter.problem.crisis_history" flex)
+      %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+        %gd-dd-multiselect(form="formsec.sections.necessity.form" ng-blur="formsec.sections.necessity.revalidate" ng-required="true" freetext="true" is-edit="isEditing" dd-type="encounter" keyprefix="CRISISDISTRESS" label="Patient distress - describe the personal reaction of the patient" ng-model="myEncounter.problem.crisis_distress" flex)
+
+
+.even(layout-gt-xs="row" layout-padding)
+  %gd-input(form="formsec.sections.necessity.form" is-edit="isEditing" label="Comments" ng-model="myEncounter.problem.crisis_comment" flex)

@@ -1,0 +1,25 @@
+.odd(layout-gt-xs="row" layout-padding)
+  %gd-dd-multiselect(ng-blur="formsec.sections.necessity.revalidate" ng-required="true" form="formsec.sections.necessity.form" freetext="true" is-edit="isEditing" dd-type="encounter" keyprefix="MAJORTARGETSYM" label="Major target symptom" ng-model="myEncounter.problem.major_target_symptom" flex)
+
+.even(layout-gt-xs="row" layout-padding)
+  %gd-drop-down(form="formsec.sections.necessity.form" ng-blur="formsec.sections.necessity.revalidate" ng-required="true" freetext="true" ft-model="myEncounter.problem.onset_freetext" is-edit="isEditing" dd-type="encounter" keyprefix="PROBLEMONSET" label="Primary onset" ng-model="myEncounter.problem.onset" flex)
+  %gd-drop-down(form="formsec.sections.necessity.form" ng-blur="formsec.sections.necessity.revalidate" ng-required="true" freetext="true" ft-model="myEncounter.problem.frequency_text" is-edit="isEditing" dd-type="encounter" keyprefix="PROBLEMFREQ" label="Frequency" ng-model="myEncounter.problem.frequency" flex)
+  %gd-drop-down(form="formsec.sections.necessity.form" ng-blur="formsec.sections.necessity.revalidate" ng-required="true" freetext="true" ft-model="myEncounter.problem.intensity_text" is-edit="isEditing" dd-type="encounter" keyprefix="PROBLEMINTENSITY" label="Intensity" ng-model="myEncounter.problem.intensity" flex)
+
+.odd(layout-gt-xs="row" layout-padding)
+  %gd-dd-multiselect(form="formsec.sections.necessity.form" ng-blur="formsec.sections.necessity.revalidate" ng-required="true" freetext="true" ft-model="myEncounter.problem.other_freetext" is-edit="isEditing" dd-type="encounter" keyprefix="PROBLEMSOTHER" label="Other Reported Problems" ng-model="myEncounter.problem.other" flex)
+
+.even(layout-gt-xs="row" layout-padding)
+  %gd-dd-multiselect(form="formsec.sections.necessity.form" ng-blur="formsec.sections.necessity.revalidate" ng-required="true" freetext="true" is-edit="isEditing" dd-type="encounter" keyprefix="GBH1INTERVENTIONS" label="Treatment Plan Interventions" ng-model="myEncounter.problem.tp_interventions" flex)
+
+.odd(layout-gt-xs="row" layout-padding)
+  %gd-radio(form="formsec.sections.necessity.form" ng-blur="formsec.sections.necessity.revalidate" ng-required="true" is-edit="isEditing" label="Is any psychiatric medication being administered?" dd-type="main" keyprefix="ONMEDS" ng-model="myEncounter.background_history.onpsychmeds" flex)
+  %div(flex)
+    %gd-input(form="formsec.sections.necessity.form" is-edit="isEditing" label="type/dosage" ng-model="myEncounter.background_history.onpsychmeds_medication" ng-show="myEncounter.background_history.onpsychmeds.name == 'Y'" flex)
+    %gd-drop-down(form="formsec.sections.history.form" ng-blur="formsec.sections.history.revalidate" ng-required="myEncounter.background_history.onpsychmeds.name =='Y'" ng-show="myEncounter.background_history.onpsychmeds.name =='Y'" is-edit="isEditing" dd-type="encounter" keyprefix="GDRPLAN" label="GDR (gradual dosage reduction) plan" ng-model="myEncounter.background_history.gdr_plan" flex)
+    %gd-date(form="formsec.sections.history.form" is-edit="isEditing" is-open="openGDRDate" label="GDR date of plan" ng-required="myEncounter.background_history.onpsychmeds.name == 'Y' && myEncounter.background_history.gdr_plan.name == 'Y'" ng-model="myEncounter.background_history.gdr_plan_date" ng-if="myEncounter.background_history.onpsychmeds.name == 'Y' && myEncounter.background_history.gdr_plan.name == 'Y'" flex)
+.even(layout-gt-xs="row" layout-padding ng-show="myEncounter.background_history.onpsychmeds.name == 'Y' && (myEncounter.background_history.gdr_plan.name == 'Y' || myEncounter.background_history.gdr_plan.name == 'YND')")
+  %gd-input(form="formsec.sections.history.form" is-edit="isEditing" label="Behavioral interventions expected to target following symptoms related to GDR" ng-required="myEncounter.background_history.onpsychmeds.name == 'Y' && (myEncounter.background_history.gdr_plan.name == 'Y' || myEncounter.background_history.gdr_plan.name == 'YND')" ng-model="myEncounter.background_history.gdr_plan_interventions" flex)
+
+.odd(layout-gt-xs="row" layout-padding)
+  %gd-input(form="formsec.sections.necessity.form" is-edit="isEditing" label="Comments re symptoms/interventions" ng-model="myEncounter.problem.comments_re_goals" flex)

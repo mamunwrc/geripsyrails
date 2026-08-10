@@ -1,0 +1,43 @@
+%md-dialog(aria-label="New contact form" ng-cloak)
+  %md-content(layout-padding)
+    %form(name="ctrl.facContactForm")
+      %md-toolbar
+        .md-toolbar-tools
+          %h2 Add New Contact
+          %span(flex)
+          %md-button.md-icon-button(ng-click="cancel()")
+            %md-icon(md-svg-icon="navigation:ic_close_24px" aria-label="close dialog")
+
+      %md-dialog-content
+        .md-dialog-content
+          %div(layout-gt-sm="row")
+            %md-input-container.md-block(flex-gt-xs)
+              %label Name
+              %input(ng-model="contact.name" required)
+
+            %md-input-container.md-block(flex-gt-xs)
+              %label Email
+              %input(ng-model="contact.email" required)
+
+          %div(layout-gt-sm="row")
+            %md-input-container.md-block(flex-gt-xs)
+              %label Format
+              %md-select(ng-model="contact.export_format" required)
+                %md-option(ng-repeat="format in formats" value="{{format}}") {{format}}
+
+            %md-input-container.md-block(flex-gt-xs)
+              %label Note Type
+              %md-select(ng-model="contact.export_type" required)
+                %md-option(ng-repeat="type in types" value="{{type}}") {{type}}
+
+          %div(layout-gt-sm="row")
+            %md-switch(ng-model="contact.active")
+              Active
+
+
+      %md-dialog-actions(layout="row")
+        %span(flex)
+        %md-button(ng-click="cancel()") Cancel
+        %md-button(ng-click="delete()" ng-if="contact.id") Delete Contact
+        %md-button(ng-click="submit()" ng-disabled="submitted || ctrl.facContactForm.$invalid") Submit
+

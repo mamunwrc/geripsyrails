@@ -1,0 +1,20 @@
+%div(layout-gt-xs="row" layout-xs="column" layout-padding ng-repeat="lab in testing.services")
+  %div(layout-column layout-padding flex)
+    %span.md-caption(flex) {{ lab.text }}
+    %t-info(label="{{lab.text}}" ng-model="myEncounter.background_history" field="{{lab.name}}" is-edit="isEditing" exp-optional flex)
+
+%div(layout-gt-xs="row" layout-xs="column" layout-padding)
+  %div(layout-column layout-padding flex)
+    %span.md-caption(flex) Will: “the information derived would be expected to impact significantly the management of the patient? Examples would include: A significant change in the patient’s condition; The need to evaluate a patient’s capacity to function in a given situation or environment; The need to specifically tailor therapeutic and or compensatory techniques to particular aspects of the patient’s pattern of strengths and disabilities.
+    %t-info(ng-model="myEncounter.background_history" field="info_derived" is-edit="isEditing" flex)
+
+
+%div(layout-gt-xs="row" layout-xs="column" layout-padding)
+  %div(layout-column layout-padding flex)
+    %span.md-caption(flex) Is this evaluation needed in order to determine the patient’s ability and capacity to make independent decisions and to understand their consequences?
+    %t-info(ng-model="myEncounter.background_history" field="eval_needed" is-edit="isEditing" no-text="Not applicable in this case" explain-text="Explain circumstances related to need for capacity determination" flex)
+
+%div(layout-gt-xs="row" layout-xs="column" layout-padding)
+  %div(layout-column layout-padding flex)
+    %span.md-caption(flex) Is further neuropsychological testing required?
+    %t-info(ng-model="myEncounter.background_history" field="more_test" is-edit="isEditing" optional exp-optional exp-no flex)

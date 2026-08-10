@@ -1,0 +1,12 @@
+.odd(layout-gt-xs="row" layout-padding)
+  %gd-drop-down(form="formsec.sections.methods.form" ng-blur="formsec.sections.methods.revalidate" ng-required="true" is-edit="isEditing" dd-type="encounter" keyprefix="CGIS" label="Clinical Global Impression-Severity" ng-model="myEncounter.functional_status.severity" flex)
+
+.odd(layout="column" layout-padding)
+  %gd-dd-multiselect(label="Monitoring Methods" form="formsec.sections.methods.form" ng-blur="formsec.sections.methods.revalidate" ng-required="true" is-edit="isEditing" dd-type="encounter" keyprefix="TPMETHODS" ng-model="myEncounter.tp_methods.methods" flex)
+  %div(flex ng-repeat="monitorMeth in monitoringOutcomes" ng-if="monitoringOutcomes[monitorMeth.name].selected")
+    %fieldset
+      %legend {{ monitorMeth.val }}
+      %gd-input(is-edit="isEditing" label="Scale name" ng-model="myEncounter.tp_methods.diffscale.name" ng-if="monitorMeth.name == 'diffscale'")
+      %gd-input(is-edit="isEditing" label="Current score" ng-model="myEncounter.tp_methods[monitorMeth.name].current")
+      %gd-input(is-edit="isEditing" label="Target score" ng-model="myEncounter.tp_methods[monitorMeth.name].target")
+

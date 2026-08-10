@@ -1,0 +1,19 @@
+%md-divider
+
+%gd-goto-prev(ng-click="gotoPrev" ng-if="!isEditing" theme="'light'")
+%gd-goto-next(ng-click="gotoNext" ng-if="!isEditing" theme="'light'")
+
+%div.md-inline-form(layout="column")
+  %md-content#section-container
+    .md-accordion(ng-init="section.expanded=$first||section.locked" ng-repeat="section in formsec.sections" ng-hide="section.hide")
+      %form.gd-form(name="formsec.sections[section.id].form")
+        %md-toolbar(ng-click="section.click(ctrl.encounterForm)")
+          .md-toolbar-tools(ng-attr-id="{{section.id}}")
+            %h2
+              %span {{[section.number, section.heading].join('. ')}}
+            %span(flex)
+            %span(ng-class="{expandCollapse:true, active:section.expanded}")
+
+        %div(ng-if="section.expanded" ng-class="{dataContent:true, activeContent:section.expanded}" data-scroll="section.id")
+          %ng-include(src="section.partial")
+

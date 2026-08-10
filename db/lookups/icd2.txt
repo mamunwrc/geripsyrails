@@ -1,0 +1,83 @@
+A50.40  Late congenital neurosyphilis, unspecified
+A50.42  Late congenital syphilitic encephalitis
+A50.43  Late congenital syphilitic polyneuropathy
+A50.45  Juvenile general paresis
+F03.90  Unspecified dementia without behavioral disturbance
+F07.0 Personality change due to known physiological condition
+F07.81  Postconcussional syndrome
+F07.89  Other personality and behavioral disorders due to known physiological condition
+F07.9 Unspecified personality and behavioral disorder due to known physiological condition
+F09 Unspecified mental disorder due to known physiological condition
+F48.2 Pseudobulbar affect
+F81.0 Specific reading disorder
+F81.81  Disorder of written expression
+G30.0 Alzheimer's disease with early onset
+G30.1 Alzheimer's disease with late onset
+G30.8 Other Alzheimer's disease
+G30.9 Alzheimer's disease, unspecified
+G31.01  Pick's disease
+G31.09  Other frontotemporal dementia
+G31.83  Dementia with Lewy bodies
+G31.84  Mild cognitive impairment, so stated
+G31.85  Corticobasal degeneration
+G31.9 Degenerative disease of nervous system, unspecified
+I69.011 Memory deficit following nontraumatic subarachnoid hemorrhage
+I69.012 Visuospatial deficit and spatial neglect following nontraumatic subarachnoid hemorrhage
+I69.013 Psychomotor deficit following nontraumatic subarachnoid hemorrhage
+I69.014 Frontal lobe and executive function deficit following nontraumatic subarachnoid hemorrhage
+I69.015 Cognitive social or emotional deficit following nontraumatic subarachnoid hemorrhage
+I69.018 Other symptoms and signs involving cognitive functions following nontraumatic subarachnoid hemorrhage
+I69.019 Unspecified symptoms and signs involving cognitive functions following nontraumatic subarachnoid hemorrhage
+I69.110 Attention and concentration deficit following nontraumatic intracerebral hemorrhage
+I69.111 Memory deficit following nontraumatic intracerebral hemorrhage
+I69.112 Visuospatial deficit and spatial neglect following nontraumatic intracerebral hemorrhage
+I69.113 Psychomotor deficit following nontraumatic intracerebral hemorrhage
+I69.114 Frontal lobe and executive function deficit following nontraumatic intracerebral hemorrhage
+I69.115 Cognitive social or emotional deficit following nontraumatic intracerebral hemorrhage
+I69.118 Other symptoms and signs involving cognitive functions following nontraumatic intracerebral hemorrhage
+I69.119 Unspecified symptoms and signs involving cognitive functions following nontraumatic intracerebral hemorrhage
+I69.210 Attention and concentration deficit following other nontraumatic intracranial hemorrhage
+I69.211 Memory deficit following other nontraumatic intracranial hemorrhage
+I69.212 Visuospatial deficit and spatial neglect following other nontraumatic intracranial hemorrhage
+I69.213 Psychomotor deficit following other nontraumatic intracranial hemorrhage
+I69.214 Frontal lobe and executive function deficit following other nontraumatic intracranial hemorrhage
+I69.215 Cognitive social or emotional deficit following other nontraumatic intracranial hemorrhage
+I69.218 Other symptoms and signs involving cognitive functions following other nontraumatic intracranial hemorrhage
+I69.219 Unspecified symptoms and signs involving cognitive functions following other nontraumatic intracranial hemorrhage
+I69.310 Attention and concentration deficit following cerebral infarction
+I69.311 Memory deficit following cerebral infarction
+I69.312 Visuospatial deficit and spatial neglect following cerebral infarction
+I69.313 Psychomotor deficit following cerebral infarction
+I69.314 Frontal lobe and executive function deficit following cerebral infarction
+I69.315 Cognitive social or emotional deficit following cerebral infarction
+I69.318 Other symptoms and signs involving cognitive functions following cerebral infarction
+I69.319 Unspecified symptoms and signs involving cognitive functions following cerebral infarction
+I69.810 Attention and concentration deficit following other cerebrovascular disease
+I69.811 Memory deficit following other cerebrovascular disease
+I69.812 Visuospatial deficit and spatial neglect following other cerebrovascular disease
+I69.813 Psychomotor deficit following other cerebrovascular disease
+I69.814 Frontal lobe and executive function deficit following other cerebrovascular disease
+I69.815 Cognitive social or emotional deficit following other cerebrovascular disease
+I69.818 Other symptoms and signs involving cognitive functions following other cerebrovascular disease
+I69.819 Unspecified symptoms and signs involving cognitive functions following other cerebrovascular disease
+I69.910 Attention and concentration deficit following unspecified cerebrovascular disease
+I69.911 Memory deficit following unspecified cerebrovascular disease
+I69.912 Visuospatial deficit and spatial neglect following unspecified cerebrovascular disease
+I69.913 Psychomotor deficit following unspecified cerebrovascular disease
+I69.914 Frontal lobe and executive function deficit following unspecified cerebrovascular disease
+I69.915 Cognitive social or emotional deficit following unspecified cerebrovascular disease
+I69.918 Other symptoms and signs involving cognitive functions following unspecified cerebrovascular disease
+R41.0 Disorientation, unspecified
+R41.1 Anterograde amnesia
+R41.2 Retrograde amnesia
+R41.3 Other amnesia
+R41.82  Altered mental status, unspecified
+R47.01  Aphasia
+R47.02  Dysphasia
+R47.1 Dysarthria and anarthria
+R47.81  Slurred speech
+R47.82  Fluency disorder in conditions classified elsewhere
+R47.89  Other speech disturbances
+R47.9 Unspecified speech disturbances
+R48.0 Dyslexia and alexia
+R49.1 Aphonia

@@ -1,0 +1,10 @@
+%div.goto(layout="column" layout-align="center center" style="margin-left:5px;")
+
+  %div.goto-bt
+    %div.goto-bg(ng-class="{dark: theme != 'light', light: theme == 'light'}")
+
+    %md-icon.material-icons.md-48.goto-pt( |
+      aria-label="next" |
+      ng-click="ngClick()" |
+    ) keyboard_arrow_left
+

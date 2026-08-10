@@ -1,0 +1,22 @@
+{
+  "name": "lodash-inflection",
+  "version": "1.4.0",
+  "dependencies": {
+    "lodash": "~4.11.2"
+  },
+  "main": "lib/lodash-inflection.js",
+  "ignore": [
+    "lib-cov",
+    "test"
+  ],
+  "homepage": "https://github.com/tuvistavie/lodash-inflection",
+  "_release": "1.4.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.4.0",
+    "commit": "c07164c1b8f0e80c649cca25b2e2075d43fdfe3b"
+  },
+  "_source": "https://github.com/tuvistavie/lodash-inflection.git",
+  "_target": "*",
+  "_originalSource": "lodash-inflection"
+}

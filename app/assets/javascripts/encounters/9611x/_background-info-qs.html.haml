@@ -1,0 +1,15 @@
+%div(layout-gt-xs="row" layout-xs="column" layout-padding ng-show="::isEdit")
+  %div(flex)
+    %md-input-container.md-block.md-input-invalid(flex-gt-sm)
+      %label
+      %md-select(ng-model="model[field]" ng-required="!optional" aria-label="x")
+        %md-option(value="Yes") Yes
+        %md-option(value="No") {{ noText }}
+
+  %div(flex ng-if="model[field] == 'Yes' || (model[field] == 'No' && hasExpNo)")
+    %md-input-container.md-block
+      %input(placeholder="{{ explainText }}" ng-model="model.extra[field]" type="text" ng-required="model[field] == 'Yes' && !expOptional")
+
+%div(ng-if="::!isEdit")
+  %span.md-caption(flex)
+    {{ model[field] }} {{ model.extra[field] }}

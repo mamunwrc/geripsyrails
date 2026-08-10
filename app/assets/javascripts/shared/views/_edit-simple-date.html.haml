@@ -1,0 +1,8 @@
+%div(flex ng-show="::isEdit")
+  %label {{ ::label }}
+  %input(type="date" ng-model="myData" name="{{ ::fieldName }}" ng-required="::isRequired" flex)
+
+%div(ng-if="::!isEdit")
+  %span.label(flex="20") {{ ::label }}
+  %span.md-caption(flex="30") {{ ::myData | dateonly }}
+

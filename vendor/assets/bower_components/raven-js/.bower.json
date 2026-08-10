@@ -1,0 +1,30 @@
+{
+  "name": "raven-js",
+  "version": "3.15.0",
+  "dependencies": {},
+  "main": "dist/raven.js",
+  "ignore": [
+    "**/.*",
+    "AUTHORS",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "Gruntfile.js",
+    "Makefile",
+    "README.md",
+    "docs",
+    "package.json",
+    "example",
+    "test",
+    "dist/sri.json"
+  ],
+  "homepage": "https://github.com/getsentry/raven-js",
+  "_release": "3.15.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "3.15.0",
+    "commit": "caa65300d450a2514873fede7f4e2dece32ff3a9"
+  },
+  "_source": "https://github.com/getsentry/raven-js.git",
+  "_target": "3.15.0",
+  "_originalSource": "raven-js"
+}

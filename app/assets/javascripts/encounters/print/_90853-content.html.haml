@@ -1,0 +1,232 @@
+%h2(flex="100" layout-align="center")
+  {{ ::groupHeader }}
+%h3(flex="100" layout-align="center")
+
+%h4(flex="100") I. Patient Information
+
+%div(flex="33")
+  %strong.md-caption Last Name:
+  %span.md-caption {{format(patient.last_name)}}
+%div(flex="33")
+  %strong.md-caption First Name:
+  %span.md-caption {{format(patient.first_name)}}
+%div(flex="33")
+  %strong.md-caption DOB:
+  %span.md-caption {{patient.dob | dateonly}}
+
+%div(flex="33")
+  %strong.md-caption Facility:
+  %span.md-caption(ng-if="!patient.room_num") {{format(patient.facility.name)}}
+  %span.md-caption(ng-if="patient.room_num") {{format(patient.facility.name)}}/{{patient.room_num}}
+%div(flex="33")
+  %strong.md-caption Gender:
+  %span.md-caption {{format(patient.gender)}}
+%div(flex="33")
+  %strong.md-caption Referral initiated by:
+  %span.md-caption {{format(encounter.referral.initiator)}}
+
+%div(flex="33")
+  %strong.md-caption Referring MD name:
+  %span.md-caption {{format(encounter.referral.md_name)}}
+%div(flex="33")
+  %strong.md-caption Date of MD order:
+  %span.md-caption {{format(encounter.referral.order_date) | dateonly}}
+%div(flex="33")
+
+%div(flex="100")
+  %strong.md-caption Medical necessity:
+  %span.md-caption {{format(encounter.referral.medical_necessity)}}
+
+%div(flex="100" ng-if="encounter.referral.note")
+  %strong.md-caption Note:
+  %span.md-caption {{format(encounter.referral.note)}}
+
+%h4(flex="100") II. Mental Status Examination
+
+%div(flex="100")
+  %strong.md-caption Clinical Global Impression-Severity:
+  %span.md-caption {{format(encounter.functional_status.severity)}}
+
+%div(flex="50")
+  %strong.md-caption Orientation Problems:
+  %span.md-caption {{formatProb(encounter.functional_status.orientation, 'problems', 'P')}}
+%div(flex="50")
+  %strong.md-caption Appearance and Dress:
+  %span.md-caption {{formatProb(encounter.functional_status.appearance, 'problems', 'I')}}
+
+%div(flex="50")
+  %strong.md-caption Motor Activity:
+  %span.md-caption {{formatProb(encounter.functional_status.motor, 'problems', 'R')}}
+%div(flex="50")
+  %strong.md-caption Alertness/Concentration:
+  %span.md-caption {{format(encounter.functional_status.alertness, 'problems')}}
+
+%div(flex="50")
+  %strong.md-caption Mood:
+  %span.md-caption {{formatProb(encounter.functional_status.mood, 'problems', 'A')}}
+%div(flex="50")
+  %strong.md-caption Affect:
+  %span.md-caption {{formatProb(encounter.functional_status.affect, 'problems', 'B')}}
+  %strong.md-caption Communication/Expression:
+  %span.md-caption {{formatProb(encounter.functional_status.expression, 'problems', 'B')}}
+  %span.md-caption {{formatProb(encounter.functional_status.attitude, 'problems', 'B')}}
+
+%div(flex="50")
+  %strong.md-caption Judgment/Reasoning:
+  %span.md-caption {{format(encounter.functional_status.reasoning, 'problems')}}
+%div(flex="50")
+  %strong.md-caption Motivation:
+  %span.md-caption {{format(encounter.functional_status.motivation, 'problems')}}
+
+%div(flex="50")
+  %strong.md-caption Thought Process:
+  %span.md-caption {{formatProb(encounter.functional_status.thought_process, 'hallucinations', '3', true)}}
+%div(flex="50")
+  %strong.md-caption Thought content/preoccupations:
+  %span.md-caption {{format(encounter.functional_status.thought_content)}}
+
+%div(flex="100")
+  %strong.md-caption Memory/Recall:
+  %span.md-caption {{format(encounter.functional_status.recall)}}
+
+%div(flex="50")
+  %strong.md-caption Intellectual ability:
+  %span.md-caption {{format(encounter.functional_status.intellectual_ability)}}
+%div(flex="50")
+  %strong.md-caption Insight/Awareness of problem:
+  %span.md-caption {{format(encounter.functional_status.insight)}}
+
+%div(flex="100")
+  %strong.md-caption Expressed threat of harm to self or others:
+  %span.md-caption {{formatProb(encounter.functional_status.harm, 'problems', 'Y')}}
+
+%div(flex="100")
+  %strong.md-caption Cognitive screen:
+  %span.md-caption {{ format(encounter.functional_status.respondtreatment)}}; {{ format(encounter.functional_status.cognitive_screen)}}; {{format(encounter.functional_status.respondtreatment_desc)}}
+
+%div(flex="100" ng-if="encounter.functional_status.respondtreatment_comments")
+  %strong.md-caption Comments:
+  %span.md-caption {{ encounter.functional_status.respondtreatment_comments }}
+
+%div(flex="100" ng-if="encounter.functional_status.note")
+  %strong.md-caption Note:
+  %span.md-caption {{format(encounter.functional_status.note)}}
+
+-# TODO can a 90853 have IC?
+-#%div(flex="100" ng-if="is90791 && encounter.functional_status.interactive_complexity.name == 'Y'")
+  %strong.md-caption Interactive complexity:
+  %span.md-caption {{formatIntComp(encounter.functional_status.interactive_complexity, 'problems')}}
+
+%h4(flex="100") III. Background and History
+
+%div(flex="50")
+  %strong.md-caption Family Status:
+  %span.md-caption {{ format(encounter.background_history.marital_status)}}; {{format(encounter.background_history.family_status)}}
+%div(flex="50")
+  %strong.md-caption Educational background:
+  %span.md-caption {{format(encounter.background_history.education_status)}}
+
+%div(flex="50")
+  %strong.md-caption Social/Occupational background:
+  %span.md-caption {{ format(encounter.background_history.occupational_status)}}
+%div(flex="50")
+  %strong.md-caption Place of birth:
+  %span.md-caption {{format(encounter.background_history.birth_place)}}
+
+%div(flex="50")
+  %strong.md-caption Family Background:
+  %span.md-caption {{format(encounter.background_history.family_background) }}
+%div(flex="50")
+  %strong.md-caption Raised by:
+  %span.md-caption {{format(encounter.background_history.raised_by)}}
+
+%div(flex="100")
+  %strong.md-caption History of mental illness:
+  %span.md-caption {{format(encounter.background_history.hist_mental_ill)}}
+
+%div(flex="50")
+  %strong.md-caption Religious/Spiritual status:
+  %span.md-caption {{format(encounter.background_history.religious_status)}}
+%div(flex="50")
+  %strong.md-caption Psychiatric medication:
+  %span.md-caption {{format(encounter.background_history.onpsychmeds)}}
+  %span.md-caption(ng-if="encounter.background_history.onpsychmeds.name == 'Y'") ; {{format(encounter.background_history.onpsychmeds_medication) }}
+
+%div(flex="100")
+  %strong.md-caption Relevant Medical Condition(s):
+  %span.md-caption {{format(encounter.background_history.medical_conditions)}}
+
+%div(flex="100" ng-if="encounter.background_history.note")
+  %strong.md-caption Comments:
+  %span.md-caption {{format(encounter.background_history.note)}}
+
+%h4(flex="100") IV. Diagnosis and Prognosis
+
+%div(flex="50")
+  %strong.md-caption Primary Diagnosis:
+  %span.md-caption {{format(encounter.diagnosis.primary) }}
+%div(flex="50")
+  %div(ng-if="encounter.diagnosis.secondary")
+    %strong.md-caption Secondary Diagnosis:
+    %span.md-caption {{format(encounter.diagnosis.secondary) }}
+
+%div(flex="100")
+  %strong.md-caption Prognosis:
+  %span.md-caption {{format(encounter.diagnosis.prognosis) }}
+
+%h4(flex="100") V. Group Therapy Session
+
+%div(flex="50")
+  %strong.md-caption Group Name:
+  %span.md-caption {{ encounter.group_data.name }}
+%div(flex="50")
+  %strong.md-caption Number of participants in this session:
+  %span.md-caption {{ encounter.group_data.session.participants }}
+
+%div(flex="100")
+  %strong.md-caption General therapeutic theme for the group:
+  %span.md-caption {{ encounter.group_data.session.theme }}
+
+%div(flex="100")
+  %strong.md-caption Therapeutic group goal for this session:
+  %span.md-caption {{ encounter.group_data.session.goal }}
+
+%div(flex="100")
+  %strong.md-caption Describe how individual problems relate to group theme; describe participation in the group process and any significant changes in overall patient status:
+  %span.md-caption {{ encounter.group_data.session.description }}
+
+%h4(flex="100") VI. Interventions and Progress
+
+%div(flex="50")
+  %strong.md-caption Personal and group dynamics related to session goals discussed:
+  %span.md-caption {{ encounter.group_data.interventions.dynamics }} minutes
+%div(flex="50")
+  %strong.md-caption Therapeutic factors focused on this session:
+  %span.md-caption {{ format(encounter.group_data.interventions.therapeutic_factors) }}
+
+%div(flex="100")
+  %strong.md-caption Emotional catharsis, instruction, insight, and support for group in this session:
+  %span.md-caption {{ encounter.group_data.interventions.description }}
+
+%div(flex="100")
+  %strong.md-caption Group progress to date:
+  %span.md-caption {{ format(encounter.group_data.interventions.cgii) }}
+
+-#%div(flex="100" ng-if="encounter.group_data.interventions.confidential && canViewConfidential")
+  %strong.md-caption Confidential notes regarding patient(s):
+  %span.md-caption {{format(encounter.group_data.interventions.confidential) }}
+%div(flex="100" ng-if="encounter.group_data.confidential_notes.length > 0")
+  %strong.md-caption Confidential notes regarding patient(s):
+  %span(ng-repeat="note in encounter.group_data.confidential_notes")
+    %br
+    %span.md-caption * {{ note }}
+
+%div(flex="100" ng-if="encounter.group_data.individual_notes.length > 0")
+  %strong.md-caption Individual notes:
+  %span(ng-repeat="note in encounter.group_data.individual_notes")
+    %br
+    %span.md-caption * {{ note }}
+
+
+%div.certification(flex="100")
+  {{ certTexts.group }}

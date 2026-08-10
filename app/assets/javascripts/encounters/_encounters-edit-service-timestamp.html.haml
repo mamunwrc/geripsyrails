@@ -1,0 +1,47 @@
+%md-divider
+%div(flex ng-cloak layout="column")
+  %md-toolbar
+    .md-toolbar-tools
+      %h3
+        Change
+        %span(ng-if="showDate") date
+        %span(ng-if="showTime") time
+        of service for {{ myPatient.fullName() }}
+      %span(flex)
+      %md-button.md-raised.md-ink-ripple.md-primary(aria-label="Close" ui-sref="{{sectionHome || false}}")
+        %md-icon(md-svg-icon="navigation:ic_close_24px" aria-label="x")
+
+  %md-content#content-container(flex)
+    %md-divider
+
+    %div.md-inline-form(layout="column")
+      %md-content#section-container
+        %form.gd-form(name="service-date.form")
+
+          %div(ng-class="{dataContent:true, activeContent:section.expanded}")
+            %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+              %span(flex)
+                %span( flex="30" class="label") CPT Code:
+                %span( flex="70" class="md-caption") {{myEncounter.cpt_encounter_code}}
+              %span(flex)
+                %span( flex="30" class="label") First Name:
+                %span( flex="70" class="md-caption") {{myPatient.first_name}}
+              %span(flex)
+                %span( flex="30" class="label") Last Name:
+                %span( flex="70" class="md-caption") {{myPatient.last_name}}
+              %span(flex)
+                %span( flex="30" class="label") Gender:
+                %span( flex="70" class="md-caption") {{myPatient.gender.val || myPatient.gender}}
+
+          %md-divider
+
+          %div(ng-if="showDate" layout-gt-xs="row" layout-xs="column" layout-padding)
+            %gd-date(field-name="service_date" form="formsec.sections.info.form" is-edit="true" label="Date of Service" ng-model="myEncounter.referral.service_date" flex)
+
+          %div(ng-if="showTime" layout-gt-xs="row" layout-padding)
+            %gd-time(form="formsec.sections.certification.form" is-edit="true" ng-model="myEncounter.certification.start_time" label="Start time" type="time" field-name="start_time" flex)
+            %gd-time(form="formsec.sections.certification.form" is-edit="true" ng-model="myEncounter.certification.end_time" label="End time" type="time" field-name="end_time" flex)
+
+          %div(layout-gt-xs="row" layout-padding)
+            %md-button.md-raised(ng-click="saveTimestamp(myEncounter)") Submit
+            %md-button.md-raised(ui-sref="{{sectionHome || false}}") Cancel

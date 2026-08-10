@@ -1,0 +1,23 @@
+[{
+	"id": 2,
+	"patient_id": 20,
+    "encounter_start": "2016-03-10 12:35:02",
+	"encounter_end": "2016-03-10 12:45:02",
+	"provider_id": 1,
+	"CPT_encounter_code": "90791",
+	"MSE": [
+        {"ClinicalGlobalImpressionSeverity": 3}
+        ,{"Orientation": 1}
+    ]
+},
+{
+	"id": 3,
+	"patient_id": 19,
+    "encounter_start": "2016-03-11 15:35:02",
+	"provider_id": 2,
+	"CPT_encounter_code": "90838",
+	"MSE": [
+        {"ClinicalGlobalImpressionSeverity": 2}
+        ,{"Orientation": 2}
+    ]
+}]

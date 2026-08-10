@@ -1,0 +1,14 @@
+.odd(layout-gt-xs="row" layout-padding)
+  %gd-bool(form="formsec.sections.history.form" ng-blur="formsec.sections.history.revalidate" ng-required="true" freetext="true" is-edit="isEditing" label="Change in background/history" ng-model="myEncounter.background_history.status_changed" flex)
+.even(layout-gt-xs="row" layout-padding)
+  %gd-bool(form="formsec.sections.history.form" ng-blur="formsec.sections.history.revalidate" ng-required="true" freetext="true" is-edit="isEditing" label="Change in Psychiatric medication" ng-model="myEncounter.background_history.meds_changed" flex)
+  %div(flex)
+    %gd-drop-down(form="formsec.sections.history.form" ng-blur="formsec.sections.history.revalidate" ng-required="myEncounter.background_history.onpsychmeds.name =='Y' || myEncounter.background_history.meds_changed.name == 'Y'" ng-show="myEncounter.background_history.onpsychmeds.name =='Y' || myEncounter.background_history.meds_changed.name == 'Y'" is-edit="isEditing" dd-type="encounter" keyprefix="GDRPLAN" label="GDR plan in place?" ng-model="myEncounter.background_history.gdr_plan" flex)
+    %gd-date(form="formsec.sections.history.form" is-edit="isEditing" is-open="openGDRDate" label="GDR date of plan" ng-required="(myEncounter.background_history.onpsychmeds.name == 'Y' || myEncounter.background_history.meds_changed.name == 'Y') && myEncounter.background_history.gdr_plan.name == 'Y'" ng-model="myEncounter.background_history.gdr_plan_date" ng-if="(myEncounter.background_history.onpsychmeds.name == 'Y' || myEncounter.background_history.meds_changed.name == 'Y') && myEncounter.background_history.gdr_plan.name == 'Y'" flex)
+    %p(flex ng-show="(myEncounter.background_history.onpsychmeds.name == 'Y' || myEncounter.background_history.meds_changed.name == 'Y') && (myEncounter.background_history.gdr_plan.name == 'Y' || myEncounter.background_history.gdr_plan.name == 'YND')" )
+      See treatment plan for behavioral interventions
+.odd(layout-gt-xs="row" layout-padding)
+  %gd-bool(form="formsec.sections.history.form" ng-blur="formsec.sections.history.revalidate" ng-required="true" freetext="true" is-edit="isEditing" label="Change in relevant medical condition(s)" ng-model="myEncounter.background_history.condition_changed" flex)
+.even(layout-gt-xs="row" layout-padding)
+  %gd-input(form="formsec.sections.history.form" ng-blur="formsec.sections.history.revalidate" ng-required="true" is-edit="isEditing" label="Observations and background summary" ng-model="myEncounter.background_history.note" flex)
+

@@ -1,0 +1,40 @@
+!!!
+%html(lang="en" ng-app="geripsy")
+  %head
+    %title GeriPsy
+    %base(href="/")
+    %meta(charset='utf-8')
+    %meta(http-equiv='x-ua-compatible' content='ie=edge')
+    %meta(name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+    %meta(name='description' content='geripsy ehr')
+    %meta(name='author' content='hts')
+
+    %link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.9/angular-material.min.css" media="all")
+
+    :css
+      body {
+        font-family: "serif";
+        line-height: 1.2em;
+        padding: 0;
+        height: 13.5in;
+        background-color: blue;
+      }
+      h2 {
+        text-align: center;
+        font-size: 18px;
+        margin: 0;
+      }
+      h4 {
+        margin-bottom: 0;
+        margin-top: 30px;
+      }
+      .certification {
+         font-size: 8px;
+         margin-top: 20px;
+      }
+
+
+    = csrf_meta_tags
+
+  %body
+    = yield

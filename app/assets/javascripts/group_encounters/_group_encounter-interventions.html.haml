@@ -1,0 +1,23 @@
+%div(layout-gt-xs="row" layout-xs="column" layout-padding)
+  %gd-input(form="formsec.sections.interventions.form" ng-required="true" is-edit="isEditing" label="Personal and group dynamics related to session goals discussed" ng-model="encounter.interventions.dynamics" placeholder="{{encounter.interventions.dynamics_prev}}" flex)
+  %gd-dd-multiselect(form="formsec.sections.interventions.form" ng-required="true" is-edit="isEditing" label="Therapeutic factors focused on this session" ng-model="encounter.interventions.therapeutic_factors" dd-type="encounter" keyprefix="THERAPEUTICFACTORS" flex)
+
+%div(layout-gt-xs="row" layout-xs="column" layout-padding)
+  %gd-input(form="formsec.sections.interventions.form" ng-required="true" is-edit="isEditing" label="Describe emotional catharsis, instruction, insight, and support for group in this session" ng-model="encounter.interventions.description" placeholder="{{encounter.interventions.description_prev}}" flex)
+
+%div(layout-gt-xs="row" layout-xs="column" layout-padding)
+  %gd-drop-down(form="formsec.sections.interventions.form" ng-required="true" is-edit="isEditing" dd-type="encounter" keyprefix="CGII" label="Group progress to date" ng-model="encounter.interventions.cgii" flex)
+
+%md-divider
+
+%md-content
+  %md-list(flex)
+    %md-subheader(flex) Individual Notes
+
+    %md-list-item.md-2-line.md-long-text(ng-repeat="note in patient_notes" ng-click="isEditing && editNote(note)")
+      .md-list-item-text
+        %h3 {{ note.names.join(', ') }}
+        %p {{ note.body }}
+      %md-divider
+
+  %md-button.md-raised.md-primary(ng-click="addNote()" ng-if="isEditing") Add note

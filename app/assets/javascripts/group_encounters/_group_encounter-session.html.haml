@@ -1,0 +1,15 @@
+%div(layout-gt-xs="row" layout-xs="column" layout-padding)
+  %gd-date(ng-required="true" field-name="service_date" form="formsec.sections.session.form" is-edit="isEditing" label="Date of Service" ng-model="encounter.group_therapy_session.service_date" flex)
+  %span(flex)
+%div(layout-gt-xs="row" layout-xs="column" layout-padding)
+  %gd-dd-multiselect(form="formsec.sections.session.form" ng-required="true" is-edit="isEditing" label="Participants in this session" collection="patients" ng-model="encounter.group_therapy_session.patients" flex)
+
+%div(layout-gt-xs="row" layout-xs="column" layout-padding)
+  %gd-input(form="formsec.sections.session.form" ng-required="true" is-edit="isEditing" label="General therapeutic theme for the group" ng-model="encounter.group_therapy_session.theme" flex)
+
+%div(layout-gt-xs="row" layout-xs="column" layout-padding)
+  %gd-input(form="formsec.sections.session.form" ng-required="true" is-edit="isEditing" label="Therapeutic group goal for this session" ng-model="encounter.group_therapy_session.goal" placeholder="{{encounter.group_therapy_session.goal_prev}}" flex)
+
+%div(layout-gt-xs="row" layout-xs="column" layout-padding)
+  %gd-input(form="formsec.sections.session.form" ng-required="true" is-edit="isEditing" label="Describe how individual problems relate to group theme; describe participation in the group process and any significant changes in overall patient status" ng-model="encounter.group_therapy_session.description" flex)
+

@@ -1,0 +1,15 @@
+%md-divider
+%div(layout="row" layout-fill)
+  %div(flex)
+    %md-toolbar.md-primary(layout="row")
+      .md-toolbar-tools
+        %span Bookkeeping
+        %span(flex)
+    %md-content.md-padding(flex)
+      %span(flex)
+        %span(flex) For date:
+        %span(flex)
+          %md-datepicker(ng-change="emailSent=false" ng-model="date")
+      %md-button.md-raised.md-ink-ripple.md-primary(aria-label="Send email" ng-disabled="emailSent" ng-click="sendBookkeepingEmail()")
+        %md-icon(md-svg-icon="communication:ic_email_24px" aria-label="Send email")
+        Send email

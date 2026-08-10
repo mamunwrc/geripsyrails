@@ -1,0 +1,1584 @@
+{
+	"REFINITIATOR" : [{
+			"key" : "1",
+			"value" : "SW"
+		}, {
+			"key" : "2",
+			"value" : "DON"
+		}, {
+			"key" : "3",
+			"value" : "Nurse supervisor"
+		}, {
+			"key" : "4",
+			"value" : "Nursing staff"
+		}, {
+			"key" : "5",
+			"value" : "Attending MD"
+		}, {
+			"key" : "6",
+			"value" : "Psychiatry"
+		}, {
+			"key" : "FREETEXT",
+			"value" : "Other clinical staff"
+		}
+	],
+	"HAS90791THISYEAR" : [{
+			"key" : "goals",
+			"value" : "Treatment was terminated because goals were reached"
+		}, {
+			"key" : "hospitalized",
+			"value" : "Patient was hospitalized-returned from hospital around:"
+		}, {
+			"key" : "transferred",
+			"value" : "Patient transferred from another facility on/around:"
+		}, {
+			"key" : "diff",
+			"value" : "Patient was seen last for a different diagnosis/symptoms"
+		}, {
+			"key" : "medication",
+			"value" : "Patient was seen for medication management only"
+		}, {
+			"key" : "capacity",
+			"value" : "Patient was seen for capacity evaluation only"
+		}
+	],
+	"REFREASONS" : [{
+			"key" : "1",
+			"value" : "Evaluation for possible psychotherapy"
+		}, {
+			"key" : "2",
+			"value" : "Evaluate competency/capacity"
+		}
+	],
+	"REFERRALREASON1" : [{
+			"key" : "FREETEXT",
+			"value" : "Evaluation for possible psychotherapy (if chosen open fill in box entitled \"state behavioral issues present\")"
+		}
+	],
+	"REFERRALREASON2" : [{
+			"key" : "FREETEXT",
+			"value" : "Evaluate competency/capacity (if chosen open up fill in box entitled \"state diagnostic question\")"
+		}
+	],
+
+  "REFREASONS9611X": [{
+			"key" : "1",
+			"value" : "Assessment of mental functioning for suspected or known mental disorder for purposes of differential diagnosis and/or treatment planning"
+		}, {
+			"key" : "2",
+			"value" : "Assessment of patient strengths and disabilities for use in treatment planning or management when signs or symptoms of a mental disorder are present"
+		}, {
+			"key" : "3",
+			"value" : "Assessment of patient capacity for decision making when impairment is suspected which would affect patient care or management"
+		}, {
+			"key" : "4",
+			"value" : "Differential diagnosis between psychogenic and neurogenic syndromes (e.g., depression vs. dementia)"
+		}, {
+			"key" : "5",
+			"value" : "Detection of neurologic disease based on quantitative assessment of neurocognitive abilities (e.g., mild head injury, anoxic injuries, AIDS dementia)"
+		}, {
+			"key" : "6",
+			"value" : "Delineation of the neurocognitive effects of central nervous system disorders"
+		}, {
+			"key" : "7",
+			"value" : "Neurocognitive monitoring of recovery or progression of central nervous system disorders"
+		}
+  ],
+
+  "SRV9611X": [{
+			"key" : "1",
+			"value" : "Clinical interview"
+		}, {
+			"key" : "2",
+			"value" : "Cognistat neurobehavioral status examination"
+		}, {
+			"key" : "3",
+			"value" : "Cornell scale for depression in dementia"
+		}, {
+			"key" : "4",
+			"value" : "General anxiety inventory"
+		}, {
+			"key" : "5",
+			"value" : "ACE (Assessment for capacity evaluation)"
+		}, {
+			"key" : "6",
+			"value" : "Cohen-Mansfield Inventory"
+		}, {
+			"key" : "7",
+			"value" : "Wechsler Adult Intelligence Scale (WAIS)"
+		}, {
+			"key" : "8",
+			"value" : "Behavioral observations"
+		}, {
+			"key" : "9",
+			"value" : "Thematic Appreception Test (TAT)"
+		}, {
+			"key" : "10",
+			"value" : "Graphomotor techniques"
+		}, {
+			"key" : "11",
+			"value" : "Staff/family reports"
+		}, {
+			"key" : "12",
+			"value" : "Review of medical records"
+		}
+  ],
+
+  "CAPFUNC": [{
+			"key" : "full",
+			"value" : "Full capacity: no supervision needed"
+		}, {
+			"key" : "limited_full",
+			"value" : "Limited capacity (with full supervision)"
+		},  {
+			"key" : "limited_partial",
+			"value" : "Limited capacity (with partial supervision)"
+		},{
+			"key" : "none",
+			"value" : "No capacity: Unable to make independent decisions"
+		}
+  ],
+
+  "STATDUR": [{
+			"key" : "stable",
+			"value" : "Stable"
+		}, {
+			"key" : "transient",
+			"value" : "Transient"
+		},  {
+			"key" : "unlikely",
+			"value" : "Unlikely to improve"
+		}
+  ],
+
+	"MEDICALNECESSITY" : [{
+			"key" : "1",
+			"value" : "Adjustment to placement in facility"
+		}, {
+			"key" : "2",
+			"value" : "Adjustment to reduced physical ability"
+		}, {
+			"key" : "3",
+			"value" : "Stabilization of depressed mood"
+		}, {
+			"key" : "4",
+			"value" : "Increased socialization and program participation"
+		}, {
+			"key" : "5",
+			"value" : "Reduction in assaultive or inappropriate behavior"
+		}, {
+			"key" : "6",
+			"value" : "Reduction or stabilization in disorganized, confused thinking"
+		}, {
+			"key" : "7",
+			"value" : "Stabilization of anxious/irritable mood"
+		}, {
+			"key" : "8",
+			"value" : "Adjustment to illness or medical condition"
+		}, {
+			"key" : "9",
+			"value" : "Reduction of conflictual relationship"
+		}, {
+			"key" : "10",
+			"value" : "Increased compliance with treatment plan"
+		}, {
+			"key" : "11",
+			"value" : "Reduction of inappropriate sexual behaviors"
+		}, {
+			"key" : "12",
+			"value" : "Evaluate for mental competence and capacity"
+		}	],
+	"MAJORTARGETSYM" : [{
+			"key" : "1",
+			"value" : "Adjustment to placement in facility"
+		}, {
+			"key" : "2",
+			"value" : "Adjustment to reduced physical ability"
+		}, {
+			"key" : "3",
+			"value" : "Stabilization of depressed mood"
+		}, {
+			"key" : "4",
+			"value" : "Increased socialization and program participation"
+		}, {
+			"key" : "5",
+			"value" : "Reduction in assaultive or inappropriate behavior"
+		}, {
+			"key" : "6",
+			"value" : "Reduction or stabilization in disorganized, confused thinking"
+		}, {
+			"key" : "7",
+			"value" : "Stabilization of anxious/irritable mood"
+		}, {
+			"key" : "8",
+			"value" : "Adjustment to illness or medical condition"
+		}, {
+			"key" : "9",
+			"value" : "Reduction of conflictual relationship"
+		}, {
+			"key" : "10",
+			"value" : "Increased compliance with treatment plan"
+		}, {
+			"key" : "11",
+			"value" : "Reduction of inappropriate sexual behaviors"
+		}	],
+	"CGIS" : [{
+			"key" : "1",
+			"value" : "1 = Normal - not at all ill, symptoms of disorder not present past seven days"
+		}, {
+			"key" : "2",
+			"value" : "2 = Borderline mentally ill - subtle or suspected pathology"
+		}, {
+			"key" : "3",
+			"value" : "3 = Mildly ill - clearly established symptoms with minimal, if any, distress or difficulty in social and occupational function"
+		}, {
+			"key" : "4",
+			"value" : "4 = Moderately ill—overt symptoms causing noticeable, but modest, functional impairment or distress; symptom level may warrant medication"
+		}, {
+			"key" : "5",
+			"value" : "5 = Markedly ill—intrusive symptoms that distinctly impair social/occupational function or cause intrusive levels of distress"
+		}, {
+			"key" : "6",
+			"value" : "6 = Severely ill—disruptive pathology, behavior and function are frequently influenced by symptoms, may require assistance from others"
+		}, {
+			"key" : "7",
+			"value" : "7 = Among the most extremely ill patients—pathology drastically interferes in many life functions; may be hospitalized"
+		}
+	],
+	"ORIENTATION" : [{
+			"key" : "O",
+			"value" : "Orientation x 3"
+		}, {
+			"key" : "P",
+			"value" : "Problem"
+		}
+	],
+	"ORIENTATIONPROB" : [{
+			"key" : "1",
+			"value" : "Orientation to self/name"
+		}, {
+			"key" : "2",
+			"value" : "Orientation to place/type of facility"
+		}, {
+			"key" : "3",
+			"value" : "Orientation to place/name of facility"
+		}, {
+			"key" : "4",
+			"value" : "Orientation to place/city"
+		}, {
+			"key" : "5",
+			"value" : "Orientation to date"
+		}, {
+			"key" : "6",
+			"value" : "Orientation to time of day"
+		}
+	],
+	"DRESS" : [{
+			"key" : "A",
+			"value" : "Appropriate"
+		}, {
+			"key" : "I",
+			"value" : "Inappropriate"
+		}
+	],
+	"DRESSPROB" : [{
+			"key" : "1",
+			"value" : "Inappropriate for season"
+		}, {
+			"key" : "2",
+			"value" : "Inappropriate for setting"
+		}, {
+			"key" : "3",
+			"value" : "Partially dressed only"
+		}, {
+			"key" : "4",
+			"value" : "Disheveled"
+		}, {
+			"key" : "5",
+			"value" : "Has odor"
+		}	],
+	"MOTOR" : [{
+			"key" : "N",
+			"value" : "Normal"
+		}, {
+			"key" : "R",
+			"value" : "Remarkable"
+		}
+	],
+	"MOTORPROB" : [{
+			"key" : "1",
+			"value" : "Agitated"
+		}, {
+			"key" : "2",
+			"value" : "Pacing"
+		}, {
+			"key" : "3",
+			"value" : "Ataxia"
+		}, {
+			"key" : "4",
+			"value" : "Akathisia"
+		}],
+	"ALERTNESS" : [{
+			"key" : "1",
+			"value" : "Adequately alert/attentive"
+		}, {
+			"key" : "2",
+			"value" : "Limited concentration/attention"
+		}
+	],
+	"MOOD" : [{
+			"key" : "N",
+			"value" : "Normal"
+		}, {
+			"key" : "A",
+			"value" : "Abnormal"
+		}
+	],
+	"MOODPROB" : [{
+			"key" : "1",
+			"value" : "Anxious"
+		}, {
+			"key" : "2",
+			"value" : "Dysphoric"
+		}, {
+			"key" : "3",
+			"value" : "Irritable"
+		}, {
+			"key" : "4",
+			"value" : "Silly"
+		}],
+	"AFFECT" : [{
+			"key" : "G",
+			"value" : "Appropriate"
+		}, {
+			"key" : "B",
+			"value" : "Inappropriate"
+		}
+	],
+	"AFFECTPROB" : [{
+			"key" : "1",
+			"value" : "Incongruent"
+		}, {
+			"key" : "2",
+			"value" : "Detached"
+		}, {
+			"key" : "3",
+			"value" : "Constricted"
+		}, {
+			"key" : "4",
+			"value" : "Flat"
+		}, {
+			"key" : "5",
+			"value" : "Apathetic / Indifferent"
+		}, {
+			"key" : "6",
+			"value" : "Perplexed"
+		}, {
+			"key" : "7",
+			"value" : "Sarcastic"
+		}, {
+			"key" : "8",
+			"value" : "Aloof"
+		}, {
+			"key" : "9",
+			"value" : "Labile"
+		}],
+	"EXPRESSION" : [{
+			"key" : "G",
+			"value" : "Good"
+		}, {
+			"key" : "B",
+			"value" : "Other"
+		}
+	],
+	"EXPRESSIONPROB" : [{
+			"key" : "1",
+			"value" : "Adequate"
+		}, {
+			"key" : "2",
+			"value" : "Poor"
+		}, {
+			"key" : "3",
+			"value" : "Slurred or Mumbled"
+		}, {
+			"key" : "4",
+			"value" : "Loud"
+		}, {
+			"key" : "5",
+			"value" : "Repetitive"
+		}, {
+			"key" : "6",
+			"value" : "Irrelevant Speech"
+		}, {
+			"key" : "7",
+			"value" : "Perseveration"
+		}, {
+			"key" : "8",
+			"value" : "Pressured"
+		}, {
+			"key" : "9",
+			"value" : "Paucity of Content"
+		}, {
+			"key" : "10",
+			"value" : "Mute"
+		}, {
+			"key" : "11",
+			"value" : "Aphasic"
+		}, {
+			"key" : "12",
+			"value" : "Flight of Ideas"
+		}, {
+			"key" : "13",
+			"value" : "Slowed"
+		}],
+	"ATTITUDE" : [{
+			"key" : "G",
+			"value" : "Normal"
+		}, {
+			"key" : "B",
+			"value" : "Abnormal"
+		}
+	],
+	"ATTITUDEPROB" : [{
+			"key" : "1",
+			"value" : "Reserved"
+		}, {
+			"key" : "2",
+			"value" : "Defensive"
+		}, {
+			"key" : "3",
+			"value" : "Withdrawn"
+		}],
+	"REASONING" : [{
+			"key" : "1",
+			"value" : "Good"
+		}, {
+			"key" : "2",
+			"value" : "Fair"
+		}, {
+			"key" : "3",
+			"value" : "Poor"
+		}
+	],
+	"MOTIVATION" : [{
+			"key" : "1",
+			"value" : "Good"
+		}, {
+			"key" : "2",
+			"value" : "Fair"
+		}, {
+			"key" : "3",
+			"value" : "Adequate"
+		}, {
+			"key" : "4",
+			"value" : "Poor"
+		}
+	],
+	"THOUGHTPR" : [{
+			"key" : "1",
+			"value" : "Normal"
+		}, {
+			"key" : "2",
+			"value" : "Irrational/Illogical"
+		}, {
+			"key" : "3",
+			"value" : "Hallucinations"
+		}
+	],
+	"THOUGHTPRHALL" : [{
+			"key" : "1",
+			"value" : "Auditory"
+		}, {
+			"key" : "2",
+			"value" : "Visual"
+		}, {
+			"key" : "3",
+			"value" : "Gustatory: Taste"
+		}, {
+			"key" : "4",
+			"value" : "Olfactory: Smell"
+		}, {
+			"key" : "5",
+			"value" : "Kinesthetic: Motion"
+		}, {
+			"key" : "6",
+			"value" : "Tactile: Touch"
+		}, {
+			"key" : "7",
+			"value" : "Reality distortion"
+		}, {
+			"key" : "8",
+			"value" : "Ideas of reference"
+		}	],
+	"THOUGHTCONT" : [{
+			"key" : "N",
+			"value" : "Normal"
+		}, {
+			"key" : "A",
+			"value" : "Abnormal"
+		}
+	],
+	"RECALL" : [{
+			"key" : "1",
+			"value" : "Unimpaired: capable of recalling encounter session-session"
+		}, {
+			"key" : "2",
+			"value" : "Impaired: unable to recall encounter session-session"
+		}, {
+			"key" : "3",
+			"value" : "Partially impaired: but capable of recalling encounter session-session"
+		}
+	],
+	"INTABILITY" : [{
+			"key" : "1",
+			"value" : "Average"
+		}, {
+			"key" : "2",
+			"value" : "Below average"
+		}, {
+			"key" : "3",
+			"value" : "Above average"
+		}, {
+			"key" : "4",
+			"value" : "Unable to fully determine"
+		}
+	],
+	"INSIGHT" : [{
+			"key" : "1",
+			"value" : "Good"
+		}, {
+			"key" : "2",
+			"value" : "Adequate"
+		}, {
+			"key" : "3",
+			"value" : "Poor"
+		}
+	],
+	"EXPRHARM" : [{
+			"key" : "1",
+			"value" : "passive death wish"
+		}, {
+			"key" : "2",
+			"value" : "past attempts at self-harm, none recently"
+		}, {
+			"key" : "3",
+			"value" : "past incidents of harming others, none recently"
+		}, {
+			"key" : "4",
+			"value" : "recent attempt at self-harm"
+		}, {
+			"key" : "5",
+			"value" : "recent attempt to harm others"
+		}, {
+			"key" : "6",
+			"value" : "recent suicidal ideation but no attempts"
+		}, {
+			"key" : "7",
+			"value" : "past suicidal ideation but no attempts"
+		}
+	],
+	"RESPONDTREATMNT" : [{
+			"key" : "1",
+			"value" : "BCRS/GDS"
+		}, {
+			"key" : "2",
+			"value" : "CDR"
+		}, {
+			"key" : "3",
+			"value" : "MMSE"
+		}, {
+			"key" : "4",
+			"value" : "MOCA"
+		}, {
+			"key" : "5",
+			"value" : "GDS/FAST"
+		}
+	],
+	"RESPNDTREATMNTDESC" : [{
+			"key" : "1",
+			"value" : "At or better than MILD dementia; acceptable"
+		}, {
+			"key" : "2",
+			"value" : "More severe than MILD dementia; not acceptable."
+		},  {
+			"key" : "FREETEXT",
+			"value" : "More severe than MILD dementia; acceptable (if selected, must enter description)"
+		}
+	],
+	"REASONINTEACTVCOMPLXTY" : [{
+			"key" : "1",
+			"value" : "Maladaptive communication (eg, high anxiety, high reactivity, repeated questions or disagreement)"
+		}, {
+			"key" : "2",
+			"value" : "Emotional or behavioral conditions inhibiting implementation of treatment plan"
+		}, {
+			"key" : "3",
+			"value" : "Mandated reporting/event exists (eg, abuse or neglect)"
+		}, {
+			"key" : "4",
+			"value" : "Play equipment, devices, interpreter, or translator required due to inadequate language expression or different language spoken between patient and professional."
+		}
+	],
+	"PROBLEMONSET" : [{
+			"key" : "1",
+			"value" : "Recent-within last month"
+		}, {
+			"key" : "2",
+			"value" : "Within last 6 months"
+		}, {
+			"key" : "3",
+			"value" : "Within last year"
+		}, {
+			"key" : "4",
+			"value" : "Over one year-longstanding problem"
+		}, {
+			"key" : "FREETEXT",
+			"value" : "Other"
+		}
+	],
+	"PROBLEMFREQ" : [{
+			"key" : "1",
+			"value" : "Daily"
+		}, {
+			"key" : "2",
+			"value" : "< Daily"
+		}
+	],
+	"PROBLEMINTENSITY" : [{
+			"key" : "1",
+			"value" : "Intense"
+		}, {
+			"key" : "2",
+			"value" : "Moderate"
+		}, {
+			"key" : "3",
+			"value" : "Weak"
+		}, {
+			"key" : "FREETEXT",
+			"value" : "Other"
+		}
+	],
+	"PROBLEMSOTHER" : [{
+			"key" : "1",
+			"value" : "adjustment difficulty"
+		}, {
+			"key" : "2",
+			"value" : "agitation"
+		}, {
+			"key" : "3",
+			"value" : "alcohol/drugs"
+		}, {
+			"key" : "4",
+			"value" : "anger with self or others"
+		}, {
+			"key" : "5",
+			"value" : "anhedonia (loss of pleasure)"
+		}, {
+			"key" : "6",
+			"value" : "anxiety"
+		}, {
+			"key" : "7",
+			"value" : "apathetic/withdrawn"
+		}, {
+			"key" : "8",
+			"value" : "appetite issues"
+		}, {
+			"key" : "9",
+			"value" : "audio or visual hallucinations"
+		}, {
+			"key" : "10",
+			"value" : "crying"
+		}, {
+			"key" : "11",
+			"value" : "delusional thinking"
+		}, {
+			"key" : "12",
+			"value" : "disorganized"
+		}, {
+			"key" : "13",
+			"value" : "dissociation"
+		}, {
+			"key" : "14",
+			"value" : "distracted"
+		}, {
+			"key" : "15",
+			"value" : "dysphoria (sad mood)"
+		}, {
+			"key" : "16",
+			"value" : "family distress"
+		}, {
+			"key" : "17",
+			"value" : "fatigue, lethargy"
+		}, {
+			"key" : "18",
+			"value" : "grief and loss (bereavement)"
+		}, {
+			"key" : "19",
+			"value" : "impaired decision making"
+		}, {
+			"key" : "20",
+			"value" : "interpersonal conflict"
+		}, {
+			"key" : "21",
+			"value" : "intrusive thoughts/ memories"
+		}, {
+			"key" : "22",
+			"value" : "irritability"
+		}, {
+			"key" : "23",
+			"value" : "isolating feelings of doom/panic"
+		}, {
+			"key" : "24",
+			"value" : "loneliness"
+		}, {
+			"key" : "25",
+			"value" : "memory loss"
+		}, {
+			"key" : "26",
+			"value" : "moody"
+		}, {
+			"key" : "27",
+			"value" : "negative thinking"
+		}, {
+			"key" : "28",
+			"value" : "nightmares"
+		}, {
+			"key" : "29",
+			"value" : "noncompliance"
+		}, {
+			"key" : "30",
+			"value" : "obsessive/compulsive behavior"
+		}, {
+			"key" : "31",
+			"value" : "physical aggression"
+		}, {
+			"key" : "32",
+			"value" : "pain (physical)"
+		}, {
+			"key" : "33",
+			"value" : "repetitive complaints"
+		}, {
+			"key" : "34",
+			"value" : "restlessness"
+		}, {
+			"key" : "35",
+			"value" : "self-abuse"
+		}, {
+			"key" : "36",
+			"value" : "self-deprecation"
+		}, {
+			"key" : "37",
+			"value" : "self-esteem issues"
+		}, {
+			"key" : "38",
+			"value" : "sleep difficulty"
+		}, {
+			"key" : "39",
+			"value" : "social distress"
+		}, {
+			"key" : "40",
+			"value" : "somatic/physical complaints"
+		}, {
+			"key" : "41",
+			"value" : "stubborn/obstinate"
+		}, {
+			"key" : "42",
+			"value" : "unrealistic fears"
+		}, {
+			"key" : "43",
+			"value" : "verbal aggression"
+		}, {
+			"key" : "44",
+			"value" : "worried"
+		}, {
+			"key" : "45",
+			"value" : "None"
+		}, {
+			"key" : "46",
+			"value" : "Unknown"
+		}
+	],
+	"STAFFIMPRESSION" : [{
+			"key" : "1",
+			"value" : "cooperative and compliant"
+		}, {
+			"key" : "2",
+			"value" : "occasional noncompliance"
+		}, {
+			"key" : "3",
+			"value" : "withdrawn, apathetic "
+		}, {
+			"key" : "4",
+			"value" : "considered \"problem\" resident"
+		}, {
+			"key" : "FREETEXT",
+			"value" : "specify/other (fill-in)"
+		}
+	],
+	"PRECIPSTRESSORS" : [{
+			"key" : "1",
+			"value" : "change in living condition"
+		}, {
+			"key" : "2",
+			"value" : "bereavement"
+		}, {
+			"key" : "3",
+			"value" : "retirement"
+		}, {
+			"key" : "4",
+			"value" : "change in health of family member"
+		}, {
+			"key" : "5",
+			"value" : "death of spouse/partner"
+		}, {
+			"key" : "6",
+			"value" : "death of a close friend"
+		}, {
+			"key" : "7",
+			"value" : "arguments with partner"
+		}, {
+			"key" : "8",
+			"value" : "personal injury or illness"
+		}, {
+			"key" : "9",
+			"value" : "pain"
+		}, {
+			"key" : "10",
+			"value" : "cognitive issues"
+		}, {
+			"key" : "11",
+			"value" : "Unknown"
+		}
+	],
+	"PROGNOSIS" : [{
+			"key" : "1",
+			"value" : "Excellent"
+		}, {
+			"key" : "2",
+			"value" : "Good"
+		}, {
+			"key" : "3",
+			"value" : "Fair"
+		}, {
+			"key" : "3",
+			"value" : "Guarded"
+		}, {
+			"key" : "4",
+			"value" : "Poor"
+		}, {
+			"key" : "5",
+			"value" : "Chronic"
+		}
+	],
+	"ICD" : [{
+			"key" : "F43.21",
+			"value" : "F43.21 - Adjustment disorder with depressed mood"
+		}, {
+			"key" : "F43.22",
+			"value" : "F43.22 - Adjustment disorder with anxiety"
+		}, {
+			"key" : "F43.23",
+			"value" : "F43.23 - Adjustment disorder with mixed anxiety and depressed mood"
+		}, {
+			"key" : "F43.24",
+			"value" : "F43.24 - Adjustment disorder with disturbance of conduct"
+		}, {
+			"key" : "F43.25",
+			"value" : "F43.25 - Adjustment disorder with mixed disturbance of emotions and conduct"
+		}, {
+			"key" : "F32.0",
+			"value" : "F32.0 - Major depressive disorder, single episode, mild"
+		}, {
+			"key" : "F32.1",
+			"value" : "F32.1 - Major depressive disorder, single episode, moderate"
+		}, {
+			"key" : "F32.2",
+			"value" : "F32.2 - Major depressive disorder, single episode, severe without psychotic features"
+		}, {
+			"key" : "F32.3",
+			"value" : "F32.3 - Major depressive disorder, single episode, severe with psychotic features"
+		}, {
+			"key" : "F32.4",
+			"value" : "F32.4 - Major depressive disorder, single episode, in partial remission"
+		}, {
+			"key" : "F32.9",
+			"value" : "F32.9 - Major depressive disorder, single episode, unspecified"
+		}, {
+			"key" : "F33.0",
+			"value" : "F33.0 - Major depressive disorder, recurrent, mild"
+		}, {
+			"key" : "F33.1",
+			"value" : "F33.1 - Major depressive disorder, recurrent, moderate"
+		}, {
+			"key" : "F33.2",
+			"value" : "F33.2 - Major depressive disorder, recurrent severe without psychotic features"
+		}, {
+			"key" : "F33.3",
+			"value" : "F33.3 - Major depressive disorder, recurrent, severe with psychotic symptoms"
+		}, {
+			"key" : "F33.40",
+			"value" : "F33.40 - Major depressive disorder, recurrent, in remission, unspecified"
+		}, {
+			"key" : "F33.41",
+			"value" : "F33.41 - Major depressive disorder, recurrent, in partial remission"
+		}, {
+			"key" : "F33.9",
+			"value" : "F33.9 - Major depressive disorder, recurrent, unspecified"
+		}, {
+			"key" : "F34.0",
+			"value" : "F34.0 - Cyclothymic disorder"
+		}, {
+			"key" : "F34.1",
+			"value" : "F34.1 - Dysthymic disorder"
+		}, {
+			"key" : "F39",
+			"value" : "F39 - Unspecified mood [affective] disorder"
+		}, {
+			"key" : "F25.9",
+			"value" : "F25.9 - Schizoaffective disorder, unspecified"
+		}, {
+			"key" : "F41.9",
+			"value" : "F41.9 - Anxiety disorder, unspecified"
+		}, {
+			"key" : "F41.1",
+			"value" : "F41.1 - Generalized anxiety disorder"
+		}, {
+			"key" : "F42",
+			"value" : "F42 - Obsessive-compulsive disorder"
+		}, {
+			"key" : "F11.13",
+			"value" : "F11.13 - Opioid abuse with withdrawal"
+		}, {
+			"key" : "F12.13",
+			"value" : "F12.13 - Cannabis abuse with withdrawal"
+		}, {
+			"key" : "F13.130",
+			"value" : "F13.130 - Sedative, hypnotic or anxiolytic abuse with withdrawal, uncomplicated"
+		}, {
+			"key" : "F13.131",
+			"value" : "F13.131 - Sedative, hypnotic or anxiolytic abuse with withdrawal delirium"
+		}, {
+			"key" : "F13.132",
+			"value" : "F13.132 - Sedative, hypnotic or anxiolytic abuse with withdrawal with perceptual disturbance"
+		}, {
+			"key" : "F13.139",
+			"value" : "F13.139 - Sedative, hypnotic or anxiolytic abuse with withdrawal, unspecified"
+		}, {
+			"key" : "F14.13",
+			"value" : "F14.13 - Cocaine abuse, unspecified with withdrawal"
+		}, {
+			"key" : "F14.93",
+			"value" : "F14.93 - Cocaine use, unspecified with withdrawal"
+		}, {
+			"key" : "F15.13",
+			"value" : "F15.13 - Other stimulant abuse with withdrawal"
+		}, {
+			"key" : "F19.130",
+			"value" : "F19.130 - Other psychoactive substance abuse with withdrawal, uncomplicated"
+		}, {
+			"key" : "F19.131",
+			"value" : "F19.131 - Other psychoactive substance abuse with withdrawal delirium"
+		}, {
+			"key" : "F19.132",
+			"value" : "F19.132 - Other psychoactive substance abuse with withdrawal with perceptual disturbance"
+		}
+	],
+	"PLANRECOMMENDED" : [{
+			"key" : "1",
+			"value" : "Individual psychotherapy with patient (90832, 90834, 90837)"
+		}, {
+			"key" : "2",
+			"value" : "Family psychotherapy (90846, 90847)"
+		}, {
+			"key" : "3",
+			"value" : "Group psychotherapy (90853)"
+		}, {
+			"key" : "5",
+			"value" : "Psychotherapy untimed"
+		}, {
+			"key" : "4",
+			"value" : "Not recommended"
+		}
+	],
+	"PLANNOTRECOMMENDED" : [{
+			"key" : "1",
+			"value" : "Dementia has produced a severe enough cognitive defect to prevent psychotherapy from being effective"
+		}, {
+			"key" : "2",
+			"value" : "Lack of motivation on part of patient"
+		}, {
+			"key" : "3",
+			"value" : "Problem severity/intensity below clinically significant level"
+		}, {
+			"key" : "4",
+			"value" : "Evaluation for competence/capacity only"
+		}
+	],
+	"PLANFREQUENCY" : [{
+			"key" : "1",
+			"value" : "1-5 times monthly"
+		}, {
+			"key" : "2",
+			"value" : "6-9 times monthly"
+		}, {
+			"key" : "FREETEXT",
+			"value" : "Other"
+		}
+	],
+	"PLANDURATION" : [{
+			"key" : "1",
+			"value" : "TBD with treatment plan; reassess no later than session 12"
+		}, {
+			"key" : "2",
+			"value" : "Short-term case, discharge anticipated by session 12"
+		}, {
+			"key" : "3",
+			"value" : "discharge and suspend treatment"
+		}, {
+			"key" : "FREETEXT",
+			"value" : "Other"
+		}
+	],
+	"PLANOTHERSERVICES" : [{
+			"key" : "1",
+			"value" : "psychological/neuropsychological testing"
+		}, {
+			"key" : "2",
+			"value" : "group psychotherapy"
+		}, {
+			"key" : "3",
+			"value" : "family psychotherapy"
+		}, {
+			"key" : "4",
+			"value" : "individual psychotherapy"
+		}	],
+	"COMPETENCYFINDINGS" : [{
+			"key" : "1",
+			"value" : "patient is competent to make decisions independently"
+		}, {
+			"key" : "2",
+			"value" : "patient is incapable of making independent decisions"
+		}, {
+			"key" : "3",
+			"value" : "patient requires assistance to make decisions (automatically opens up text box-requires text to fill in)"
+		}, {
+			"key" : "4",
+			"value" : "further psychological/neuropsychological testing recommended to clarify condition"
+		}
+	],
+  "SERVICECONDUCTED" : [{
+     "key" : "1",
+     "value" : "individual psychotherapy with patient (90832)"
+  }, {
+     "key" : "2",
+     "value" : "individual psychotherapy with patient (90834)"
+  }, {
+     "key" : "3",
+     "value" : "individual psychotherapy with patient (90837)"
+  }, {
+     "key" : "4",
+     "value" : "individual psychotherapy with patient with interactive complexity(90832, 90785)"
+  }, {
+     "key" : "5",
+     "value" : "individual psychotherapy with patient with interactive complexity(90834, 90785)"
+  }, {
+     "key" : "6",
+     "value" : "individual psychotherapy with patient with interactive complexity(90837, 90785)"
+  }, {
+     "key" : "7",
+     "value" : "Psychotherapy untimed"
+  }, {
+     "key" : "8",
+     "value" : "family psychotherapy with patient present (90847)"
+  }, {
+     "key" : "9",
+     "value" : "family psychotherapy without patient present (90846)"
+  }],
+  "SERVICECONDUCTEDNOIC" : [{
+     "key" : "1",
+     "value" : "individual psychotherapy with patient (90832)"
+  }, {
+     "key" : "2",
+     "value" : "individual psychotherapy with patient (90834)"
+  }, {
+     "key" : "3",
+     "value" : "individual psychotherapy with patient (90837)"
+  }, {
+     "key" : "7",
+     "value" : "Psychotherapy untimed"
+  }, {
+     "key" : "8",
+     "value" : "family psychotherapy with patient present (90847)"
+  }, {
+     "key" : "9",
+     "value" : "family psychotherapy without patient present (90846)"
+  }],
+  "SERVICECONDUCTEDTELEMED" : [{
+     "key" : "10",
+     "value" : "Telephone service 5-10 minutes (98966)"
+  }, {
+     "key" : "11",
+     "value" : "Telephone service 11-20 minutes (98967)"
+  }, {
+     "key" : "12",
+     "value" : "Telephone service 21-30 minutes (98968)"
+  }],
+  "SERVICECONDUCTEDIC" : [{
+     "key" : "4",
+     "value" : "individual psychotherapy with patient with interactive complexity(90832, 90785)"
+  }, {
+     "key" : "5",
+     "value" : "individual psychotherapy with patient with interactive complexity(90834, 90785)"
+  }, {
+     "key" : "6",
+     "value" : "individual psychotherapy with patient with interactive complexity(90837, 90785)"
+  }],
+  "THERAPYFOCUS" : [{
+     "key" : "1",
+     "value" : "Maladaptive behaviors of family members are exacerbating the beneficiary's mental illness or interfering with the treatment"
+  }, {
+     "key" : "2",
+     "value" : "Assist the family in addressing the maladaptive behaviors of the patient and to improve treatment compliance"
+  }],
+
+  "FAMTHERAPYATTEMPT" : [{
+     "key" : "1",
+     "value" : "Observe and correct, through psychotherapeutic techniques, the patient's interaction with family members"
+  }, {
+     "key" : "2",
+     "value" : "Assess the conflicts or impediments within the family, and assist, through psychotherapy, the family members in the management of the patient"
+  }],
+
+  "MODALITIES" : [{
+     "key" : "1",
+     "value" : "cognitive-behavioral"
+  }, {
+     "key" : "2",
+     "value" : "supportive psychotherapy"
+  }, {
+     "key" : "3",
+     "value" : "behavior modification"
+  }, {
+     "key" : "4",
+     "value" : "mindfulness therapy"
+  }, {
+     "key" : "5",
+     "value" : "insight-oriented therapy"
+  }],
+  "THERAPYATTEMPT" : [{
+     "key" : "1",
+     "value" : "alleviate the emotional disturbances"
+  }, {
+     "key" : "2",
+     "value" : "reverse or change maladaptive patterns of behavior"
+  }, {
+     "key" : "3",
+     "value" : "encourage personality growth and development"
+  }],
+  "SESSIONPROG" : [{
+     "key" : "1",
+     "value" : "responsive and cooperative"
+  }, {
+     "key" : "2",
+     "value" : "responsive with little cooperation"
+  }, {
+     "key" : "3",
+     "value" : "uncooperative"
+  }, {
+     "key" : "4",
+     "value" : "unresponsive"
+  }],
+  "MONITORMECH" : [{
+     "key" : "1",
+     "value" : "patient self-rating"
+  }, {
+     "key" : "2",
+     "value" : "nurse reports"
+  }, {
+     "key" : "3",
+     "value" : "staff reports"
+  }, {
+     "key" : "4",
+     "value" : "rating scale"
+  }, {
+     "key" : "5",
+     "value" : "behavioral logs"
+  }],
+	"CGII" : [{
+			"key" : "1",
+			"value" : "1 = Very much improved—nearly all better; good level of functioning; minimal symptoms; represents a very substantial change"
+		}, {
+			"key" : "2",
+			"value" : "2 = Much improved—notably better with significant reduction of symptoms; increase in the level of functioning but some symptoms remain"
+		}, {
+			"key" : "3",
+			"value" : "3 = Minimally improved—slightly better with little or no clinically meaningful reduction of symptoms. Represents very little change in basic clinical status, level of care, or functional capacity"
+		}, {
+			"key" : "4",
+			"value" : "4 = No change—symptoms remain essentially unchanged"
+		}, {
+			"key" : "5",
+			"value" : "5 = Minimally worse—slightly worse but may not be clinically meaningful; may represent very little change in basic clinical status or functional capacity"
+		}, {
+			"key" : "6",
+			"value" : "6 = Much worse—clinically significant increase in symptoms and diminished functioning"
+		}, {
+			"key" : "7",
+			"value" : "7 = Very much worse—severe exacerbation of symptoms and loss of functioning"
+		}
+	],
+	"PROGDURATION" : [{
+			"key" : "1",
+			"value" : "TBD with treatment plan; reassess no later than session 12"
+		}, {
+			"key" : "2",
+			"value" : "up to 3-4 sessions"
+		}, {
+			"key" : "3",
+			"value" : "up to 10 additional sessions; re-assess w treatment plan"
+		}, {
+			"key" : "4",
+			"value" : "up to 20 additional sessions; re-assess w treatment plan"
+		}	],
+	"TPTYPE" : [{
+			"key" : "initial",
+			"value" : "an initial treatment plan"
+		}, {
+			"key" : "followup",
+			"value" : "a follow up treatment plan"
+		}, {
+			"key" : "discharge",
+			"value" : "a discharge (final) plan"
+		}	],
+	"GBH1TYPE" : [{
+			"key" : "monthly",
+			"value" : "monthly general behavioral integration plan"
+		}	],
+	"TPDISREASONS" : [{
+			"key" : "goals",
+			"value" : "goals reached"
+		}, {
+			"key" : "transfer",
+			"value" : "patient transferred from facility"
+		}, {
+			"key" : "motivation",
+			"value" : "lack of motivation"
+		}, {
+			"key" : "progress",
+			"value" : "lack of progress"
+		}, {
+			"key" : "cognitive",
+			"value" : "deterioration in cognitive status"
+		}	],
+	"TPINTERVENTIONS" : [{
+			"key" : "1",
+			"value" : "behavior modification"
+		}, {
+			"key" : "2",
+			"value" : "role playing"
+		}, {
+			"key" : "3",
+			"value" : "reality testing"
+		}, {
+			"key" : "4",
+			"value" : "cognitive therapy"
+		}, {
+			"key" : "5",
+			"value" : "supportive therapy"
+		}, {
+			"key" : "6",
+			"value" : "relaxation training"
+		}, {
+			"key" : "7",
+			"value" : "reinforcing appropriate behaviors"
+		}, {
+			"key" : "8",
+			"value" : "active problem solving"
+		}, {
+			"key" : "9",
+			"value" : "modeling"
+		}, {
+			"key" : "10",
+			"value" : "attitude reframing"
+		}, {
+			"key" : "11",
+			"value" : "family participation"
+		}
+	],
+	"GBH1INTERVENTIONS" : [{
+			"key" : "12",
+			"value" : "behavior plan for treatment staff"
+		}, {
+			"key" : "1",
+			"value" : "behavior modification"
+		}, {
+			"key" : "2",
+			"value" : "role playing"
+		}, {
+			"key" : "3",
+			"value" : "reality testing"
+		}, {
+			"key" : "4",
+			"value" : "cognitive therapy"
+		}, {
+			"key" : "5",
+			"value" : "supportive therapy"
+		}, {
+			"key" : "6",
+			"value" : "relaxation training"
+		}, {
+			"key" : "7",
+			"value" : "reinforcing appropriate behaviors"
+		}, {
+			"key" : "8",
+			"value" : "active problem solving"
+		}, {
+			"key" : "9",
+			"value" : "modeling"
+		}, {
+			"key" : "10",
+			"value" : "attitude reframing"
+		}, {
+			"key" : "11",
+			"value" : "family participation"
+		}
+	],
+	"TPMETHODS" : [{
+			"key" : "gai",
+			"value" : "Geriatric Anxiety Inventory"
+		}, {
+			"key" : "gaisf",
+			"value" : "Geriatric Anxiety Inventory - SF"
+		}, {
+			"key" : "csd",
+			"value" : "Cornell Scale for Depression"
+		}, {
+			"key" : "staff",
+			"value" : "Subjective ratings of staff"
+		}, {
+			"key" : "discharge",
+			"value" : "Patient discharged, treatment suspended"
+		}, {
+			"key" : "diffscale",
+			"value" : "Other Scale"
+		}
+	],
+  "CRISISSTATES": [
+    {
+      "key": "suicide",
+      "value": "Suicidal ideation or threat"
+    },
+    {
+      "key": "homicide",
+      "value": "Homicidal ideation or threat"
+    },
+    {
+      "key": "violence",
+      "value": "Complex violent behavior towards others"
+    },
+    {
+      "key": "destructive",
+      "value": "Destructive behavior or threats"
+    }
+  ],
+  "CRISISHIST": [
+    {
+      "key": "1",
+      "value": "within last 24 hours"
+    },
+    {
+      "key": "2",
+      "value": "over 24 hours ago"
+    }
+  ],
+  "CRISISDISTRESS": [
+    {
+      "key": "residents",
+      "value": "threatening other residents"
+    },
+    {
+      "key": "staff",
+      "value": "threatening other staff"
+    },
+    {
+      "key": "self",
+      "value": "threatening self-harm"
+    },
+    {
+      "key": "violence1",
+      "value": "physical violence towards other residents"
+    },
+    {
+      "key": "violence2",
+      "value": "physical violence towards other staff"
+    }
+  ],
+  "CRISISPSYCH": [
+    {
+      "key": "supportive",
+      "value": "supportive therapy"
+    },
+    {
+      "key": "behavioral",
+      "value": "behavioral therapy"
+    },
+    {
+      "key": "cognitive",
+      "value": "cognitive therapy"
+    },
+    {
+      "key": "insight",
+      "value": "insight oriented therapy"
+    }
+  ],
+  "CRISISMOBILIZATION": [
+    {
+      "key": "staff",
+      "value": "Staff counseling and intervention in presence of patient"
+    },
+    {
+      "key": "consult",
+      "value": "Consult with other health care professional"
+    },
+    {
+      "key": "family",
+      "value": "Family involvement"
+    },
+    {
+      "key": "environment",
+      "value": "Environmental change within facility"
+    },
+    {
+      "key": "hospitalization",
+      "value": "Recommendation for hospitalization"
+    }
+  ],
+  "CRISISRISK": [
+    {
+      "key": "low",
+      "value": "Low risk"
+    },
+    {
+      "key": "moderate",
+      "value": "Moderate risk"
+    },
+    {
+      "key": "high",
+      "value": "High risk"
+    }
+  ],
+  "CRISISRECS": [
+    {
+      "key": "1",
+      "value": "1:1 staff coverage until:"
+    },
+    {
+      "key": "2",
+      "value": "transfer to hospital"
+    },
+    {
+      "key": "3",
+      "value": "non 1:1 staff observation for next 24 hours"
+    },
+    {
+      "key": "4",
+      "value": "inform attending physician and/or psychiatrist"
+    }
+  ],
+  "CRISISTIME": [
+    {
+      "key": "less",
+      "value": "less than 30 additional minutes"
+    },
+    {
+      "key": "more",
+      "value": "more than 30 additional minutes"
+    }
+  ],
+  "THERAPEUTICFACTORS": [
+    {
+      "key": "universality",
+      "value": "Universality",
+      "description": "Members recognize that other members share similar feelings, thoughts and problems"
+    },
+    {
+      "key": "altruism",
+      "value": "Altruism",
+      "description": "Members gain a boost to self concept through extending help to other group members"
+    },
+    {
+      "key": "hope",
+      "value": "Instillation of hope",
+      "description": "Member recognizes that other members’ success can be helpful and they develop optimism for their own improvement"
+    },
+    {
+      "key": "information",
+      "value": "Imparting information",
+      "description": "Education  or advice provided by the therapist or group members"
+    },
+    {
+      "key": "recapitulation",
+      "value": "Corrective recapitulation of primary family experience",
+      "description": "Opportunity to reenact critical family dynamics with group members in a corrective manner"
+    },
+    {
+      "key": "socializing",
+      "value": "Development of socializing techniques",
+      "description": "The group provides members with an environment that fosters adaptive and effective communication"
+    },
+    {
+      "key": "imitative",
+      "value": "Imitative behavior",
+      "description": "Members expand their  personal knowledge and skills through the observation of Group members’ self-exploration, working through and  personal development"
+    },
+    {
+      "key": "cohesiveness",
+      "value": "Cohesiveness",
+      "description": "Feelings of trust, belonging and togetherness experienced by the group members"
+    },
+    {
+      "key": "existential",
+      "value": "Existential factors",
+      "description": "Members accept responsibility for life decisions"
+    },
+    {
+      "key": "catharsis",
+      "value": "Catharsis",
+      "description": "Members release of  strong feelings about past or present experiences"
+    },
+    {
+      "key": "learninginput",
+      "value": "Interpersonal learning-input",
+      "description": "Members gain personal insight  about their interpersonal impact through feedback provided from other members"
+    },
+    {
+      "key": "learningoutput",
+      "value": "Interpersonal learning-output",
+      "description": "Members provide an environment that allows members to interact in a more adaptive manner"
+    },
+    {
+      "key": "understanding",
+      "value": "Self-understanding",
+      "description": "Members gain insight into psychological motivation underlying behavior and emotional reactions"
+    }
+  ],
+  "GDRPLAN": [
+    {
+      "key": "Y",
+      "value": "Yes"
+    },
+    {
+      "key": "YND",
+      "value": "Yes - date unknown"
+    },
+    {
+      "key": "N",
+      "value": "No"
+    },
+    {
+      "key": "U",
+      "value": "Unknown"
+    }
+  ]
+}
+

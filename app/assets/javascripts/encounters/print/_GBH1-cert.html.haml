@@ -1,0 +1,17 @@
+%div(layout="row" flex)
+  %span(flex)
+    %span.md-caption Clinician NAME:
+    %span.md-caption {{ ::encresource.signer.user.full_name }}, {{ ::format(encresource.signer.degree) }}
+  %span(flex)
+    %span.md-caption Date of behavioral plan:
+    %span.md-caption  {{ ::encounter.referral.service_date | dateonly}}
+%div(layout="row" flex)
+  %span(flex)
+    %span.md-caption Time started:
+    %span.md-caption  {{ ::encounter.certification.start_time }}
+  %span(flex)
+    %span.md-caption Time ended:
+    %span.md-caption  {{ ::encounter.certification.end_time }}
+  %span(flex)
+    %span.md-caption Time preparing plan:
+    %span.md-caption {{ ::prepTime(encounter) }}

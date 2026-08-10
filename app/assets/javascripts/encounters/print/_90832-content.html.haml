@@ -1,0 +1,197 @@
+%h2(flex="100" layout-align="center")
+  {{ encounter.fu_header }}
+%h3(flex="100" layout-align="center")
+
+%h4(flex="100") I. Patient Information
+
+%div(flex="33")
+  %strong.md-caption Last Name:
+  %span.md-caption {{format(patient.last_name)}}
+%div(flex="33")
+  %strong.md-caption First Name:
+  %span.md-caption {{format(patient.first_name)}}
+%div(flex="33")
+  %strong.md-caption DOB:
+  %span.md-caption {{patient.dob | dateonly}}
+
+%div(flex="33")
+  %strong.md-caption Facility:
+  %span.md-caption(ng-if="!patient.room_num") {{format(patient.facility.name)}}
+  %span.md-caption(ng-if="patient.room_num") {{format(patient.facility.name)}}/{{patient.room_num}}
+%div(flex="33")
+  %strong.md-caption Gender:
+  %span.md-caption {{format(patient.gender)}}
+%div(flex="33")
+
+%h4(flex="100") II. Functional Status
+
+%div(flex="100")
+  %strong.md-caption Clinical Global Impression-Severity:
+  %span.md-caption {{format(encounter.functional_status.severity)}}
+
+%div(flex="100")
+  %strong.md-caption Behavioral Style/Attitude:
+  %span.md-caption {{format(encounter.functional_status.attitude)}}
+
+%div(flex="100")
+  %strong.md-caption Expressed threat of harm to self or others:
+  %span.md-caption {{formatProb(encounter.functional_status.harm, 'problems', 'Y')}}
+
+%div(flex="100")
+  %strong.md-caption Observed or suspected change in mental status since last assessment:
+  %span.md-caption {{format(encounter.functional_status.status_changed)}}
+
+%div(flex="100")
+  %strong.md-caption Cognitive screen:
+  %span.md-caption {{ format(encounter.functional_status.respondtreatment)}}; {{ format(encounter.functional_status.cognitive_screen)}}; {{format(encounter.functional_status.respondtreatment_desc)}}
+
+%div(flex="100" ng-if="encounter.functional_status.respondtreatment_comments")
+  %strong.md-caption Comments:
+  %span.md-caption {{ encounter.functional_status.respondtreatment_comments }}
+
+%div(flex="100" ng-if="encounter.functional_status.interactive_complexity.name == 'Y'")
+  %strong.md-caption Interactive complexity:
+  %span.md-caption {{formatIntComp(encounter.functional_status.interactive_complexity, 'problems')}}
+
+%h4(flex="100") III. Background and History
+
+%div(flex="100")
+  %strong.md-caption Change in background/history:
+  %span.md-caption {{ format(encounter.background_history.status_changed) }}
+
+%div(flex="50")
+  %strong.md-caption Change in Psychiatric medication:
+  %span.md-caption {{ format(encounter.background_history.meds_changed) }}
+  %span.md-caption(ng-if="encounter.background_history.meds_changed.name == 'Y' && encounter.background_history.meds_changed.freetext") - {{ format(encounter.background_history.meds_changed.freetext) }}
+%div(flex="50" ng-if="(encounter.background_history.meds_changed.name == 'Y' || encounter.background_history.onpsychmeds.name == 'Y') && encounter.background_history.gdr_plan.name")
+  %strong.md-caption GDR plan in place:
+  %span.md-caption {{format(encounter.background_history.gdr_plan)}}
+  %span.md-caption(ng-if="encounter.background_history.gdr_plan.name == 'Y'") - {{encounter.background_history.gdr_plan_date | dateonly}}
+  %span.md-caption --- see treatment plan for behavioral interventions
+
+%div(flex="100")
+  %strong.md-caption Change in relevant medical conditions:
+  %span.md-caption {{ format(encounter.background_history.condition_changed) }}
+
+%div(flex="100")
+  %strong.md-caption Observations and background summary:
+  %span.md-caption {{ format(encounter.background_history.note) }}
+
+%h4(flex="100") IV. Diagnosis and Prognosis
+
+%div(flex="50")
+  %strong.md-caption Primary Diagnosis:
+  %span.md-caption {{format(encounter.diagnosis.primary) }}
+%div(flex="50")
+  %div(ng-if="encounter.diagnosis.secondary")
+    %strong.md-caption Secondary Diagnosis:
+    %span.md-caption {{format(encounter.diagnosis.secondary) }}
+
+%div(flex="100")
+  %strong.md-caption General goals:
+  %span.md-caption {{format(encounter.diagnosis.general_goals) }}
+
+%div(flex="100")
+  %strong.md-caption Goals for this session:
+  %span.md-caption {{format(encounter.diagnosis.session_goals) }}
+
+%div(flex="100")
+  %strong.md-caption Prognosis:
+  %span.md-caption {{format(encounter.diagnosis.prognosis) }}
+
+
+%h4(flex="100") V. Target Symptoms
+
+%div(flex="100")
+  %strong.md-caption Major target symptom:
+  %span.md-caption {{format(encounter.problem.major_target_symptom) }}
+
+%div(flex="50")
+  %strong.md-caption Problem onset:
+  %span.md-caption {{format(encounter.problem.onset) }}
+%div(flex="50")
+  %strong.md-caption Problem frequency/intensity:
+  %span.md-caption {{format(encounter.problem.frequency) }}; {{format(encounter.problem.intensity)  }}
+
+%div(flex="100")
+  %strong.md-caption Other reported problems:
+  %span.md-caption {{format(encounter.problem.other) }}
+
+
+%h4(flex="100") VI. Definitive Therapeutic Communication
+
+%div(flex="100")
+  %strong.md-caption Type/amount of psychotherapy service recommended:
+  %span.md-caption {{format(encounter.therapeutic_communication.service_conducted) }}
+
+%div(ng-if="encounter.therapeutic_communication.service_conducted.name != '8' && encounter.therapeutic_communication.service_conducted.name != '9'")
+  %div(flex="100")
+    %strong.md-caption Modalities used:
+    %span.md-caption {{format(encounter.therapeutic_communication.modalities) }}
+
+  %div(flex="100")
+    %strong.md-caption Therapy attempted to:
+    %span.md-caption {{format(encounter.therapeutic_communication.therapy_attempted_to) }}
+
+%div(ng-if="encounter.therapeutic_communication.service_conducted.name == '8' || encounter.therapeutic_communication.service_conducted.name == '9'")
+  %div(flex="100")
+    %strong.md-caption Therapeutic focus on:
+    %span.md-caption {{format(encounter.therapeutic_communication.therapeutic_focus) }}
+
+  %div(flex="100" ng-if="encounter.therapeutic_communication.therapeutic_comments")
+    %strong.md-caption Comments:
+    %span.md-caption {{format(encounter.therapeutic_communication.therapeutic_comments.maladaptive) }}; {{format(encounter.therapeutic_communication.therapeutic_comments.assist) }}
+
+%div(flex="100" ng-if="encounter.therapeutic_communication.family_present.name == 'Y'")
+  %strong.md-caption Family member present:
+  %span.md-caption Yes - {{encounter.therapeutic_communication.family_present.member_name }}; {{encounter.therapeutic_communication.family_present.member_relationship }}
+
+%h4(flex="100") VII. Progress and Methods of Monitoring Outcomes
+
+%div(flex="100")
+  %strong.md-caption Progress this session:
+  %span.md-caption {{format(encounter.progress.session) }}
+
+%div(flex="100")
+  %strong.md-caption Monitoring mechanism(s):
+  %span.md-caption {{format(encounter.progress.monitoring_mechanisms) }}
+
+%div(flex="100")
+  %strong.md-caption Symptom severity level:
+  %span.md-caption {{format(encounter.progress.severity) }}; {{ format(encounter.progress.severity_comments)}}
+
+%div(flex="100")
+  %strong.md-caption Progress to date:
+  %span.md-caption {{format(encounter.progress.cgii) }}
+
+%div(flex="50")
+  %strong.md-caption Frequency of treatment:
+  %span.md-caption {{format(encounter.progress.frequency) }}
+%div(flex="50")
+  %strong.md-caption Estimated duration of treatment:
+  %span.md-caption {{format(encounter.progress.duration) }}
+
+-# IF CPT isnt 9084x
+%div(ng-if="encounter.therapeutic_communication.service_conducted.name != '8' && encounter.therapeutic_communication.service_conducted.name != '9'")
+  %div(flex="100")
+    %strong {{ encresource.encounter_type}}
+    %strong.md-caption Therapy and progress notes:
+    %span.md-caption {{format(encounter.progress.notes) }}
+
+-# IF CPT is 9084x
+%div(ng-if="encounter.therapeutic_communication.service_conducted.name == '8' || encounter.therapeutic_communication.service_conducted.name == '9'")
+  %div(flex="100")
+    %strong.md-caption Therapy attempted to:
+    %span.md-caption {{format(encounter.progress.family_notes) }}
+
+  %div(flex="100")
+    %strong.md-caption Comments:
+    %span.md-caption {{format(encounter.progress.family_notes_comments.observe) }}; {{ format(encounter.progress.family_notes_comments.assess) }}
+
+%div(flex="100" ng-if="encounter.progress.symptom_notes && canViewConfidential")
+  %strong.md-caption Confidential notes regarding patient:
+  %span.md-caption {{format(encounter.progress.symptom_notes) }}
+
+.certification(flex="100")
+  {{ certTexts.followup }}
+

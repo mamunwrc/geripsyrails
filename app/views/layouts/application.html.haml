@@ -1,0 +1,34 @@
+!!!
+%html(lang="en" ng-app="geripsy")
+  %head
+    %title GeriPsy
+    %base(href="/")
+    %meta(charset='utf-8')
+    %meta(http-equiv='x-ua-compatible' content='ie=edge')
+    %meta(name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+    %meta(name='description' content='geripsy ehr')
+    %meta(name='author' content='hts')
+    - if false
+      %script(src="http://#{request.env['SERVER_NAME']}:35729/livereload.js")
+
+    %link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+    %link(href='https://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css')
+
+    :javascript
+      window.GERIPSY_VERSION = "#{::GeriPsy::Application::VERSION}"
+
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
+
+    :javascript
+      Raven
+        .config("https://#{ENV.fetch("RAVEN_TOKEN"){ 'INVALID' }}@sentry.io/132662", {
+          release: window.GERIPSY_VERSION
+        })
+        .addPlugin(Raven.Plugins.Angular)
+        .install();
+
+    = csrf_meta_tags
+
+  %body(ng-controller="applicationController as appCtl" layout="row" md-no-ink)
+    = yield

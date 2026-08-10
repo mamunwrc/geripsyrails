@@ -1,0 +1,28 @@
+%div(layout="row")
+  %md-button.md-raised(ng-click="printNote()" flex)
+    %md-icon(md-svg-icon="action:ic_print_24px" aria-label="print")
+    Print Note
+  %md-button.md-raised(ng-click="exportPDF()" flex)
+    %md-icon(md-svg-icon="image:ic_picture_as_pdf_24px" aria-label="print")
+    Export PDF
+  %md-button.md-raised(ng-click="exportDOC()" flex)
+    %md-icon(md-svg-icon="editor:ic_insert_drive_file_24px" aria-label="print")
+    Export Doc
+  %md-button.md-raised(ng-if="isAdmin" ng-disabled="encounterShipped" ng-click="shipClaimMd()" flex)
+    %md-icon(md-svg-icon="content:ic_send_24px" aria-label="ship")
+    Ship ClaimMD
+
+%gd-goto-prev(ng-click="gotoPrev")
+%gd-goto-next(ng-click="gotoNext")
+
+%md-content(layout="column" flex)
+  %ng-include#printable(src="'encounters/_encounters-print-content.html'")
+  %iframe#print-frame(name="printcontent" height=0 width=0 src="{{frameSrc}}")
+
+  %md-divider
+
+%div(ng-if="updateable" layout="column")
+  %md-input-container(style="margin:0 10px;")
+    %label addendum text
+    %textarea(rows="5" ng-model="addendum.text" md-maxlength="2000")
+  %md-button.md-raised(ng-disabled="!addendum.text.length" style="margin:0 10px 10px;" ng-click="submitAddendum()") add addendum

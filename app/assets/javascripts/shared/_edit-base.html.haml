@@ -1,0 +1,24 @@
+%md-divider
+%div(flex ng-cloak layout="column")
+  %md-toolbar
+    .md-toolbar-tools
+      %h3 {{ titleBar() }}
+      %span(flex)
+      %md-button.md-raised.md-ink-ripple.md-primary(aria-label="Edit" ng-click="edit()" ng-show="!isEditing" ng-if="updateable")
+        %md-icon(md-svg-icon="editor:ic_mode_edit_24px" aria-label="x")
+      %md-button.md-raised.md-ink-ripple.md-primary(aria-label="Close" ng-click="submit()" ng-show="isEditing" ng-disabled="formDisabled()" ng-if="updateable")
+        %md-icon(md-svg-icon="navigation:ic_check_24px" aria-label="x")
+      %md-button.md-raised.md-ink-ripple.md-primary(aria-label="Close" ui-sref="{{sectionHome || false}}")
+        %md-icon(md-svg-icon="navigation:ic_close_24px" aria-label="x")
+
+      %md-menu(ng-if="deleteable")
+        %md-button.md-raised.md-ink-ripple.md-primary(aria-label="Open Settings" ng-click="$mdOpenMenu($event)")
+          %md-icon(md-svg-icon="navigation:ic_more_vert_24px" aria-label="More Actions")
+        %md-menu-content(width="4")
+          %md-menu-item
+            %md-button(ng-click="delete($event)")
+              %md-icon(md-svg-icon="action:ic_delete_forever_24px" aria-label="Delete")
+              Delete
+
+  %md-content#content-container(flex)
+    %ng-include(src="formTemplate")

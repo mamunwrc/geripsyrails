@@ -1,0 +1,34 @@
+%div(layout-gt-xs="row" layout-xs="column" layout-padding)
+  %gd-drop-down(ng-blur="formsec.sections.communication.revalidate" ng-required="true" form="formsec.sections.communication.form" is-edit="isEditing" dd-type="encounter" keyprefix="SERVICECONDUCTEDIC" label="Type/amount of psychotherapy service conducted" ng-model="myEncounter.therapeutic_communication.service_conducted" ng-if="myEncounter.cpt_encounter_code != '98966' && myEncounter.functional_status.interactive_complexity.name == 'Y'" flex)
+  %gd-drop-down(ng-blur="formsec.sections.communication.revalidate" ng-required="true" form="formsec.sections.communication.form" is-edit="isEditing" dd-type="encounter" keyprefix="SERVICECONDUCTEDNOIC" label="Type/amount of psychotherapy service conducted" ng-model="myEncounter.therapeutic_communication.service_conducted" ng-if="myEncounter.cpt_encounter_code != '98966' && myEncounter.functional_status.interactive_complexity.name != 'Y'" flex)
+  %gd-drop-down(ng-blur="formsec.sections.communication.revalidate" ng-required="true" form="formsec.sections.communication.form" is-edit="isEditing" dd-type="encounter" keyprefix="SERVICECONDUCTEDTELEMED" label="Type/amount of psychotherapy service conducted" ng-model="myEncounter.therapeutic_communication.service_conducted" ng-if="myEncounter.cpt_encounter_code == '98966'" flex)
+
+%div(ng-if="myEncounter.therapeutic_communication.service_conducted.name != '8' && myEncounter.therapeutic_communication.service_conducted.name != '9'")
+  %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+    %gd-dd-multiselect(ng-blur="formsec.sections.communication.revalidate" ng-required="true" form="formsec.sections.communication.form" is-edit="isEditing" dd-type="encounter" freetext="true" keyprefix="MODALITIES" label="Modalities used" ng-model="myEncounter.therapeutic_communication.modalities" flex)
+  %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+    %gd-dd-multiselect(ng-blur="formsec.sections.communication.revalidate" ng-required="true" form="formsec.sections.communication.form" is-edit="isEditing" dd-type="encounter" keyprefix="THERAPYATTEMPT" label="Therapy attempted to" ng-model="myEncounter.therapeutic_communication.therapy_attempted_to" flex)
+  %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+    %gd-input(form="formsec.sections.communication.form" is-edit="isEditing" label="Alleviate emotional disturbances" ng-model="myEncounter.therapeutic_communication.therapy_attempted_to[0].freetext" ng-show="myEncounter.therapeutic_communication.therapy_attempted_to.name == '1'" flex )
+    %gd-input(form="formsec.sections.communication.form" is-edit="isEditing" label="Change maladaptive patterns" ng-model="myEncounter.therapeutic_communication.therapy_attempted_to[1].freetext" ng-show="myEncounter.therapeutic_communication.therapy_attempted_to.name == '2'" flex )
+    %gd-input(form="formsec.sections.communication.form" is-edit="isEditing" label="Encourage personality" ng-model="myEncounter.therapeutic_communication.therapy_attempted_to[2].freetext" ng-show="myEncounter.therapeutic_communication.therapy_attempted_to.name == '3'" flex )
+
+  %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+    %gd-bool(form="formsec.sections.communication.form" ng-blur="formsec.sections.communication.revalidate" ng-required="true" is-edit="isEditing" label="Family member(s) present" ng-model="myEncounter.therapeutic_communication.family_present" flex)
+    %span(ng-if="myEncounter.therapeutic_communication.family_present.name == 'Y'" flex)
+      %gd-input(form="formsec.sections.communication.form" ng-blur="formsec.sections.communication.revalidate" ng-required="myEncounter.therapeutic_communication.family_present.name == 'Y'" is-edit="isEditing" label="Family member name" ng-model="myEncounter.therapeutic_communication.family_present.member_name" flex)
+      %gd-input(form="formsec.sections.communication.form" ng-blur="formsec.sections.communication.revalidate" ng-required="myEncounter.therapeutic_communication.family_present.name == 'Y'" is-edit="isEditing" label="Family member relationship" ng-model="myEncounter.therapeutic_communication.family_present.member_relationship" flex)
+
+%div(ng-if="myEncounter.therapeutic_communication.service_conducted.name == '8' || myEncounter.therapeutic_communication.service_conducted.name == '9'")
+  %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+    %gd-dd-multiselect(ng-blur="formsec.sections.communication.revalidate" ng-required="true" form="formsec.sections.communication.form" ng-blur="formsec.sections.communication.revalidate" ng-required="true" is-edit="isEditing" dd-type="encounter" keyprefix="THERAPYFOCUS" label="Therapeutic focus on" ng-model="myEncounter.therapeutic_communication.therapeutic_focus" flex)
+  %div(layout-gt-xs="row" layout-xs="column" layout-padding ng-if="myEncounter.therapeutic_communication.therapeutic_focus")
+    %gd-input(is-edit="isEditing" label="Maladaptive Comment" ng-model="myEncounter.therapeutic_communication.therapeutic_comments.maladaptive" ng-if="therapeuticFocus('1')" flex)
+    %gd-input(is-edit="isEditing" label="Assist Comment" ng-model="myEncounter.therapeutic_communication.therapeutic_comments.assist" ng-if="therapeuticFocus('2')" flex)
+  %div(layout-gt-xs="row" layout-xs="column" layout-padding ng-if="myEncounter.therapeutic_communication.service_conducted.name == '8' || myEncounter.therapeutic_communication.service_conducted.name == '9'")
+    -# force family_preset = true if 9084x
+    -# Should probably (definitely) go in the controller..
+    %span(ng-if="myEncounter.therapeutic_communication.family_present.name = 'Y'" flex)
+      %gd-input(form="formsec.sections.communication.form" ng-blur="formsec.sections.communication.revalidate" ng-required="true" is-edit="isEditing" label="Family member name" ng-model="myEncounter.therapeutic_communication.family_present.member_name" flex)
+      %gd-input(form="formsec.sections.communication.form" ng-blur="formsec.sections.communication.revalidate" ng-required="true" is-edit="isEditing" label="Family member relationship" ng-model="myEncounter.therapeutic_communication.family_present.member_relationship" flex)
+

@@ -1,0 +1,15 @@
+%div(layout-gt-xs="row" layout-padding)
+  %h3
+    Certification
+%div(layout-gt-xs="row" layout-padding)
+  %span(flex)
+    {{ certTexts.initial }}
+
+%div(layout-gt-xs="row" layout-padding)
+  %gd-time(form="formsec.sections.certification.form" is-edit="isEditing" ng-model="myEncounter.certification.start_time" label="Start time" ng-required="true" type="time" field-name="start_time" flex)
+  %gd-time(form="formsec.sections.certification.form" is-edit="isEditing" ng-model="myEncounter.certification.end_time" label="End time" ng-required="true" type="time" field-name="end_time" flex)
+
+%div(layout-gt-xs="row" layout-padding)
+  %md-button.md-raised(ng-disabled="formsec.submitted || !formsec.certifiable()" ng-click="formsec.certify()") Submit
+  %md-button.md-raised.md-warn(ng-if="isEditing" ng-disabled="formsec.certifiable()" ng-click="formsec.showErrors()") Show Error Fields
+

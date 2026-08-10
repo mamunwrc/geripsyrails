@@ -1,0 +1,37 @@
+%div(layout-gt-xs="row" layout-xs="column" layout-padding)
+  %span(flex)
+    %span( flex="30" class="label") Last Name:
+    %span( flex="70" class="md-caption") {{myPatient.last_name}}
+  %span(flex)
+    %span( flex="30" class="label") First Name:
+    %span( flex="70" class="md-caption") {{myPatient.first_name}}
+  %span(flex)
+    %span( flex="30" class="label") DOB:
+    %span( flex="70" class="md-caption") {{myPatient.dob | dateonly}}
+
+%div(layout-gt-xs="row" layout-xs="column" layout-padding)
+  %span(flex)
+    %span( flex="30" class="label") Facility:
+    %span( flex="70" class="md-caption") {{myPatient.facility.name}}
+  %span(flex)
+    %span( flex="30" class="label") Gender:
+    %span( flex="70" class="md-caption") {{myPatient.gender.val || myPatient.gender}}
+  %span(flex)
+
+%md-divider
+
+%div(layout-gt-xs="row" layout-xs="column" layout-padding)
+  %gd-dd-multiselect(ng-blur="formsec.sections.info.revalidate" ng-required="true" form="formsec.sections.info.form" freetext="true" is-edit="isEditing" dd-type="encounter" keyprefix="REFINITIATOR" label="Referral initiated by" ng-model="myEncounter.referral.initiator" flex)
+  %gd-drop-down(ng-blur="formsec.sections.info.revalidate" ng-required="true" form="formsec.sections.info.form" is-edit="isEditing" label="Referring MD name" ng-model="myEncounter.referral.md_name" collection="mdNames" flex)
+  %gd-date(ng-blur="formsec.sections.info.revalidate" ng-required="true" field-name="md_order_date" form="formsec.sections.info.form" is-edit="isEditing" label="Date of MD order" ng-model="myEncounter.referral.order_date" flex)
+%div(layout-gt-xs="row" layout-xs="column" layout-padding)
+  %gd-dd-multiselect(ng-blur="formsec.sections.info.revalidate" ng-required="true" form="formsec.sections.info.form" is-edit="isEditing" dd-type="encounter" keyprefix="REFREASONS" label="Reason for referral" ng-model="myEncounter.referral.reasons" opt-freetext="true" opt-freetext="true" flex)
+
+%div(layout-gt-xs="row" layout-xs="column" layout-padding)
+  %gd-drop-down(ng-blur="formsec.sections.info.revalidate" ng-required="true" field-name="plan_type" form="formsec.sections.info.form" is-edit="isEditing" label="This is" ng-model="myEncounter.referral.plan_type" dd-type="encounter" keyprefix="TPTYPE" flex)
+  %gd-dd-multiselect(ng-blur="formsec.sections.info.revalidate" ng-required="myEncounter.referral.plan_type.name == 'discharge'" ng-if="myEncounter.referral.plan_type.name == 'discharge'" field-name="discharge_reason" form="formsec.sections.info.form" is-edit="isEditing" label="Reason for discharge" ng-model="myEncounter.referral.discharge_reason" dd-type="encounter" keyprefix="TPDISREASONS" freetext="true" flex)
+
+%div(ng-if="isEditing")
+  %md-divider
+
+  %facility-pos(ng-model="myEncounter.facility_pos_code")

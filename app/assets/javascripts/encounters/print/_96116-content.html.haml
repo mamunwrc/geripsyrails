@@ -1,0 +1,77 @@
+.page(flex="100")
+  %gd-testing-header(flex label="Comprehensive Report" note="note" code="{{encounter.referral.code}}")
+
+  %section.print-section
+    %gd-print-el.pad-top-10(flex label="Name" val="{{patient.first_name}} {{patient.last_name}}")
+    %gd-print-el(flex label="DOB" val="{{patient.dob|dateonly}}")
+    %gd-print-el(flex label="Dates of service" val="{{ encounter.testing_service_dates.join('; ') }}")
+    %gd-print-el(flex label="History, Background & Behavioral Observations" val="{{encounter.referral.observations}}")
+    %gd-print-el(flex label="Reason for Referral" val="{{ format(encounter.referral.reasons) }}")
+    %gd-print-el(flex label="Services Conducted" val="{{ format(encounter.referral.services_conducted) }}")
+    %gd-print-el(flex label="Code for Examination" val="{{encounter.referral.code}}")
+    %gd-print-el(flex label="Total Evaluation Time" val="{{ encounter.referral.minutes }} minutes")
+    %gd-print-el(flex label="Total Administration and Scoring Time (by psychologist)" val="{{ encounter.referral.scoring_minutes }} minutes" ng-if="encounter.referral.scoring_minutes > 0")
+    %gd-print-el(flex label="Total Administration and Scoring Time (with technician)" val="{{ encounter.referral.tech_scoring_minutes }} minutes" ng-if="encounter.referral.tech_scoring_minutes > 0")
+    %gd-print-el(flex label="Number of computerized tests administered" val="{{ encounter.referral.computer_test_count }}" ng-if="encounter.referral.computer_test_count > 0")
+
+    %gd-print-el(flex label="Technician name and title" val="{{ encounter.referral.tech_scoring_name }}" ng-if="encounter.referral.tech_scoring_name")
+    %gd-print-el(flex label="Evaluation dates" val="{{ encounter.referral.eval_dates }}")
+    %gd-print-el(flex label="Administration and scoring dates (by psychologist)" val="{{ encounter.referral.scoring_dates }}" ng-if="encounter.referral.scoring_minutes > 0")
+    %gd-print-el(flex label="Administration and scoring dates (with technician)" val="{{ encounter.referral.tech_scoring_dates }}" ng-if="encounter.referral.tech_scoring_minutes > 0")
+    %gd-print-el(flex label="Computerized testing dates" val="{{ encounter.referral.computer_dates }}" ng-if="encounter.referral.computer_test_count > 0")
+    %gd-print-el(flex label="Names of computerized tests" val="{{ encounter.referral.computer_names }}" ng-if="encounter.referral.computer_test_count > 0")
+
+    %gd-print-el(flex label="Present Evaluation" val="{{ encounter.referral.evaluation }}")
+
+    %div(flex="100")
+      %strong.md-caption Final Diagnosis:
+    %div(flex="100")
+      %span.md-caption {{ format(encounter.diagnosis.primary) }}
+    %div(flex="100" ng-if="encounter.diagnosis.secondary")
+      %span.md-caption {{ format(encounter.diagnosis.secondary) }}
+
+    %gd-print-el.pad-top-10(flex label="Recommendations for Interventions" val="{{ encounter.referral.recommendations }}")
+
+.page(flex="100")
+  %gd-testing-header.pad-top-10(flex="100" label="Background Information" note="note" code="{{encounter.referral.code}}")
+
+  %section.print-section
+    %div.pad-top-10(flex ng-repeat="srv in note.srvcs")
+      %gd-print-el(flex label="{{srv.text}}" val="{{ formatTestingBgSrv(srv.name) }}")
+    %div.pad-top-10(flex)
+      %gd-print-el(flex="100" label="Will: the information derived would be expected to impact significantly the management of the patient? Examples would include: A significant change in the patient’s condition; The need to evaluate a patient’s capacity to function in a given situation or environment; The need to specifically tailor therapeutic and or compensatory techniques to particular aspects of the patient’s pattern of strengths and disabilities." val="{{ formatTestingBgSrv('info_derived') }}")
+    %div.pad-top-10(flex)
+      %gd-print-el(flex="100" label="Is this evaluation needed in order to determine the patient’s ability and capacity to make independent decisions and to understand their consequences?" val="{{ formatTestingBgSrv('eval_needed', { no: 'Not applicable in this case'}) }}")
+    %div.pad-top-10(flex ng-if="{{ ::encounter.background_history.eval_needed === 'Yes' }}")
+      %gd-print-el(flex="100" label="Explain circumstances related to need for capacity determination:" val="{{ ::encounter.background_history.extra.eval_needed }}")
+
+    %div.pad-top-10(flex)
+      %gd-print-el(flex="100" label="Is further neuropsychological testing required?" val="{{ formatTestingBgSrv('more_test', { extraNo: true }) }}")
+
+.page(flex="100")
+  %gd-testing-header(flex="100" label="Summary Profile" note="note" code="{{encounter.referral.code}}")
+
+  %section.print-section
+    %gd-print-el.pad-top-10(flex="100" label="Name" val="{{patient.first_name}} {{patient.last_name}}")
+    %gd-print-el(flex="100" label="DOB" val="{{patient.dob|dateonly}}")
+    %gd-print-el(flex="100" label="Dates of service" val="{{ encounter.testing_service_dates.join('; ') }}")
+    %gd-print-el(flex="100" label="Psychologist" val="{{ ::encresource.signer.user.full_name }}, {{ ::format(encresource.signer.degree) }}")
+
+    %hr(flex="100")
+
+    %gd-tslider-print(flex="100" opts="note.impairments" label="Level of Impairment" ng-model="encounter.functional_status" model-container="impairments")
+    %hr(flex="100")
+
+    %gd-print-el.pad-top-10(flex="100" label="Capacity for independent functioning" val="{{ format(encounter.functional_status.independent_capacity) }}")
+    %gd-print-el(flex="100" label="Comment" val="{{ encounter.functional_status.independent_capacity_comments }}" ng-if="encounter.functional_status.independent_capacity_comments")
+    %gd-print-el.pad-top-10(flex="100" label="Estimated duration of current status" val="{{ format(encounter.functional_status.duration) }}")
+    %gd-print-el(flex="100" label="Comment" val="{{ encounter.functional_status.duration_comment }}" ng-if="encounter.functional_status.duration_comment")
+    %hr(flex="100")
+
+    %gd-tslider-print(flex="100" opts="note.interferences" label="Degree of Interference" ng-model="encounter.functional_status" model-container="interferences")
+    %hr(flex="100")
+
+    %gd-print-el.pad-top-10(flex="100" label="Comments" val="{{ encounter.functional_status.extra_comments }}")
+
+    %hr(flex="100")
+

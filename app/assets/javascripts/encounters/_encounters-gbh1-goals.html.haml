@@ -1,0 +1,10 @@
+.odd(layout="column" layout-padding)
+  %span.label(flex) Current Anticipated Goals: psychotherapy will improve the health status or function of the patient as follows:
+  %gd-input(ng-blur="formsec.sections.goals.revalidate" flex label="INCREASE the frequency of the following behavior(s) - specify desired outcome in objective terms" ng-model="myEncounter.goals.increase" form="formsec.sections.goals.form" is-edit="isEditing")
+  %gd-input(ng-blur="formsec.sections.goals.revalidate" flex label="DECREASE the frequency of the following behavior(s) -specify desired outcome in objective terms" ng-model="myEncounter.goals.decrease" form="formsec.sections.goals.form" is-edit="isEditing")
+  %gd-input(ng-blur="formsec.sections.goals.revalidate" flex label="MODIFY the nature of the following behavior(s), attitude(s), thought(s) -specify desired outcome in objective terms" ng-model="myEncounter.goals.modify" form="formsec.sections.goals.form" is-edit="isEditing")
+  %gd-input(ng-blur="formsec.sections.goals.revalidate" flex label="CONTROL the following behavior(s) symptom(s) -specify desired outcome in objective terms" ng-model="myEncounter.goals.control" form="formsec.sections.goals.form" is-edit="isEditing")
+  %gd-input(ng-blur="formsec.sections.goals.revalidate" flex label="IMPROVE functioning and avert deterioration by" ng-model="myEncounter.goals.improve" form="formsec.sections.goals.form" is-edit="isEditing")
+  %gd-input(ng-blur="formsec.sections.goals.revalidate" flex label="Discharge and suspend treatment summary" ng-model="myEncounter.goals.discharge" form="formsec.sections.goals.form" is-edit="isEditing")
+.even(layout-gt-xs="row" layout-padding)
+  %gd-input(form="formsec.sections.goals.staff" ng-blur="formsec.sections.goals.staff" ng-required="true" is-edit="isEditing" label="Designated Coordinating Staff Member for Continuity of Care" ng-model="myEncounter.goals.staff" flex)

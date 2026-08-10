@@ -1,0 +1,57 @@
+.md-inline-form(layout="column" ng-cloak)
+  %form.gd-form(name="ctrl.grpForm")
+    %md-content(layout-padding layout-gt-xs="row")
+      %div(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-input(label="Name" is-edit="isEditing" ng-model="group.name" field-name="name" ng-required="true" form="ctrl.grpForm" flex)
+
+        %div(layout="column" layout-padding ng-if="group.hasOwnProperty('contact_email')")
+          %md-divider
+          %md-input-container(flex)
+            %md-switch(ng-model="group.contact_active" ng-disabled="!isEditing")
+              Contact Active?
+          %gd-input(label="Contact Email" type="email" is-edit="isEditing" ng-model="group.contact_email" field-name="contact_email" form="ctrl.grpForm" ng-show="group.contact_active" flex)
+
+    %md-divider
+
+    %md-subheader Patients in group
+    %md-content.md-padding.autocomplete(layout="column")
+      %md-chips(ng-model="patientChips.groupPatients" md-autocomplete-snap md-transform-chip="patientChips.transformChip($chip)" md-require-match="true" readonly="!isEditing")
+        %md-autocomplete(md-selected-item="patientChips.selectedItem" md-search-text="patientChips.searchText" md-items="patient in patientChips.query(patientChips.searchText)" md-item-text="patient.name" placeholder="Add patient to group...")
+          %span(md-highlight-text="patientChips.searchText") {{patient.name}} ({{patient.dob | dateonly}})
+        %md-chip-template
+          %span
+            %strong {{$chip.name}}
+            %em {{$chip.dob|dateonly}}
+
+%div(ng-if="!isEditing")
+  %md-divider
+
+  %md-subheader Previous Group Sessions
+
+  %md-content(flex)
+    %bgf-pagination( |
+      collection="sessionList" |
+      url="sessionsURL" |
+      page="global.pagination.page" |
+      per-page="global.pagination.perPage" |
+      client-limit="global.pagination.clientLimit" |
+      transform-response="sessionsTransform" |
+      link-group-size="2" )
+
+    %md-content.md-padding
+      %md-list
+        %md-list-item.md-2-line.md-accent(ng-repeat="item in sessionList track by $index" ng-click="showSession(item)")
+          .md-list-item-text(layout-padding)
+            %h3 {{ item.group_therapy_session.service_date | dateonly }}
+            %p Number of patients: {{ item.patient_count }}
+          %md-divider(md-inset hide-sm ng-if="!$last")
+          %md-divider(hide-gt-sm ng-if="!$last")
+        %md-list-item.md-2-line(ng-if="sessionList.length == 0")
+          .md-list-item-text
+            %h3 No previous sessions
+        %md-divider
+
+    %div(layout="row" ng-if="group.patients.length > 1 && canEncounter")
+      %span(flex)
+      %md-button.md-raised(ui-sref="newGroupEncounter({gid: group.id})") New Group Session

@@ -1,0 +1,17 @@
+%div
+  #encounter-print(layout-fill layout="column")
+    %md-content#print-content(flex layout-fill)
+      %ng-include(src="templates.content" flex layout="row" layout-wrap)
+    %md-content(layout-align="end" layout="column")
+      %ng-include(src="templates.cert")
+
+%md-divider
+
+%div(ng-if="encresource.addendums.length > 0")
+  %h4 Addendums for {{ patient.full_name }} - Service Date: {{ ::encounter.referral.service_date | dateonly }}
+
+  %div(ng-repeat="addendum in encresource.addendums")
+    %strong
+      [{{ addendum.created_at | dateonly2 }}]
+      [{{addendum.user.full_name}}]
+    %span {{ addendum.note }}

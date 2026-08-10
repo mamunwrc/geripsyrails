@@ -1,0 +1,34 @@
+%md-dialog(aria-label="BCRS Template" ng-cloak)
+  %form(name="ctrl.bcrsForm")
+    %md-toolbar
+      .md-toolbar-tools
+        %h2 BRIEF COGNITIVE RATING SCALE (BCRS)
+        %span(flex)
+        %md-button.md-icon-button(ng-click="cancel()")
+          %md-icon(md-svg-icon="navigation:ic_close_24px" aria-label="close dialog")
+
+
+
+    %md-dialog-content
+      .md-dialog-content
+        %md-subheader
+          Guidelines for Using the BCRS
+        %p
+          The BCRS is an assessment tool to be used with the Global Deterioration Scale (GDS) to help stage a person suffering from a primary degenerative dementia such as Alzheimer's disease. Developed by Dr. Berry Reisberg, this assessment tool tests 5 different areas known as Axis (4 cognitive and 1 functional). For the first 4 axis, the tester will ask a variety of questions to determine the level of impairment (see Guidelines for Scoring BCRS at the bottom of this page). The results of the 5th axis (Functioning) are determined primarily by observation. Tester can use the Functional Assessment Staging test (FAST) for a more accurate assessment.  After a score is determined for each Axis, total the results and divide by 5. This answer will result in a stage corresponding on the GDS.
+
+        %md-divider
+
+        %div(ng-repeat="axis in screenings.bcrs | filter:{summary:'!true'}")
+          .axis
+            %md-subheader Axis {{ axis.name }}
+            %md-radio-group(ng-model="bcrs['axis' + ($index + 1)]" required)
+              %md-radio-button.md-primary(ng-repeat="opt in axis.labels" ng-value="$index+1")
+                {{ opt }}
+
+          %md-divider
+
+      %md-dialog-actions(layout="row")
+        %span(flex)
+        %md-button(ng-click="cancel()") Cancel
+        %md-button(ng-click="submit()" ng-disabled="ctrl.bcrsForm.$invalid") Submit
+

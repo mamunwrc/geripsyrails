@@ -1,0 +1,7 @@
+.md-inline-form(layout="column" ng-cloak)
+  %form.gd-form(name="ctrl.priceForm")
+    %md-content(layout-padding layout-gt-xs="row")
+      %div(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-input(label="CPT Code" is-edit="isEditing" ng-model="price.cpt_code" field-name="name" ng-required="true" form="ctrl.priceForm" flex)
+          %gd-input(label="Price" is-edit="isEditing" ng-model="price.price" field-name="name" ng-required="true" form="ctrl.priceForm" flex)

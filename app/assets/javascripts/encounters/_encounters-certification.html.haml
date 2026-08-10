@@ -1,0 +1,22 @@
+%div(layout-gt-xs="row" layout-padding)
+  %h3
+    Certification
+%div(ng-if="myEncounter.cpt_encounter_code == '90791' && (isEditing || myEncounter.incident_to_provider) && incidentToProviders.length > 0")
+  %div(layout-gt-xs="row" layout-padding)
+    %span(flex)
+      {{ certTexts.incident_to }}
+%div(layout-gt-xs="row" layout-padding ng-if="!formsec.sections.treatment.hide && myEncounter.plan.amount_of_service.name != '4'")
+  %span(flex)
+    {{ certTexts.followup }}
+%div(layout-gt-xs="row" layout-padding ng-if="(!formsec.sections.treatment.hide && myEncounter.plan.amount_of_service.name == '4') || !formsec.sections.competency.hide")
+  %span(flex)
+    {{ certTexts.initial }}
+
+%div(layout-gt-xs="row" layout-padding)
+  %gd-time(form="formsec.sections.certification.form" is-edit="isEditing" ng-model="myEncounter.certification.start_time" label="Start time" ng-required="true" type="time" field-name="start_time" flex)
+  %gd-time(form="formsec.sections.certification.form" is-edit="isEditing" ng-model="myEncounter.certification.end_time" label="End time" ng-required="true" type="time" field-name="end_time" flex)
+
+%div(layout-gt-xs="row" layout-padding)
+  %md-button.md-raised(ng-disabled="formsec.submitted || !formsec.certifiable()" ng-click="formsec.certify()") Submit
+  %md-button.md-raised.md-warn(ng-if="isEditing" ng-disabled="formsec.certifiable()" ng-click="formsec.showErrors()") Show Error Fields
+

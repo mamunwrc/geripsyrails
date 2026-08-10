@@ -1,0 +1,15 @@
+%div(layout-gt-xs="row" layout-padding)
+  %h3
+    Certification of Goals
+%div(layout-gt-xs="row" layout-padding)
+  %span(flex)
+    {{ certTexts.tp }}
+
+%div(layout-gt-xs="row" layout-padding)
+  %gd-date(ng-requied="true" label="Date of Treatment Plan" form="formsec.sections.certification.form" ng-model="myEncounter.referral.service_date" is-edit="isEditing")
+
+
+%div(layout-gt-xs="row" layout-padding)
+  %md-button.md-raised(ng-disabled="formsec.submitted || !formsec.certifiable()" ng-click="formsec.certify()") Submit
+  %md-button.md-raised.md-warn(ng-if="isEditing" ng-disabled="formsec.certifiable()" ng-click="formsec.showErrors()") Show Error Fields
+

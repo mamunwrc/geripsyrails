@@ -1,0 +1,21 @@
+%md-dialog#historical-screening-dialog(aria-label="{{screening.screening_type | uppercase}} - {{screening.created_at|dateonly2}}")
+  %md-toolbar
+    .md-toolbar-tools
+      %h2 {{screening.screening_type | uppercase }} - {{ screening.created_at | dateonly2 }}
+      %span(flex)
+      %md-button.md-icon-button(ng-click="cancel()")
+        %md-icon(md-svg-icon="navigation:ic_close_24px" aria-label="close dialog")
+
+  %md-dialog-content
+    %div.md-dialog-content
+      %md-subheader
+        %span Subscale
+      %div(ng-repeat="axis in screening.axes")
+        .md-padding
+          %div(flex layout layout-align="center center")
+            %span(flex="30" ng-class="axis.score ? 'screening-score-label' : md-body-1") {{axis.label}}
+            %md-slider-container(flex disabled="disabled")
+              %md-slider(flex min="1" ng-model="axis.val" aria-label="foo" max="7" step="1" md-discrete)
+          %span(ng-class="axis.score ? 'screening-score-msg' : md-body-1") {{ axis.message}}
+        %md-divider(ng-if="!$last")
+

@@ -1,0 +1,12 @@
+IJM  10:01:19 15 Nov 17  Page 1                   898844717   Posted Listing by Check Number  
+Batch:11152017RICHARDS                            NATIONAL GOVERNMENT SERVICES, INC.
+CHECK          ACCOUNT        PATIENT             DATE        PROCEDURE       CHARGE  ALLOWED   DEDUCT    COINS  PAYMENT   ADJUST  REASONS & ADVICE
+
+898844717     P08.1208          PATIENT, TEST      10/26/17    90791           250.00   145.71             29.14   114.24  -106.62  CO45 CO253 PR2  MA01 MA07
+
+
+                                                                              250.00   145.71     0.00    29.14   114.24  -106.62
+
+PLB (TAKEBACKS/REFUNDS/ETC) TOTAL: 
+
+

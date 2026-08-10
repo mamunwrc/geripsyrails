@@ -1,0 +1,62 @@
+%md-divider
+.container(layout="column" layout-fill)
+  %div(flex)
+    %md-toolbar.md-primary(layout="row")
+      .md-toolbar-tools
+        %span {{ title }}
+        %span(flex)
+        %md-button.md-raised.md-ink-ripple.md-primary(aria-label="Add new note" ui-sref="encountersNew" ng-if="createable")
+          %md-icon(md-svg-icon="content:ic_add_24px" aria-label="x")
+    %md-content(flex)
+      %md-tabs(flex md-dynamic-height md-border-bottom)
+
+        %md-tab(label="{{ encounters.listTitle(group)}}" ng-repeat="group in encounters.groups" ng-click="resetPagination()")
+          %bgf-pagination( |
+            collection="encounters[group]" |
+            url="encounters.listRoute(group)" |
+            page="global.pagination.page" |
+            per-page="global.pagination.perPage" |
+            client-limit="global.pagination.clientLimit" |
+            transform-response="encounters.searchTransform" |
+            link-group-size="2" )
+
+          %md-content.enc-filters.md-padding
+            %span.md-caption Filters:
+            %md-input-container
+              %label CPT Code
+              %md-select(ng-model="encounters.filters.cpt")
+                %md-option(ng-value="null") All Notes
+                %md-option(ng-repeat="cpt in encounters.cpts" ng-value="cpt") {{ cpt }}
+            %md-input-container
+              %label Date
+              %md-select(ng-model="encounters.filters.from")
+                %md-option(ng-value="null") All Dates
+                %md-option(ng-repeat="date in encounters.dates" ng-value="date.val") {{ date.label }}
+
+          %md-content.md-padding
+            %md-list
+              %md-list-item.md-2-line.md-accent(ng-repeat="item in encounters[group] track by $index" ui-sref="{{ encounters.routeFor(item) }}")
+                .md-list-item-text(layout-padding)
+                  %h3 {{ item.referral.service_date | dateonly }}
+                  %p CPT Code: {{ item.encounter_type }}
+                %span(ng-show="canManage")
+                  -# TODO: add FA icons
+                  .md-button(ui-sref="{{ encounters.routeFor(item) }}")
+                    %i.fa.fa-eye
+                    View
+                  .md-button(ng-click="deleteEncounter(item)")
+                    %i.fa.fa-trash
+                    Delete
+                  .md-button(ui-sref="encounter.editServiceDate({id: item.id})")
+                    %i.fa.fa-pencil
+                    Edit service date
+                  .md-button(ui-sref="encounter.editServiceTime({id: item.id})")
+                    %i.fa.fa-edit
+                    Edit service time
+                %md-divider(md-inset hide-sm ng-if="!$last")
+                %md-divider(hide-gt-sm ng-if="!$last")
+              %md-list-item.md-2-line(ng-if="encounters[group].length == 0")
+                .md-list-item-text
+                  %h3 Nothing to display
+              %md-divider
+

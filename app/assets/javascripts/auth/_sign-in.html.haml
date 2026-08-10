@@ -1,0 +1,10 @@
+%md-content.dark.login-container(layout-padding)
+  %form.login-form(ng-submit="login()")
+    %md-input-container.md-block
+      %input(type="email" placeholder="Email" ng-model="user.email")
+    %md-input-container.md-block
+      %input(type="password" autocomplete="new-password" placeholder="Password" ng-model="user.password")
+
+    %md-input-container.md-block
+      %input.md-button.md-raised(type="submit" value="Log in")
+

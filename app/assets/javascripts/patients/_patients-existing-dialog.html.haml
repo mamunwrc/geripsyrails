@@ -1,0 +1,28 @@
+%md-dialog(aria-label="Existing patient dialog" ng-cloak)
+  %form
+    %md-toolbar
+      .md-toolbar-tools
+        %h2 An Existing Patient?
+
+    %md-dialog-content
+      .md-dialog-content
+
+        %p(ng-if="patients.length>1")
+          {{patients.length}} patients with the same name "{{patients[0].full_name}}" already exist.
+          Is this new patient any of the following?
+        %p(ng-if="patients.length==1")
+          A patient with the same name "{{patients[0].full_name}}" already exists.
+          Is this new patient any of the following?
+
+        %md-radio-group(ng-model="patientId")
+          %md-radio-button(ng-repeat="pat in patients" ng-value="pat.id")
+            DOB: {{ pat.dob | dateonly }} ({{ pat.gender }}) | {{ pat.facility.name }}
+          %md-radio-button(value="-1")
+            None of the above, this is new
+
+        %md-divider
+
+      %md-dialog-actions(layout="row")
+        %span(flex)
+        %md-button(ng-click="continue()") Continue
+

@@ -1,0 +1,29 @@
+%div(layout-gt-xs="row" layout-xs="column" layout-padding)
+  %gd-drop-down(ng-blur="formsec.sections.progress.revalidate" ng-required="true" freetext="true" form="formsec.sections.progress.form" is-edit="isEditing" dd-type="encounter" keyprefix="SESSIONPROG" label="Progress this session" ng-model="myEncounter.progress.session" flex)
+%div(layout-gt-xs="row" layout-xs="column" layout-padding)
+  %gd-dd-multiselect(ng-blur="formsec.sections.progress.revalidate" ng-required="true" form="formsec.sections.progress.form" is-edit="isEditing" dd-type="encounter" keyprefix="MONITORMECH" label="Monitoring mechanism(s)" ng-model="myEncounter.progress.monitoring_mechanisms" freetext="true" flex)
+%div(layout-gt-xs="row" layout-xs="column" layout-padding)
+  %gd-input(form="formsec.sections.progress.form" ng-blur="formsec.sections.progress.revalidate" ng-required="true" is-edit="isEditing" label="Symptom Severity Level (past week)" ng-model="myEncounter.progress.severity" flex )
+  %gd-input(form="formsec.sections.progress.form" ng-blur="formsec.sections.progress.revalidate" ng-required="true" is-edit="isEditing" label="Comments" ng-model="myEncounter.progress.severity_comments" flex )
+
+%div(layout-gt-xs="row" layout-xs="column" layout-padding ng-if="!['10', '11', '12'].includes(myEncounter.therapeutic_communication.service_conducted.name)")
+  %gd-drop-down(form="formsec.sections.progress.form" ng-blur="formsec.sections.progress.revalidate" ng-required="true" is-edit="isEditing" dd-type="encounter" keyprefix="CGII" label="Progress to date- Clinical Global Improvement (CGI –I) Scale" ng-model="myEncounter.progress.cgii" flex)
+
+%div(layout-gt-xs="row" layout-xs="column" layout-padding ng-if="!['10', '11', '12'].includes(myEncounter.therapeutic_communication.service_conducted.name)")
+  %gd-drop-down(ng-blur="formsec.sections.progress.revalidate" ng-required="true" freetext="true" form="formsec.sections.progress.form" is-edit="isEditing" dd-type="encounter" keyprefix="PLANFREQUENCY" label="Frequency of treatment" ng-model="myEncounter.progress.frequency" flex)
+  %gd-drop-down(ng-blur="formsec.sections.progress.revalidate" ng-required="true" freetext="true" form="formsec.sections.progress.form" is-edit="isEditing" dd-type="encounter" keyprefix="PROGDURATION" label="Estimated duration of treatment" ng-model="myEncounter.progress.duration" flex)
+
+%div(layout-gt-xs="row" layout-xs="column" layout-padding ng-if="['10', '11', '12'].includes(myEncounter.therapeutic_communication.service_conducted.name)")
+  %gd-input(form="formsec.sections.progress.form" ng-blur="formsec.sections.progress.revalidate" ng-required="true" is-edit="isEditing" label="Reason for patient initiated communication" ng-model="myEncounter.progress.reason" flex )
+
+%div(layout-gt-xs="row" layout-xs="column" layout-padding ng-if="myEncounter.therapeutic_communication.service_conducted.name != '8' && myEncounter.therapeutic_communication.service_conducted.name != '9'")
+  %gd-input(form="formsec.sections.progress.form" ng-blur="formsec.sections.progress.revalidate" ng-required="true" placeholder="{{::myEncounter.progress.notes_prev}}" is-edit="isEditing" label="Therapy and progress notes" ng-model="myEncounter.progress.notes" flex )
+%div(ng-if="myEncounter.therapeutic_communication.service_conducted.name == '8' || myEncounter.therapeutic_communication.service_conducted.name == '9'")
+  %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+    %gd-dd-multiselect(ng-blur="formsec.sections.progress.revalidate" ng-required="true" form="formsec.sections.progress.form" ng-blur="formsec.sections.progress.revalidate" ng-required="true" is-edit="isEditing" dd-type="encounter" keyprefix="FAMTHERAPYATTEMPT" label="Family therapy summary" ng-model="myEncounter.progress.family_notes" flex)
+  %div(layout-gt-xs="row" layout-xs="column" layout-padding ng-if="myEncounter.progress.family_notes")
+    %gd-input(form="formsec.sections.progress.form" ng-blur="formsec.sections.progress.revalidate" ng-required="multiExists('1', 'progress', 'family_notes')" is-edit="isEditing" label="Observe and correct... comment" ng-model="myEncounter.progress.family_notes_comments.observe" ng-if="multiExists('1', 'progress', 'family_notes')" flex)
+    %gd-input(form="formsec.sections.progress.form" ng-blur="formsec.sections.progress.revalidate" ng-required="multiExists('2', 'progress', 'family_notes')" is-edit="isEditing" label="Assess the conflicts... comment" ng-model="myEncounter.progress.family_notes_comments.assess" ng-if="multiExists('2', 'progress', 'family_notes')" flex)
+
+%div(layout-gt-xs="row" layout-xs="column" layout-padding)
+  %gd-input(form="formsec.sections.progress.form" is-edit="isEditing" label="Confidential notes regarding patient" ng-model="myEncounter.progress.symptom_notes" flex )

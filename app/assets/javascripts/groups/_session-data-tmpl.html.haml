@@ -1,0 +1,47 @@
+%md-bottom-sheet.md-list.md-has-header
+  %md-subheader(ng-cloak) Session Data
+
+  %md-list(ng-cloak)
+    %md-list-item
+      %md-button.md-list-item-content(ng-disabled="true")
+        %md-icon(md-svg-icon="action:ic_date_range_24px")
+        %span.md-inline-list-icon-label Service Date:
+        %span {{ serviceDate | dateonly }}
+
+    %md-list-item
+      %md-button.md-list-item-content(ng-disabled="true")
+        %md-icon(md-svg-icon="maps:ic_local_hospital_24px")
+        %span.md-inline-list-icon-label Signing Provider:
+        %span {{ [provider.full_name, provider.degree.val].join(', ') }}
+
+    %md-list-item
+      %md-button.md-list-item-content(ng-disabled="true")
+        %md-icon(md-svg-icon="action:ic_face_24px")
+        %span.md-inline-list-icon-label Session Patients:
+        %span {{ patients.join(' | ') }}
+
+  %md-subheader(ng-cloak) Session Actions
+
+  %md-list(ng-cloak ng-show="!addendum.show")
+    %md-list-item(ng-show="canAddendum")
+      %md-button.md-list-item-content(ng-click="addendum.show=true")
+        %md-icon(md-svg-icon="image:ic_edit_24px")
+        %span.md-inline-list-icon-label Add Session Addendum
+
+    %md-list-item
+      %md-button.md-list-item-content(ng-click="export($event, 'pdf')")
+        %md-icon(md-svg-icon="image:ic_picture_as_pdf_24px")
+        %span.md-inline-list-icon-label Export All as PDF
+    %md-list-item
+      %md-button.md-list-item-content(ng-click="export($event, 'docx')")
+        %md-icon(md-svg-icon="editor:ic_insert_drive_file_24px")
+        %span.md-inline-list-icon-label Export All as Docx
+
+  %div(layout="column" ng-show="addendum.show")
+    %md-input-container(flex)
+      %label Addendum Text
+      %textarea(rows="5" ng-model="addendum.text" md-maxlength="2000")
+    %div(layout="row" flex)
+      %md-button.md-raised(ng-disabled="!addendum.text.length" ng-click="submitAddendum()") Add Addendum
+      %md-button(ng-click="addendum.show=false") Cancel
+

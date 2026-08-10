@@ -1,0 +1,552 @@
+%md-divider
+.container(layout="column" layout-fill)
+  %div(flex)
+    %md-toolbar.md-primary(layout="row")
+      .md-toolbar-tools
+        %span Encounters: Filter
+        %span(flex)
+    %md-content(flex layout-padding)
+      %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+        %md-input-container.md-block(flex-gt-sm)
+          %label Patient
+          %md-select(ng-model="searchObj.patient" multiple ng-model-options="{trackBy: '$value.name'}")
+            %md-select-header.dd-search-header
+              %input.md-text.dd-search-filter(ng-model="patientFilter" type="search" placeholder="Filter list...")
+            %md-optgroup
+              %md-option(ng-repeat="patient in patients | filter:patientFilter" ng-value="{val:patient.keyvalue, name:patient.keyname}")
+                {{ ::patient.keyvalue }}
+
+        %gd-dd-multiselect(ng-if="providers.length > 0" ng-model="searchObj.provider" is-edit="true" label="Provider" collection="providers" field-name="providerID" flex)
+        %gd-dd-multiselect(ng-if="facilities.length > 0" ng-model="searchObj.facility" is-edit="true" label="Facility" collection="facilities" field-name="facilityID" flex)
+      %div(ng-if="!isTreatmentPlan" layout-gt-xs="row" layout-xs="column" layout-padding)
+        %gd-dd-multiselect(ng-model="searchObj.cpt_code" is-edit="true" label="CPT Code" collection="cpt_codes" field-name="cptCode" flex)
+        %gd-dd-multiselect(ng-if="user.user_type != 'Usr::Reviewer' || user.reviewer_type == 'practice'" ng-model="searchObj.signed" is-edit="true" label="Status" field-name="signedStatus" collection="statuses" flex)
+
+      %div(ng-if="!isTreatmentPlan" layout-gt-xs="row" layout-xs="column" layout-padding)
+        %gd-dd-multiselect(ng-model="searchObj.primary_insurances" is-edit="true" label="Primary Insurance" collection="insurances" field-name="primary_insurances" flex)
+        %gd-dd-multiselect(ng-model="searchObj.secondary_insurances" is-edit="true" label="Secondary Insurance" collection="insurances" field-name="secondary_insurances" flex)
+
+      %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+        %gd-dd-multiselect(ng-model="searchObj.category" ng-if="categories.length > 0" is-edit="true" label="Form category" collection="categories" field-name="category" flex)
+        %div(flex)
+      %div(ng-if="!isTreatmentPlan" layout-gt-xs="row" layout-xs="column" layout-padding)
+        %gd-date(ng-model="searchObj.from" is-edit="true" label="Date of Service From" field-name="date of service from" flex)
+        %gd-date(ng-model="searchObj.to" is-edit="true" label="Date of Service To" field-name="date of service to" flex)
+        %span(flex)
+
+      %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+        %gd-date(ng-model="searchObj.signedFrom" is-edit="true" label="Date Signed From" field-name="date signed from" flex)
+        %gd-date(ng-model="searchObj.signedTo" is-edit="true" label="Date Signed To" field-name="date signed to" flex)
+        %span(flex)
+
+      %md-divider
+
+      %div(ng-if="isCategorySelected(9)")
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %span(flex)
+          %h2 Patient Information
+          %span(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-dd-multiselect(ng-model="searchObj.referral_initiators" is-edit="true" label="Referral Initiated By" collection="referral_initiators" field-name="referral_initiator" flex)
+          %md-input-container.md-block(flex)
+            %label Referring MD Name
+            %md-select(ng-model="searchObj.referral_md_name" ng-model-options="{trackBy: '$value.name'}")
+              %md-select-header.dd-search-header
+                %input.md-text.dd-search-filter(ng-model="mdNameFilter" type="search" placeholder="Filter list...")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select MD Name
+                %md-option(ng-repeat="record in referral_md_names | filter:mdNameFilter" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-date(ng-model="searchObj.service_date_from" is-edit="true" label="Service Date From" field-name="service_date_from" flex)
+          %gd-date(ng-model="searchObj.service_date_to" is-edit="true" label="Service Date To" field-name="service_date_to" flex)
+          %span(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-date(ng-model="searchObj.md_order_date_from" is-edit="true" label="MD Order Date From" field-name="md_order_date_from" flex)
+          %gd-date(ng-model="searchObj.md_order_date_to" is-edit="true" label="MD Order Date To" field-name="md_order_date_to" flex)
+          %span(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %md-input-container.md-block(flex)
+            %label Reason for treatment hiatus
+            %md-select(ng-model="searchObj.referral_hiatus_reason" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in referral_hiatus_reasons" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+          %div(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-dd-multiselect(ng-model="searchObj.referral_reasons" is-edit="true" label="Reason for referral" collection="referral_reasons" field-name="referral_reason" flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-dd-multiselect(ng-model="searchObj.referral_medical_necessities" is-edit="true" label="Medical Necessity" collection="referral_medical_necessities" field-name="referral_medical_necessity" flex)
+          %div(flex)
+
+      %div(ng-if="isCategorySelected(8)")
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %span(flex)
+          %h2 Mental Status Examination
+          %span(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-dd-multiselect(ng-model="searchObj.functional_status_severities" is-edit="true" label="Clinical Global Impression - Severity" collection="functional_status_severities" field-name="functional_status_severities" flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %md-input-container.md-block(flex)
+            %label Judgement/Reasoning
+            %md-select(ng-model="searchObj.functional_status_reasoning" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in functional_status_reasonings" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+          %md-input-container.md-block(flex)
+            %label Motivation
+            %md-select(ng-model="searchObj.functional_status_motivation" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in functional_status_motivations" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %md-input-container.md-block(flex)
+            %label Thought Process
+            %md-select(ng-model="searchObj.functional_status_thought_process" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in functional_status_thought_processes" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+          %md-input-container.md-block(flex)
+            %label Description
+            %md-select(ng-model="searchObj.functional_status_description" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in functional_status_descriptions" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %md-input-container.md-block(flex)
+            %label Memory/Recall
+            %md-select(ng-model="searchObj.functional_status_recall" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in functional_status_recalls" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %md-input-container.md-block(flex)
+            %label Intellectual Ability
+            %md-select(ng-model="searchObj.functional_status_intability" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in functional_status_intabilities" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+          %md-input-container.md-block(flex)
+            %label Insight/Awareness of Problem
+            %md-select(ng-model="searchObj.functional_status_insight" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in functional_status_insights" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+
+
+      %div(ng-if="isCategorySelected(1)")
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %span(flex)
+          %h2 Background and History
+          %span(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %md-input-container.md-block(flex)
+            %label Marital Status
+            %md-select(ng-model="searchObj.background_history_marital_status" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in background_history_marital_statuses" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+          %md-input-container.md-block(flex)
+            %label Family Status
+            %md-select(ng-model="searchObj.background_history_family_status" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in background_history_family_statuses" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %md-input-container.md-block(flex)
+            %label Education Background
+            %md-select(ng-model="searchObj.background_history_education_status" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in background_history_education_statuses" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+          %md-input-container.md-block(flex)
+            %label Social/Occupational Background
+            %md-select(ng-model="searchObj.background_history_occupational_status" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in background_history_occupational_statuses" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %md-input-container.md-block(flex)
+            %label Place of Birth
+            %md-select(ng-model="searchObj.background_history_birth_place" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in background_history_birth_places" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+          %md-input-container.md-block(flex)
+            %label Family Background
+            %md-select(ng-model="searchObj.background_history_family_background" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in background_history_family_backgrounds" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+          %md-input-container.md-block(flex)
+            %label Raised By
+            %md-select(ng-model="searchObj.background_history_raised_by" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in background_history_raised_bys" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-dd-multiselect(ng-model="searchObj.background_history_mental_illnesses" is-edit="true" label="History of Mental Illness" collection="background_history_mental_illnesses" field-name="background_history_mental_illnesses" flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %md-input-container.md-block(flex)
+            %label Religious/Spiritual Status
+            %md-select(ng-model="searchObj.background_history_religious_status" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in background_history_religious_statuses" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+          %div(flex)
+
+      %div(ng-if="isCategorySelected(10)")
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %span(flex)
+          %h2 Problem Description/Medical Necessity
+          %span(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %md-input-container.md-block(flex)
+            %label Primary Onset
+            %md-select(ng-model="searchObj.problem_onset" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in problem_onsets" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+          %md-input-container.md-block(flex)
+            %label Frequency
+            %md-select(ng-model="searchObj.problem_frequency" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in problem_frequencies" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+          %md-input-container.md-block(flex)
+            %label Intensity
+            %md-select(ng-model="searchObj.problem_intensity" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in problem_intensities" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-dd-multiselect(ng-model="searchObj.problem_others" is-edit="true" label="Other Reported Problems" collection="problem_others" field-name="problem_others" flex)
+          %div(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %md-input-container.md-block(flex)
+            %label Staff Impression
+            %md-select(ng-model="searchObj.problem_staff_impression" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in problem_staff_impressions" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-dd-multiselect(ng-model="searchObj.problem_precipitating_stressors" is-edit="true" label="Precipitating Stressors" collection="problem_precipitating_stressors" field-name="problem_precipitating_stressors" flex)
+          %div(flex)
+
+      %div(ng-if="isCategorySelected(4)")
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %span(flex)
+          %h2 Functional Status
+          %span(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-dd-multiselect(ng-model="searchObj.functional_status_severities" is-edit="true" label="Clinical Global Impression - Severity" collection="functional_status_severities" field-name="functional_status_severities" flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-dd-multiselect(ng-model="searchObj.functional_status_interactive_complexities" is-edit="true" label="Reason for Interactive Complexity" collection="functional_status_interactive_complexities" field-name="functional_status_interactive_complexities" flex)
+
+      %div(ng-if="isCategorySelected(3)")
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %span(flex)
+          %h2 Primary Diagnosis
+          %span(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %md-input-container.md-block(flex)
+            %label Primary Diagnosis
+            %md-select(ng-model="searchObj.diagnosis_primary" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in diagnosis_diagnoses" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+          %md-input-container.md-block(flex)
+            %label Secondary Diagnosis
+            %md-select(ng-model="searchObj.diagnosis_secondary" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in diagnosis_diagnoses" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %md-input-container.md-block(flex)
+            %label Prognosis
+            %md-select(ng-model="searchObj.diagnosis_progosis" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in diagnosis_prognoses" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+          %div(flex)
+
+      %div(ng-if="isCategorySelected(7)")
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %span(flex)
+          %h2 Target Symptoms
+          %span(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-dd-multiselect(ng-model="searchObj.problem_major_target_symptoms" is-edit="true" label="Major target symptom" collection="problem_major_target_symptoms" field-name="problem_major_target_symptoms" flex)
+
+      %div(ng-if="isCategorySelected(2)")
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %span(flex)
+          %h2 Definitive Therapeutic Communication
+          %span(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-dd-multiselect(ng-model="searchObj.therapeutic_communication_modalities" is-edit="true" label="Modalities used" collection="therapeutic_communication_modalities" field-name="therapeutic_communication_modalities" flex)
+          %gd-dd-multiselect(ng-model="searchObj.therapeutic_communication_attempted_tos" is-edit="true" label="Therapy attempted to" collection="therapeutic_communication_attempted_tos" field-name="therapeutic_communication_attempted_tos" flex)
+
+      %div(ng-if="isCategorySelected(11)")
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %span(flex)
+          %h2 Progress and Methods of Monitoring Outcomes
+          %span(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %md-input-container.md-block(flex)
+            %label Progress this session
+            %md-select(ng-model="searchObj.progress_session" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in progress_sessions" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+          %gd-dd-multiselect(ng-model="searchObj.progress_monitoring_mechanisms" is-edit="true" label="Monitoring mechamism(s)" collection="progress_monitoring_mechanisms" field-name="progress_monitoring_mechanisms" flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %md-input-container.md-block(flex)
+            %label Progress to date - Clinical Global Improvement (CGI –I) Scale
+            %md-select(ng-model="searchObj.progress_cgii" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in progress_cgiis" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %md-input-container.md-block(flex)
+            %label Frequency of treatment
+            %md-select(ng-model="searchObj.progress_frequency" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in progress_frequencies" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+
+      %div(ng-if="isCategorySelected(6)")
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %span(flex)
+          %h2 Interventions
+          %span(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %md-input-container.md-block(flex)
+            %label Psychotherapy
+            %md-select(ng-model="searchObj.plan_crisis_psychotherapy" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in plan_crisis_psychotherapies" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+          %gd-dd-multiselect(ng-model="searchObj.plan_crisis_mobilizations" is-edit="true" label="Mobilization of resources to defuse crisis and restore safety" collection="plan_crisis_mobilizations" field-name="plan_crisis_mobilizations" flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %md-input-container.md-block(flex)
+            %label Assessment of suicide/homicide risk
+            %md-select(ng-model="searchObj.plan_crisis_risk_assessment" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in plan_crisis_risk_assessments" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+          %md-input-container.md-block(flex)
+            %label Recommendations
+            %md-select(ng-model="searchObj.plan_crisis_recommendation" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in plan_crisis_recommendations" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+
+      %div(ng-if="isCategorySelected(5)")
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %span(flex)
+          %h2 Interventions and Progress
+          %span(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-dd-multiselect(ng-model="searchObj.group_data_interventions_therapeutic_factors" is-edit="true" label="Therapeutic factors focused on this session" collection="group_data_interventions_therapeutic_factors" field-name="group_data_interventions_therapeutic_factors" flex)
+          %div(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %md-input-container.md-block(flex)
+            %label Frequency of treatment
+            %md-select(ng-model="searchObj.group_data_interventions_cgii" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in progress_cgiis" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+
+      %div(ng-if="isCategorySelected(12)")
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %span(flex)
+          %h2 Target Symptoms and Treatment Plan Interventions
+          %span(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-dd-multiselect(ng-model="searchObj.problem_major_target_symptoms" is-edit="true" label="Major target symptom" collection="problem_major_target_symptoms" field-name="problem_major_target_symptoms" flex)
+          %div(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %md-input-container.md-block(flex)
+            %label Primary Onset
+            %md-select(ng-model="searchObj.problem_onset" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in problem_onsets" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+          %md-input-container.md-block(flex)
+            %label Frequency
+            %md-select(ng-model="searchObj.problem_frequency" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in problem_frequencies" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+          %md-input-container.md-block(flex)
+            %label Intensity
+            %md-select(ng-model="searchObj.problem_intensity" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in problem_intensities" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-dd-multiselect(ng-model="searchObj.problem_others" is-edit="true" label="Other Reported Problems" collection="problem_others" field-name="problem_others" flex)
+          %gd-dd-multiselect(ng-model="searchObj.problem_tp_interventions" is-edit="true" label="Treatment Plan Interventions" collection="problem_tp_interventions" field-name="problem_tp_interventions" flex)
+
+      %div(ng-if="isCategorySelected(13)")
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %span(flex)
+          %h2 Initial Recommendations and Plan
+          %span(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %md-input-container.md-block(flex)
+            %label Type/Amount of psychotherapy service recommended
+            %md-select(ng-model="searchObj.plan_amount_of_service" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in plan_amount_of_services" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+          %md-input-container.md-block(flex)
+            %label Frequency
+            %md-select(ng-model="searchObj.plan_frequency" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in plan_frequencies" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %md-input-container.md-block(flex)
+            %label Duration
+            %md-select(ng-model="searchObj.plan_duration" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in plan_durations" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+          %gd-dd-multiselect(ng-model="searchObj.plan_other_services" is-edit="true" label="Other Services" collection="plan_other_services" field-name="plan_other_services" flex)
+
+      %div(ng-if="isCategorySelected(14)")
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %span(flex)
+          %h2 Methods of Monitoring Outcomes
+          %span(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %md-input-container.md-block(flex)
+            %label Clinical Global Impression - Severity
+            %md-select(ng-model="searchObj.functional_status_severity" ng-model-options="{trackBy: '$value.name'}")
+              %md-optgroup
+                %md-option(ng-value="{}")
+                  Select
+                %md-option(ng-repeat="record in functional_status_severities" ng-value="{val:record.keyvalue, name:record.keyname}")
+                  {{ ::record.keyvalue }}
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-dd-multiselect(ng-model="searchObj.tp_methods_methods" is-edit="true" label="Monitoring Methods" collection="tp_methods_methods" field-name="tp_methods_methods" flex)
+          %div(flex)
+
+      %div(ng-if="isCategorySelected(15)")
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %span(flex)
+          %h2 Certification
+          %span(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-date(ng-model="searchObj.certification_from" is-edit="true" label="Date of Treatment Plan From" field-name="from" flex)
+          %gd-date(ng-model="searchObj.certification_to" is-edit="true" label="Date of Treatment Plan To" field-name="to" flex)
+          %span(flex)
+
+      %div(flex layout="row")
+        %md-button.md-raised.md-primary(ng-click="filter()") Submit
+        %span(flex)
+        %md-button.md-raised(ng-click="export()")
+          %md-icon(md-svg-icon="image:ic_picture_as_pdf_24px" aria-label="print")
+          Export PDF
+
+    %md-divider
+
+    %md-content.md-padding
+      %bgf-pagination( |
+        collection="encounters" |
+        url="searchURL" |
+        url-params="global.search" |
+        page="global.pagination.page" |
+        per-page="global.pagination.perPage" |
+        client-limit="global.pagination.clientLimit" |
+        transform-response="searchTransform" |
+        link-group-size="2" )
+
+      %md-list
+        %md-list-item.md-3-line.md-accent(ng-repeat="encounter in encounters" ng-click="globalPatients.setPatient(encounter.patient.id)" ui-sref="{{routeFor(encounter)}}")
+          .md-list-item-text(layout-padding)
+            %h3 {{ [encounter.patient.last_name, encounter.patient.first_name].join(", ") }}
+            %p {{ encounter.service_date | dateonly }}
+            %span CPT Code: {{ encounter.encounter_type }}
+          %md-divider(md-inset hide-sm ng-if="!$last")
+          %md-divider(hide-gt-sm ng-if="!$last")
+        %md-list-item.md-2-line(ng-if="encounters.length == 0")
+          .md-list-item-text
+            %h3 Nothing to display
+        %md-divider
+

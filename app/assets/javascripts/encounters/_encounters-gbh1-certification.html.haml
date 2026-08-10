@@ -1,0 +1,21 @@
+%div(layout-gt-xs="row" layout-padding)
+  %h3
+    Certification of Goals
+%div(layout-gt-xs="row" layout-padding)
+  %span(flex)
+    {{ certTexts.tp }}
+
+%div(layout-gt-xs="row" layout-padding)
+  %gd-date(ng-requied="true" label="Date of Behavioral Plan" form="formsec.sections.certification.form" ng-model="myEncounter.referral.service_date" is-edit="isEditing")
+
+%div(layout-gt-xs="row" layout-padding)
+  %gd-time(form="formsec.sections.certification.form" is-edit="isEditing" ng-model="myEncounter.certification.start_time" label="Start time" ng-required="true" type="time" field-name="start_time" flex)
+  %gd-time(form="formsec.sections.certification.form" is-edit="isEditing" ng-model="myEncounter.certification.end_time" label="End time" ng-required="true" type="time" field-name="end_time" flex)
+
+.error(layout-gt-xs="row" layout-padding ng-class="{hidden: !isEditing || !!formsec.sections.certification.hasValidTime}")
+  Time interval must be at least 20 minutes.
+
+%div(layout-gt-xs="row" layout-padding)
+  %md-button.md-raised(ng-disabled="formsec.submitted || !formsec.certifiable()" ng-click="formsec.certify()") Submit
+  %md-button.md-raised.md-warn(ng-if="isEditing" ng-disabled="formsec.certifiable()" ng-click="formsec.showErrors()") Show Error Fields
+

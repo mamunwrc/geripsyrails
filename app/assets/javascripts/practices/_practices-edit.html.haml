@@ -1,0 +1,56 @@
+.md-inline-form(layout="column" ng-cloak)
+  %form.gd-form(name="ctrl.practiceForm")
+    %md-content(layout-padding layout-gt-xs="row")
+      %div(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-input(label="Name" is-edit="isEditing" ng-model="practice.name" field-name="name" ng-required="true" form="ctrl.practiceForm" flex)
+
+          %gd-drop-down(label="Type" is-edit="isEditing" ng-model="practice.practice_type" field-name="type" dd-type="main" keyprefix="PRACTYPES" flex)
+
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-input(label="Address" is-edit="isEditing" ng-model="practice.address1" field-name="address1" flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-input(label="City" is-edit="isEditing" ng-model="practice.city" field-name="city" flex)
+          %gd-drop-down(label="State" is-edit="isEditing" ng-model="practice.state" field-name="state" dd-type="main" keyprefix="STATES" flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-input(label="Zip" is-edit="isEditing" ng-model="practice.zip" field-name="zip" flex)
+          %gd-input(label="Tax number" is-edit="isEditing" ng-model="practice.tax_number" field-name="country" ng-show="practice.practice_type.name != 'ipa'" flex)
+
+        %md-divider
+        %md-subheader(flex) Nightly Email Options
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %md-input-container(flex)
+            %label Format
+            %md-select(ng-model="practice.email_format" placeholder="Select a format")
+              %md-option(ng-value="pdf") PDF
+              %md-option(ng-value="docx") DOCX
+          %span(flex)
+
+
+%md-divider
+
+%md-content(layout-padding ng-if="!isEditing")
+  %md-subheader
+    %span Billing Printout
+  %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+    %md-input-container.md-block(flex)
+      %label Facilities
+      %md-select(ng-model="searchObj.facility" multiple)
+        %md-button(ng-click="selectAll()" style="float:right") Select All
+        %md-optgroup(label="Facility")
+          %md-option(ng-repeat="facility in facilities" value="{{facility.id}}")
+            {{ facility.name }}
+
+  %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+    %gd-date(ng-model="searchObj.from" is-edit="true" label="From" field-name="from" flex)
+    %gd-date(ng-model="searchObj.to" is-edit="true" label="To" field-name="to" flex)
+
+  %div(flex layout="row")
+    %md-button.md-raised.md-primary(ng-click="filter()") Submit
+
+%md-divider
+
+%div(layout="column")
+  %md-button.md-raised(ng-click="print()") Print
+  %div(layout="fill")
+    %iframe(name="billingcontent" ng-src="{{billingUrl}}" frameborder="0" style="height:10.8in;width:8in" flex)

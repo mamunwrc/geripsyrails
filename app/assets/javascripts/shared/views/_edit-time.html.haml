@@ -1,0 +1,11 @@
+%div(layout="column" flex ng-show="::isEdit")
+  %label.md-caption {{ label }}
+  %mdp-time-picker(ng-model="myData" mdp-placeholder="{{::label}}" name="{{::fieldName}}" required="{{::isRequired}}" ng-blur="::onBlur($event)" aria-label="{{::label}}" flex)
+    .validation-messages(ng-messages="form[fieldName].$error" role="alert" md-auto-hide="false")
+      %div(ng-message="valid") The entered value is not a valid time
+      %div(ng-message="required") This field is required
+
+%div(ng-if="::!isEdit")
+  %span.label(flex="20") {{ ::label }}:
+  %span.md-caption(flex="30" ng-if="myData") {{ ::myData | timeonly }}
+

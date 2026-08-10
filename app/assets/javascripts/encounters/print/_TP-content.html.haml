@@ -1,0 +1,190 @@
+%h2(flex="100" layout-align="center")
+  PSYCHOLOGY TREATMENT PLAN
+  %span(ng-if="!!user.meta.linked_provider_id") -"Incident to"
+%h3(flex="100" layout-align="center")
+
+%h4(flex="100") I. Patient Information
+
+%div(flex="33")
+  %strong.md-caption Last Name:
+  %span.md-caption {{format(patient.last_name)}}
+%div(flex="33")
+  %strong.md-caption First Name:
+  %span.md-caption {{format(patient.first_name)}}
+%div(flex="33")
+  %strong.md-caption DOB:
+  %span.md-caption {{patient.dob | dateonly}}
+
+%div(flex="33")
+  %strong.md-caption Facility:
+  %span.md-caption(ng-if="!patient.room_num") {{format(patient.facility.name)}}
+  %span.md-caption(ng-if="patient.room_num") {{format(patient.facility.name)}}/{{patient.room_num}}
+%div(flex="33")
+  %strong.md-caption Gender:
+  %span.md-caption {{format(patient.gender)}}
+%div(flex="33")
+  %strong.md-caption Referral initiated by:
+  %span.md-caption {{format(encounter.referral.initiator)}}
+
+%div(flex="33")
+  %strong.md-caption Referring MD name:
+  %span.md-caption {{format(encounter.referral.md_name)}}
+%div(flex="33")
+  %strong.md-caption Date of MD order:
+  %span.md-caption {{format(encounter.referral.order_date) | dateonly}}
+%div(flex="33")
+
+%div(flex="100")
+  %strong.md-caption Reason for referral:
+  %span.md-caption(ng-repeat="reason in encounter.referral.reasons")
+    {{format(reason)}} - {{format(encounter.referral.reasons_freetext[reason.name])}}
+    %span(ng-if="!$last"); 
+
+%div(flex="33")
+  %strong.md-caption This is:
+  %span.md-caption {{ format(encounter.referral.plan_type) }}
+%div(flex="66")
+  %div(ng-if="encounter.referral.plan_type.name === 'discharge'")
+    %strong.md-caption Reason for discharge:
+    %span.md-caption {{format(encounter.referral.discharge_reason)}}
+
+%h4(flex="100") II. Diagnosis and Prognosis
+
+%div(flex="50")
+  %strong.md-caption Primary Diagnosis:
+  %span.md-caption {{format(encounter.diagnosis.primary) }}
+%div(flex="50")
+  %div(ng-if="encounter.diagnosis.secondary")
+    %strong.md-caption Secondary Diagnosis:
+    %span.md-caption {{format(encounter.diagnosis.secondary) }}
+
+%div(flex="100")
+  %strong.md-caption Prognosis:
+  %span.md-caption {{format(encounter.diagnosis.prognosis) }}
+
+%div(flex="100")
+  %strong.md-caption Relevant Medical Diagnosis/Condition:
+  %span.md-caption {{format(encounter.diagnosis.medical_conditions) }}
+
+%div(flex="100")
+  %strong.md-caption I certify that the patient’s cognitive status is appropriate for psychotherapy
+
+%div(flex="25")
+  %strong.md-caption Cognitive screen: 
+  %span.md-caption {{format(encounter.functional_status.respondtreatment)}}
+%div(flex="75")
+  %strong.md-caption Score:
+  %span.md-caption {{format(encounter.functional_status.cognitive_screen)}}; {{ format(encounter.functional_status.respondtreatment_desc)}}
+
+%div(flex="100")
+  %strong.md-caption Memory/Recall:
+  %span.md-caption {{format(encounter.functional_status.recall)}}
+
+%div(flex="100" ng-if="encounter.functional_status.respondtreatment_comments")
+  %strong.md-caption Comments:
+  %span.md-caption {{ encounter.functional_status.respondtreatment_comments }}
+
+
+%h4(flex="100") III. Target Symptoms and Treatment Plan Interventions
+
+%div(flex="100")
+  %strong.md-caption Major target symptom:
+  %span.md-caption {{ format(encounter.problem.major_target_symptom) }}
+
+%div(flex="100")
+  %strong.md-caption Problem onset:
+  %span.md-caption {{format(encounter.problem.onset) }}
+
+%div(flex="100")
+  %strong.md-caption Problem frequency/intensity:
+  %span.md-caption {{format(encounter.problem.frequency) }}; {{format(encounter.problem.intensity)  }}
+
+%div(flex="100")
+  %strong.md-caption Other reported problems:
+  %span.md-caption {{format(encounter.problem.other) }}
+
+%div(flex="100")
+  %strong.md-caption Treatment plan interventions:
+  %span.md-caption {{format(encounter.problem.tp_interventions) }}
+
+%div(flex="50")
+  %strong.md-caption Psychiatric medication:
+  %span.md-caption {{format(encounter.background_history.onpsychmeds)}}
+  %span.md-caption(ng-if="encounter.background_history.onpsychmeds.name == 'Y'") ; {{format(encounter.background_history.onpsychmeds_medication) }}
+%div(flex="50" ng-if="encounter.background_history.onpsychmeds.name == 'Y' && encounter.background_history.gdr_plan.name")
+  %strong.md-caption GDR plan in place:
+  %span.md-caption {{format(encounter.background_history.gdr_plan)}}
+  %span.md-caption(ng-if="encounter.background_history.gdr_plan.name == 'Y'") - {{encounter.background_history.gdr_plan_date | dateonly}}
+
+%div(flex="100" ng-if="encounter.background_history.onpsychmeds.name == 'Y' && (encounter.background_history.gdr_plan.name == 'Y' || encounter.background_history.gdr_plan.name == 'YND')")
+  %strong.md-caption Behavioral interventions expected to target following symptoms related to GDR:
+  %span.md-caption {{encounter.background_history.gdr_plan_interventions}}
+
+%div(flex="100" ng-if="encounter.problem.comments_re_goals")
+  %strong.md-caption Comments re symptoms/interventions
+  %span.md-caption {{format(encounter.problem.comments_re_goals) }}
+
+%h4(flex="100") IV. Initial Recommendations and Plan
+
+%div(flex="100")
+  %strong.md-caption Type/amount of psychotherapy service recommended:
+  %span.md-caption {{format(encounter.plan.amount_of_service) }}
+%div(flex="100" ng-if="encounter.plan.amount_of_service.name == '4'")
+  %strong.md-caption Reason psychotherapy not recommended:
+  %span.md-caption {{format(encounter.plan.not_recommended_reason) }}
+
+%div(flex="50" ng-if="encounter.plan.amount_of_service.name != '4'")
+  %strong.md-caption Frequency:
+  %span.md-caption {{format(encounter.plan.frequency) }}
+%div(flex="50" ng-if="encounter.plan.amount_of_service.name != '4'")
+  %strong.md-caption Duration:
+  %span.md-caption {{format(encounter.plan.duration) }}
+
+%div(flex="100" ng-if="encounter.plan.amount_of_service.name != '4' && encounter.plan.other_services")
+  %strong.md-caption Other services recommended:
+  %span.md-caption {{format(encounter.plan.other_services) }}
+
+
+%h4(flex="100") V. Goals of Treatment
+
+%div(flex="100" ng-if="encounter.goals.increase")
+  %strong.md-caption INCREASE the frequency of:
+  %span.md-caption {{format(encounter.goals.increase) }}
+
+%div(flex="100" ng-if="encounter.goals.decrease")
+  %strong.md-caption DECREASE the frequency of:
+  %span.md-caption {{format(encounter.goals.decrease) }}
+
+%div(flex="100" ng-if="encounter.goals.modify")
+  %strong.md-caption MODIFY the nature of:
+  %span.md-caption {{format(encounter.goals.modify) }}
+
+%div(flex="100" ng-if="encounter.goals.control")
+  %strong.md-caption CONTROL the following:
+  %span.md-caption {{format(encounter.goals.control) }}
+
+%div(flex="100" ng-if="encounter.goals.improve")
+  %strong.md-caption IMPROVE functioning by:
+  %span.md-caption {{format(encounter.goals.improve) }}
+
+%div(flex="100" ng-if="encounter.goals.discharge")
+  %strong.md-caption Discharge and suspend treatment summary:
+  %span.md-caption {{format(encounter.goals.discharge) }}
+
+
+%h4(flex="100") VI. Methods of monitoring outcomes
+
+%div(flex="100")
+  %strong.md-caption Current CGI-I Score:
+  %span.md-caption {{format(encounter.functional_status.severity) }}
+
+%div(layout="row" flex="100" ng-repeat="method in monitoringMethods")
+  %strong.md-caption(flex) {{ method.val }}:
+  %span.md-caption(flex)
+    current score: {{ encounter.tp_methods[method.name].current }}
+  %span.md-caption(flex)
+    target score: {{ encounter.tp_methods[method.name].target }}
+
+.certification(flex="100")
+  {{ certTexts.tp }}
+

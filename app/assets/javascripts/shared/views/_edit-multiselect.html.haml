@@ -1,0 +1,18 @@
+%div(flex)
+  %md-input-container.md-block(flex-gt-sm ng-show="::isEdit")
+    %label {{ ::label }}
+    %md-select(ng-model="myData" multiple name="{{::fieldName}}" ng-required="::isRequired" ng-blur="::onBlur($event)" ng-model-options="{trackBy: '$value.name'}")
+      %md-optgroup
+        %md-option(ng-repeat="item in collectionData" ng-value="{val: item.keyvalue, name: item.keyname, freetext: item.freetext}" title="{{item.description}}")
+          {{::item.keyvalue}}
+    %div(ng-messages="form[fieldName].$error" role="alert" md-auto-hide="false")
+      %div(ng-message="required") This is required.
+      %div(ng-message="email") This field must be a valid email address.
+      %div(ng-message="minlength") This field is too short.
+
+  %gd-input(is-edit="true" form="form" ng-show="isEdit && hasFreetext(myData)" ng-model="freetextObj(myData).freetext" label="{{label}} (freetext)" flex)
+
+%div(ng-if="::!isEdit")
+  %span.label(flex="20") {{::label}}:
+  %span.md-caption(flex="30") {{ ::multiDisplayWithFreetext() }}
+

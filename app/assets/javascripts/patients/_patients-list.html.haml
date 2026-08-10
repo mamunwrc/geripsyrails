@@ -1,0 +1,43 @@
+%md-divider
+.container(layout="column" layout-fill)
+  %div(flex)
+    %md-toolbar.md-primary(layout="row")
+      .md-toolbar-tools
+        %span {{ title }}
+        %span(flex)
+        %md-button.md-raised.md-ink-ripple.md-primary(aria-label="Add new note" ui-sref="{{ addRoute }}" ng-if="createable && !isIncidentToProvider()")
+          %md-icon(md-svg-icon="content:ic_add_24px" aria-label="add new patient")
+    %md-content(flex)
+      %md-tabs(flex md-dynamic-height md-border-bottom)
+        %md-tab(label="Patients" ng-click="resetPagination()")
+          %md-content.md-padding
+            %bgf-pagination(url-params="global.search" collection="activePatients" url="'/api/'+ activeRoute" page="global.pagination.page" per-page="global.pagination.perPage" client-limit="global.pagination.clientLimit" link-group-size="2")
+            %md-list
+              %md-list-item.md-3-line.md-accent(ng-repeat="patient in activePatients" ui-sref="{{ showRoute }}")
+                .md-list-item-text(layout-padding)
+                  %h3 {{ patient.full_name }}
+                  %h4 {{ patient.dob | dateonly }}
+                  %p {{ patient.gender.val }}
+                %md-divider(md-inset hide-sm ng-if="!$last")
+                %md-divider(hide-gt-sm ng-if="!$last")
+              %md-list-item.md-2-line(ng-if="activePatients.length == 0")
+                .md-list-item-text
+                  %h3 Nothing to display
+              %md-divider
+
+        %md-tab(label="Inactive Patients" ng-click="resetPagination()")
+          %md-content.md-padding
+            %bgf-pagination(url-params="global.search" collection="inactivePatients" url="'/api/'+ inactiveRoute" page="global.pagination.page" per-page="global.pagination.perPage" client-limit="global.pagination.clientLimit" link-group-size="2")
+            %md-list
+              %md-list-item.md-3-line.md-accent(ng-repeat="patient in inactivePatients" ui-sref="{{ showRoute }}")
+                .md-list-item-text(layout-padding)
+                  %h3 {{ patient.full_name }}
+                  %h4 {{ patient.dob | dateonly }}
+                  %p Status: {{ patient.status.val }}
+                %md-divider(md-inset hide-sm ng-if="!$last")
+                %md-divider(hide-gt-sm ng-if="!$last")
+              %md-list-item.md-2-line(ng-if="inactivePatients.length == 0")
+                .md-list-item-text
+                  %h3 Nothing to display
+              %md-divider
+

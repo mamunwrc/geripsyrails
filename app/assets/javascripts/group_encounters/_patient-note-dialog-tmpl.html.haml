@@ -1,0 +1,25 @@
+%md-dialog(aria-label="Patient Note")
+  %md-toolbar
+    .md-toolbar-tools
+      %h2 Patient Note
+  %md-dialog-content
+    .md-dialog-content
+      %p
+        %em This note is for the following patients:
+      %form(name="ctrl.patNoteForm" ng-cloak)
+        %md-input-container.md-block
+          %label Patients
+          %md-select(multiple ng-model="note.incoming_patient_ids" ng-required="true")
+            %md-option(ng-repeat="patient in patients" ng-value="patient.name")
+              {{ patient.val }}
+
+        %md-input-container.md-block
+          %lable Note
+          %textarea(ng-model="note.body" ng-required="true" rows="5" md-maxlength="200")
+
+        %md-checkbox.md-block(ng-model="note.confidential" aria-label="confidential note")
+          %em This note is confidential
+
+        %md-button.md-raised.md-primary(ng-click="close()" ng-disabled="ctrl.patNoteForm.$invalid" flex) Save
+        %md-button.md-warning(ng-click="delete()" ng-if="note.id" flex) delete
+

@@ -1,0 +1,83 @@
+.md-inline-form(layout="column" ng-cloak)
+  %form.gd-form(name="ctrl.facilityForm")
+    %md-content(layout-padding layout-gt-xs="row")
+      %div(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-input(label="Name" is-edit="isEditing" ng-model="facility.name" field-name="name" ng-required="true" form="ctrl.facilityForm" flex)
+          %gd-input(label="NPI #" is-edit="isEditing" ng-model="facility.npi" field-name="npi_number" form="ctrl.facilityForm" flex)
+
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-input(label="Address" is-edit="isEditing" ng-model="facility.address1" field-name="address1" flex)
+          %gd-input(label="Phone #" is-edit="isEditing" ng-model="facility.work_phone" field-name="work_phone" flex)
+
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-input(label="City" is-edit="isEditing" ng-model="facility.city" field-name="city" flex)
+          %gd-drop-down(label="State" is-edit="isEditing" ng-model="facility.state" field-name="state" dd-type="main" keyprefix="STATES" flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-input(label="Zip" is-edit="isEditing" ng-model="facility.zip" field-name="zip" flex)
+          %gd-input(label="Country" is-edit="isEditing" ng-model="facility.country" field-name="country" flex)
+
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-input(label="Liaison first name" is-edit="isEditing" ng-model="facility.admin_first_name" field-name="admin_first_name" flex)
+          %gd-input(label="Liaison last name" is-edit="isEditing" ng-model="facility.admin_last_name" field-name="admin_last_name" flex)
+
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-input(label="Liaison email" type="email" is-edit="isEditing" ng-model="facility.admin_email" field-name="admin_email" flex)
+          %gd-input(label="Liaison phone" is-edit="isEditing" ng-model="facility.home_phone" field-name="home_phone" flex)
+
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-input(label="HP ID for main POS" is-edit="isEditing" ng-model="facility.hp_main_pos_code" field-name="hp_main_pos_code" flex)
+          %gd-input(label="HP ID for secondary POS" is-edit="isEditing" ng-model="facility.hp_alt_pos_code" field-name="hp_alt_pos_code" flex)
+
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-drop-down(label="Medicare Type" is-edit="isEditing" ng-model="facility.medicare" field-name="medicare" dd-type="main" keyprefix="MEDICARETYPES" flex)
+          %span(flex)
+
+%md-divider
+
+%md-content(layout-padding ng-if="!isEditing")
+  %md-list(flex)
+    %md-subheader Facility Contacts
+    %md-list-item.md-3-line(ng-repeat="contact in contacts" ng-click="editContact(contact)")
+      .md-list-item-text(layout="column")
+        %h3 {{contact.name}}
+        %h4 {{ contact.email }}
+        %p Status: {{ contact.active ? 'active' : 'inactive' }}
+
+  %div(layout="row")
+    %span(flex)
+    %md-button.md-raised(ng-click="addContact()")
+      Add new contact
+
+%md-divider
+
+%md-content(layout-padding ng-if="!isEditing")
+  %md-subheader
+    %span Billing Printout
+  %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+    %md-input-container.md-block(flex)
+      %label Provider(s)
+      %md-select(ng-model="searchObj.provider" multiple)
+        %md-button(ng-click="selectAll()" style="float:right") Select All
+        %md-optgroup(label="Provider")
+          %md-option(ng-repeat="provider in providers" value="{{provider.id}}")
+            {{ provider.name }}
+
+    %div(flex style="margin-top:18px")
+      %md-checkbox(ng-model="searchObj.untimed" aria-label="include untimed" flex)
+        Include "Psychotherapy Untimed"
+
+  %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+    %gd-date(ng-model="searchObj.from" is-edit="true" label="From" field-name="from" flex)
+    %gd-date(ng-model="searchObj.to" is-edit="true" label="To" field-name="to" flex)
+
+  %div(flex layout="row")
+    %md-button.md-raised.md-primary(ng-click="filter()") Submit
+
+%md-divider
+
+%div(layout="column" ng-if="!isEditing")
+  %md-button.md-raised(ng-click="print()") Print
+  %div(layout="fill")
+    %iframe(name="billingcontent" ng-src="{{billingUrl}}" style="height:100vh; overflow:visible;" frameborder="0" flex)
+

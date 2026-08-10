@@ -1,0 +1,695 @@
+{
+	"PATIENTSTATUS" : [{
+			"key" : "active",
+			"value" : "Active"
+		}, {
+			"key" : "inactive",
+			"value" : "Inactive"
+		}, {
+			"key" : "deceased",
+			"value" : "Deceased"
+		}, {
+			"key" : "unknown",
+			"value" : "Unknown"
+		}
+  ],
+	"MARITALSTATUS" : [{
+			"key" : "single",
+			"value" : "Single"
+		}, {
+			"key" : "married",
+			"value" : "Married"
+		}, {
+			"key" : "divorced",
+			"value" : "Divorced"
+		}, {
+			"key" : "widowed",
+			"value" : "Widowed"
+		}, {
+			"key" : "separated",
+			"value" : "Separated"
+		}, {
+			"key" : "unknown",
+			"value" : "Unknown"
+		}, {
+			"key" : "FREETEXT",
+			"value" : "Other"
+		}
+	],
+	"GENDER" : [{
+			"key" : "male",
+			"value" : "Male"
+		}, {
+			"key" : "female",
+			"value" : "Female"
+		}, {
+			"key" : "unknown",
+			"value" : "Unknown"
+		}
+	],
+	"RACE" : [{
+			"key" : "white",
+			"value" : "White"
+		}, {
+			"key" : "black",
+			"value" : "Black"
+		}, {
+			"key" : "asian",
+			"value" : "Asian"
+		}, {
+			"key" : "native_american",
+			"value" : "American Indian\/Alaska Native"
+		}, {
+			"key" : "pacific_islander",
+			"value" : "Pacific Islander"
+		}, {
+			"key" : "unknown",
+			"value" : "Unknown"
+		}
+	],
+	"YESNO" : [{
+			"key" : "Y",
+			"value" : "Yes"
+		}, {
+			"key" : "N",
+			"value" : "No"
+		}, {
+			"key" : "U",
+			"value" : "Unknown"
+		}
+	],
+	"LANG" : [{
+			"key" : "english",
+			"value" : "English"
+		}, {
+			"key" : "spanish",
+			"value" : "Spanish"
+		}, {
+			"key" : "french",
+			"value" : "French"
+		}, {
+			"key" : "russian",
+			"value" : "Russian"
+		}, {
+			"key" : "unknown",
+			"value" : "Unknown"
+		}
+	],
+	"PATSTAT" : [{
+			"key" : "active",
+			"value" : "Active"
+		}, {
+			"key" : "inactive",
+			"value" : "Inactive"
+		}, {
+			"key" : "deceased",
+			"value" : "Desceased"
+		}, {
+			"key" : "unknown",
+			"value" : "Unknown"
+		}
+	],
+	"FACSTAT" : [{
+			"key" : "ACTIVE",
+			"value" : "Active"
+		}, {
+			"key" : "INACTIVE",
+			"value" : "Inactive"
+		}, {
+			"key" : "UNKNOWN",
+			"value" : "Unknown"
+		}
+	],
+	"FACTYPE" : [{
+			"key" : "TYPE1",
+			"value" : "Type 1"
+		}, {
+			"key" : "TYPE2",
+			"value" : "Type 2"
+		}, {
+			"key" : "UNKNOWN",
+			"value" : "Unknown"
+		}
+	],
+	"FAMILYSTATUS" : [{
+			"key" : "1",
+			"value" : "children in area "
+		}, {
+			"key" : "2",
+			"value" : "children out of area"
+		}, {
+			"key" : "3",
+			"value" : "other family in area"
+		}, {
+			"key" : "4",
+			"value" : "other family out of area"
+		}, {
+			"key" : "5",
+			"value" : "spouse/children/family involved in care"
+		}, {
+			"key" : "6",
+			"value" : "no children/family contact"
+		}, {
+			"key" : "7",
+			"value" : "unknown"
+		}, {
+			"key" : "FREETEXT",
+			"value" : "specify/other (fill-in)"
+		}
+	],
+	"EDUSTATUS" : [{
+			"key" : "1",
+			"value" : "Post-graduate"
+		}, {
+			"key" : "2",
+			"value" : "College"
+		}, {
+			"key" : "3",
+			"value" : "College - did not graduate"
+		}, {
+			"key" : "4",
+			"value" : "High School"
+		}, {
+			"key" : "5",
+			"value" : "High School - did not graduate"
+		}, {
+			"key" : "6",
+			"value" : "Elementary School"
+		}, {
+			"key" : "7",
+			"value" : "Elementary School - did not graduate"
+		}, {
+			"key" : "8",
+			"value" : "No formal education"
+		}, {
+			"key" : "U",
+			"value" : "Unknown"
+		}, {
+			"key" : "FREETEXT",
+			"value" : "Other"
+		}
+	],
+	"OCCUPATION" : [{
+			"key" : "1",
+			"value" : "Professional"
+		}, {
+			"key" : "2",
+			"value" : "Skilled Labor"
+		}, {
+			"key" : "3",
+			"value" : "White Collar"
+		}, {
+			"key" : "4",
+			"value" : "Independent Business"
+		}, {
+			"key" : "5",
+			"value" : "Military"
+		}, {
+			"key" : "6",
+			"value" : "Homemaker"
+		}, {
+			"key" : "7",
+			"value" : "Never worked/soptty occupational background"
+		}, {
+			"key" : "8",
+			"value" : "Criminal background - history of incarceration"
+		}, {
+			"key" : "9",
+			"value" : "Criminal background - no incarceration"
+		}, {
+			"key" : "U",
+			"value" : "Unknown"
+		}, {
+			"key" : "FREETEXT",
+			"value" : "Other"
+		}
+	],
+	"BIRTHPLACE" : [{
+			"key" : "1",
+			"value" : "United States - local"
+		}, {
+			"key" : "2",
+			"value" : "United States - out of area"
+		}, {
+			"key" : "3",
+			"value" : "Foreign"
+		}, {
+			"key" : "U",
+			"value" : "Unknown"
+		}, {
+			"key" : "FREETEXT",
+			"value" : "Other"
+		}
+	],
+	"FAMILYBACKGRND" : [{
+			"key" : "1",
+			"value" : "Intact, traditional family"
+		}, {
+			"key" : "2",
+			"value" : "Maladjusted family"
+		}, {
+			"key" : "3",
+			"value" : "Do not remember"
+		}, {
+			"key" : "U",
+			"value" : "Unknown"
+		}, {
+			"key" : "FREETEXT",
+			"value" : "Other"
+		}
+	],
+	"RAISEDBY" : [{
+			"key" : "1",
+			"value" : "natural parents"
+		}, {
+			"key" : "2",
+			"value" : "father only"
+		}, {
+			"key" : "3",
+			"value" : "mother only"
+		}, {
+			"key" : "4",
+			"value" : "father and stepmother"
+		}, {
+			"key" : "5",
+			"value" : "mother and stepfather"
+		}, {
+			"key" : "6",
+			"value" : "adoptive parents"
+		}, {
+			"key" : "7",
+			"value" : "maternal grandparent(s)"
+		}, {
+			"key" : "8",
+			"value" : "paternal grandparent(s)"
+		}, {
+			"key" : "9",
+			"value" : "sibling"
+		}, {
+			"key" : "10",
+			"value" : "aunt and/or uncle"
+		}, {
+			"key" : "11",
+			"value" : "foster parents"
+		}, {
+			"key" : "12",
+			"value" : "institutional caretakers"
+		}, {
+			"key" : "U",
+			"value" : "Unknown"
+		}, {
+			"key" : "FREETEXT",
+			"value" : "Other"
+		}
+	],
+	"HISTMETNALILL" : [{
+			"key" : "NONE",
+			"value" : "None"
+		}, {
+			"key" : "PSYHOSP",
+			"value" : "History of psychiatric hospitalization"
+		}, {
+
+			"key" : "HISTNOHOSP",
+			"value" : "Positive history but no hospitalization"
+		}, {
+			"key" : "1",
+			"value" : "Father"
+		}, {
+			"key" : "2",
+			"value" : "mother"
+		}, {
+			"key" : "3",
+			"value" : "son"
+		}, {
+			"key" : "4",
+			"value" : "daughter"
+		}, {
+			"key" : "5",
+			"value" : "brother"
+		}, {
+			"key" : "6",
+			"value" : "sister"
+		}, {
+			"key" : "7",
+			"value" : "husband"
+		}, {
+			"key" : "8",
+			"value" : "wife        "
+		}, {
+			"key" : "9",
+			"value" : "adoptive father"
+		}, {
+			"key" : "10",
+			"value" : "adoptive mother"
+		}, {
+			"key" : "11",
+			"value" : "stepfather"
+		}, {
+			"key" : "12",
+			"value" : "stepmother"
+		}, {
+			"key" : "13",
+			"value" : "paternal grandfather"
+		}, {
+			"key" : "14",
+			"value" : "paternal grandmother"
+		}, {
+			"key" : "15",
+			"value" : "maternal grandfather"
+		}, {
+			"key" : "16",
+			"value" : "maternal grandmother"
+		}, {
+			"key" : "17",
+			"value" : "uncle"
+		}, {
+			"key" : "18",
+			"value" : "aunt"
+		}, {
+			"key" : "19",
+			"value" : "foster parents"
+		}, {
+			"key" : "U",
+			"value" : "Unknown"
+		}, {
+			"key" : "FREETEXT",
+			"value" : "Other"
+		}
+	],
+	"RELIGIOUSSTATUS" : [{
+			"key" : "1",
+			"value" : "Religious - regular attendance"
+		}, {
+			"key" : "2",
+			"value" : "Religious - occasional attendance"
+		}, {
+			"key" : "3",
+			"value" : "Religious - does not attend"
+		}, {
+			"key" : "4",
+			"value" : "Belief in Higher Power, no organized religion"
+		}, {
+			"key" : "5",
+			"value" : "Agnostic"
+		}, {
+			"key" : "6",
+			"value" : "Athiest"
+		}, {
+			"key" : "7",
+			"value" : "Unknown"
+		}
+	],
+	"ONMEDS" : [{
+			"key" : "Y",
+			"value" : "Yes"
+		}, {
+			"key" : "N",
+			"value" : "No"
+		}, {
+			"key" : "U",
+			"value" : "Unknown"
+		}
+	],
+	"DEGREE" : [{
+			"key" : "phd",
+			"value" : "PhD"
+		}, {
+			"key" : "psyd",
+			"value" : "PsyD"
+		}, {
+			"key" : "msw",
+			"value" : "MSW"
+		}, {
+			"key" : "md",
+			"value" : "MD"
+		}, {
+			"key" : "do",
+			"value" : "DO"
+		}, {
+			"key" : "rnnp",
+			"value" : "RN-NP"
+		}, {
+			"key" : "rncns",
+			"value" : "RN-CNS"
+		}
+	],
+  "STATES" : [
+    {
+      "key" : "AL",
+      "value" : "Alabama"
+    },
+    {
+      "key" : "AK",
+      "value" : "Alaska"
+    },
+    {
+      "key" : "AZ",
+      "value" : "Arizona"
+    },
+    {
+      "key" : "AR",
+      "value" : "Arkansas"
+    },
+    {
+      "key" : "CA",
+      "value" : "California"
+    },
+    {
+      "key" : "CO",
+      "value" : "Colorado"
+    },
+    {
+      "key" : "CT",
+      "value" : "Connecticut"
+    },
+    {
+      "key" : "DE",
+      "value" : "Delaware"
+    },
+    {
+      "key" : "DC",
+      "value" : "District of Columbia"
+    },
+    {
+      "key" : "FL",
+      "value" : "Florida"
+    },
+    {
+      "key" : "GA",
+      "value" : "Georgia"
+    },
+    {
+      "key" : "HI",
+      "value" : "Hawaii"
+    },
+    {
+      "key" : "ID",
+      "value" : "Idaho"
+    },
+    {
+      "key" : "IL",
+      "value" : "Illinois"
+    },
+    {
+      "key" : "IN",
+      "value" : "Indiana"
+    },
+    {
+      "key" : "IA",
+      "value" : "Iowa"
+    },
+    {
+      "key" : "KS",
+      "value" : "Kansas"
+    },
+    {
+      "key" : "KY",
+      "value" : "Kentucky"
+    },
+    {
+      "key" : "LA",
+      "value" : "Louisiana"
+    },
+    {
+      "key" : "ME",
+      "value" : "Maine"
+    },
+    {
+      "key" : "MD",
+      "value" : "Maryland"
+    },
+    {
+      "key" : "MA",
+      "value" : "Massachusetts"
+    },
+    {
+      "key" : "MI",
+      "value" : "Michigan"
+    },
+    {
+      "key" : "MN",
+      "value" : "Minnesota"
+    },
+    {
+      "key" : "MS",
+      "value" : "Mississippi"
+    },
+    {
+      "key" : "MO",
+      "value" : "Missouri"
+    },
+    {
+      "key" : "MT",
+      "value" : "Montana"
+    },
+    {
+      "key" : "NE",
+      "value" : "Nebraska"
+    },
+    {
+      "key" : "NV",
+      "value" : "Nevada"
+    },
+    {
+      "key" : "NH",
+      "value" : "New Hampshire"
+    },
+    {
+      "key" : "NJ",
+      "value" : "New Jersey"
+    },
+    {
+      "key" : "NM",
+      "value" : "New Mexico"
+    },
+    {
+      "key" : "NY",
+      "value" : "New York"
+    },
+    {
+      "key" : "NC",
+      "value" : "North Carolina"
+    },
+    {
+      "key" : "ND",
+      "value" : "North Dakota"
+    },
+    {
+      "key" : "OH",
+      "value" : "Ohio"
+    },
+    {
+      "key" : "OK",
+      "value" : "Oklahoma"
+    },
+    {
+      "key" : "OR",
+      "value" : "Oregon"
+    },
+    {
+      "key" : "PA",
+      "value" : "Pennsylvania"
+    },
+    {
+      "key" : "PR",
+      "value" : "Puerto Rico"
+    },
+    {
+      "key" : "RI",
+      "value" : "Rhode Island"
+    },
+    {
+      "key" : "SC",
+      "value" : "South Carolina"
+    },
+    {
+      "key" : "SD",
+      "value" : "South Dakota"
+    },
+    {
+      "key" : "TN",
+      "value" : "Tennessee"
+    },
+    {
+      "key" : "TX",
+      "value" : "Texas"
+    },
+    {
+      "key" : "UT",
+      "value" : "Utah"
+    },
+    {
+      "key" : "VT",
+      "value" : "Vermont"
+    },
+    {
+      "key" : "VA",
+      "value" : "Virginia"
+    },
+    {
+      "key" : "WA",
+      "value" : "Washington"
+    },
+    {
+      "key" : "WV",
+      "value" : "West Virginia"
+    },
+    {
+      "key" : "WI",
+      "value" : "Wisconsin"
+    },
+    {
+      "key" : "WY",
+      "value" : "Wyoming"
+    }
+  ],
+  "PRACTYPES" : [{
+    "key" : "solo",
+    "value" : "Solo"
+  }, {
+    "key" : "group",
+    "value" : "Group"
+  }, {
+    "key" : "ipa",
+    "value" : "IPA"
+  }],
+  "PRIMINSURANCE" : [{
+      "key" : "medicare",
+      "value" : "Medicare"
+  }, {
+      "key" : "medicare_hmo",
+      "value" : "Medicare HMO"
+  }, {
+      "key" : "medicaid",
+      "value" : "Medicaid"
+  }, {
+      "key" : "other",
+      "value" : "Other"
+  }],
+  "POLICYHOLDER" : [{
+      "key" : "self",
+      "value" : "Self"
+  }, {
+      "key" : "other",
+      "value" : "Other"
+  }],
+  "SECONDINSURANCE" : [{
+      "key" : "medicaid",
+      "value" : "Medicaid"
+  }, {
+      "key" : "other",
+      "value" : "Other"
+  }],
+  "MEDICARETYPES": [{
+    "key": "downstate",
+    "value": "Downstate"
+  }, {
+    "key": "queens",
+    "value": "Queens"
+  }, {
+    "key": "carolina",
+    "value": "North Carolina"
+  }]
+}
+

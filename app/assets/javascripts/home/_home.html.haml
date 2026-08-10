@@ -1,0 +1,34 @@
+.md-content(flex ng-if="!isProvider")
+  %md-card
+    %img.md-card-image(src="#{image_url('dreamstime.jpg')}")
+%div(ng-if="isProvider")
+  %md-divider
+  .container(layout="column" layout-fill)
+    %div(flex)
+      %md-toolbar.md-primary(layout="row")
+        .md-toolbar-tools
+          %span Treatment Plans Due
+          %span(flex)
+      %md-content.md-padding(flex)
+
+        %bgf-pagination( |
+          collection="patients" |
+          url="searchURL" |
+          url-params="global.search" |
+          page="global.pagination.page" |
+          per-page="global.pagination.perPage" |
+          client-limit="global.pagination.clientLimit" |
+          transform-response="searchTransform" |
+          link-group-size="2" )
+
+        %md-list
+          %md-list-item.md-3-line(ng-repeat="patient in patients" ui-sref="patient.show({id: patient.id})")
+            .md-list-item-text
+              %h3 {{patient.full_name}} | Facility: {{ patient.facility.name }}
+              %h4 DOB: {{patient.dob|dateonly}}
+              %p(ng-if="patient.tp_sessions === 0" style="color: {{patient.alert_class}};") Next Treatment Plan Due: {{patient.next_tp|fromnow}} ({{patient.next_tp|dateonly}})
+              %p(ng-if="patient.tp_sessions > 0") Next treatment plan due in {{patient.tp_sessions}} sessions
+
+            %span.md-secondary(ng-if="user.user_type=='Usr::Admin' && patient.providers")
+              Primary Provider: {{patient.providers}}
+            %md-divider(ng-if="!$last")

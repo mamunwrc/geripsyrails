@@ -1,0 +1,7 @@
+%h4.flex-100= title
+
+- rows.each do |row|
+  - row.cols.each do |col|
+    %div(class: col.class_name)
+      %strong.md-caption= col.label
+      %span.md-caption= col.text

@@ -1,0 +1,16 @@
+.md-inline-form(layout="column" ng-cloak)
+  %form.gd-form(name="ctrl.adminForm")
+    %md-content(layout-padding layout-gt-xs="row")
+      %div(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-input(label="First Name" is-edit="isEditing" ng-model="admin.user.first_name" field-name="first_name" ng-required="true" form="ctrl.adminForm" flex)
+
+          %gd-input(label="Last Name" is-edit="isEditing" ng-model="admin.user.last_name" field-name="last_name" ng-required="true" form="ctrl.adminForm" flex)
+
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-input(label="Email" type="email" is-edit="isEditing" ng-model="admin.user.email" field-name="email" ng-required="true" form="ctrl.adminForm" flex)
+          %gd-input(label="Password" type="password" minlength="8" is-edit="isEditing" ng-required="pwreq" ng-model="admin.user.password" field-name="password" form="ctrl.adminForm"  flex)
+
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-drop-down(is-edit="isEditing" label="Practice" collection="practiceList" ng-model="admin.practice_id" field_name="practice_id" ng-required="true" form="ctrl.adminForm" flex)
+

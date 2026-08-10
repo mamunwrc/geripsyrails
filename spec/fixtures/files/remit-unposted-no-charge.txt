@@ -1,0 +1,14 @@
+10:01:32 15 Nov 17  Page 1          898844717   Unposted Listing by Check Number       Batch:11152017RICHARDS
+IJM                           NATIONAL GOVERNMENT SERVICES, INC.
+CHECK          ACCOUNT        PATIENT             DATE        PROC  MODS       CHARGE   ALLOWED    DEDUCT     COINS   PAYMENT   REASONS        REMARKS
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+                                                                                                                         0.00
+-----------------------------------------------------------------------------------------------------------------------------
+Account/Claim Payments Not Posted                                     
+
+PLB (Takeback/Refund/Interest/etc) Not Posted                         
+Total Unposted Payments                                          $0.00
+
+

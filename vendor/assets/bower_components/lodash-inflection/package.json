@@ -1,0 +1,50 @@
+{
+  "name": "lodash-inflection",
+  "version": "1.4.0",
+  "description": "ActiveSupport::Inflector, for lodash!",
+  "main": "index.js",
+  "browser": "lib/lodash-inflection.js",
+  "scripts": {
+    "test": "mocha",
+    "browser": "open test/index.html",
+    "coverage": "JSCOV=1 mocha -R mocha-lcov-reporter | coveralls",
+    "jscov": "gulp jscov",
+    "jscs": "gulp jscs",
+    "docs": "gulp docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tuvistavie/lodash-inflection.git"
+  },
+  "keywords": [
+    "lodash",
+    "inflection",
+    "inflector",
+    "activesupport",
+    "plural",
+    "pluralize"
+  ],
+  "author": "Jeremy Ruppel",
+  "maintainers": [
+    "Daniel Perez <tuvistavie@gmail.com>"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tuvistavie/lodash-inflection/issues"
+  },
+  "homepage": "https://github.com/tuvistavie/lodash-inflection",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "coveralls": "^2.11.9",
+    "gulp": "^3.9.1",
+    "gulp-contribs": "0.0.3",
+    "gulp-jscoverage": "^0.1.0",
+    "gulp-jscs": "^3.0.2",
+    "jscoverage": "^0.6.0",
+    "lodash": "^4.11.2",
+    "mocha": "^2.4.5",
+    "mocha-lcov-reporter": "^1.2.0",
+    "mversion": "^1.10.1"
+  },
+  "dependencies": {}
+}

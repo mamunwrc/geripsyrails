@@ -1,0 +1,134 @@
+.billing-print(layout-fill layout="column" flex ng-repeat="patient in patients" ng-if="printoutType == 'portrait' && patient.encounters.length>0")
+  %md-content.print-content(flex layout-fill)
+    %div(flex layout="row" layout-wrap)
+      %h2(flex="100")
+        Patient Billing Info
+      %h4(flex="100")
+
+      %div(flex="33")
+        %strong.md-caption Last Name:
+        %span.md-caption {{patient.last_name}}
+      %div(flex="33")
+        %strong.md-caption First Name:
+        %span.md-caption {{patient.first_name}}
+      %div(flex="33")
+        %strong.md-caption Facility:
+        %span.md-caption {{patient.facility.name}}
+
+      %div(flex="33")
+        %strong.md-caption DOB:
+        %span.md-caption {{patient.dob | dateonly}}
+      %div(flex="33")
+        %strong.md-caption Gender:
+        %span.md-caption {{patient.gender | gender}}
+      %div(flex="33")
+        %strong.md-caption Facility NPI #:
+        %span.md-caption {{patient.facility.npi}}
+
+      %div(flex="33")
+        %strong.md-caption Provider:
+        %span.md-caption {{provider.full_name}}
+      %div(flex="33")
+        %strong.md-caption Provider NPI #:
+        %span.md-caption {{provider.npi}}
+      %div(flex="33")
+        %strong.md-caption Provider Tax ID #:
+        %span.md-caption {{provider.tax_id}}
+
+
+      %div(flex="33")
+        %strong.md-caption Primary Insurance:
+        %span.md-caption
+          {{patient.insurance.primary.insurer.name}}
+      %div(flex="33")
+        %strong.md-caption Insurance #:
+        %span.md-caption {{patient.insurance.primary.number}}
+      %div(flex="33")
+
+      %div(flex="33")
+        %strong.md-caption Secondary Insurance:
+        %span.md-caption
+          {{patient.insurance.secondary.insurer.name}}
+      %div(flex="33")
+        %strong.md-caption Insurance #:
+        %span.md-caption {{patient.insurance.secondary.number}}
+      %div(flex="33")
+
+      %div(flex="33")
+        %strong.md-caption Tertiary Insurance:
+        %span.md-caption
+          {{patient.insurance.tertiary.insurer.name}}
+      %div(flex="33")
+        %strong.md-caption Insurance #:
+        %span.md-caption {{patient.insurance.tertiary.number}}
+      %div(flex="33")
+
+
+      %md-divider
+
+      %md-list(flex="100")
+        %md-subheader.md-no-sticky Sessions
+        %md-list-item(layout="row" ng-repeat="encounter in patient.encounters")
+          %span(flex="25") Date: {{ ::encounter.service_date | dateonly }}
+          %span(flex="25") Code: {{ ::encounter.cpt_encounter_code }}
+          %span(flex="50") Diagnosis: {{ ::encounter.diagnosis }}
+
+%span(ng-repeat="facility in facilities")
+  .billing-print.print-landscape(layout="column" flex ng-repeat="provider in facility.providers" ng-if="printoutType == 'landscape'" ng-cloak)
+    %md-content.print-content(flex layout-fill)
+      %div(flex layout="row" layout-wrap)
+        %h2(flex="100")
+          Patient Billing Info
+
+        %div(flex="100")
+          %strong.md-caption Facility:
+          %span.md-caption {{::facility.name}}
+
+        %div(flex="100")
+          %strong.md-caption NPI ID #:
+          %span.md-caption {{::facility.npi}}
+
+        %div(flex="100")
+          %strong.md-caption Psychologist:
+          %span.md-caption {{::provider.name}}
+
+        %div(flex="100")
+          %strong.md-caption NPI ID #:
+          %span.md-caption {{::provider.npi}}
+
+        %div(flex="100")
+          %strong.md-caption PTAN #:
+          %span.md-caption {{::provider.ptan}}
+
+        %div(flex="100")
+          %strong.md-caption Report range:
+          %span.md-caption {{firstDate | dateonly}} to {{lastDate | dateonly}}
+
+        %md-list(flex="100")
+          %md-list-item(layout="row" style="border-bottom: 1px solid grey;")
+            %strong(flex="10") Patient Name
+            %strong(flex="15")
+              DOB /
+              %br
+              Gender
+            %strong(flex="15") Dx
+            %strong(flex="15") Primary Insr.
+            %strong(flex="15") Secondary Insr.
+            %strong(flex="15") Tertiary Insr.
+            %strong(flex="15") Dates of service
+
+        %md-list(flex="100")
+          %md-list-item(layout="row" ng-repeat="patient in provider.patients" style="border-bottom:1px solid grey;")
+            %span(flex="10") {{ ::patient.name }}
+            %span(flex="15")
+              {{ ::patient.dob | dateonly}} /
+              %br
+              {{ ::patient.gender}}
+            %span(flex="15") {{ ::patient.dx }}
+            %span(flex="15" ng-repeat="insType in ['primary', 'secondary', 'other']")
+              {{patient.insurance[insType].insurer.name}}
+              %span - {{ patient.insurance[insType].number }}
+            %span(flex="15" layout="column")
+              %span(flex ng-repeat="dates in patient.service_dates")
+                {{ ::dates }}
+

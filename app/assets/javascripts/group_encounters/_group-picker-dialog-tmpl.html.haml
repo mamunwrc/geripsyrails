@@ -1,0 +1,19 @@
+%md-dialog(aria-label="group picker")
+  %md-toolbar
+    .md-toolbar-tools
+      %h2 Choose Group
+  %md-dialog-content
+    .md-dialog-content
+      %p
+        %em Select the group below:
+      %form(ng-cloak)
+        %md-input-container
+          %label Group
+          %md-select(ng-model="groupId" ng-required="true")
+            %md-option(ng-repeat="group in groups" ng-value="group.id") {{ group.name }}
+
+        %md-button.md-primary(ng-click="close()" ng-disabled="!groupId")
+          Go
+
+
+

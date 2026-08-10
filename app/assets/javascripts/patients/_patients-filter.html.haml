@@ -1,0 +1,102 @@
+%md-divider
+.container(layout="column" layout-fill)
+  %div(flex)
+    %md-toolbar.md-primary(layout="row")
+      .md-toolbar-tools
+        %span Patients: Filter
+        %span(flex)
+    %md-content(flex layout-padding)
+      %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+        %gd-dd-multiselect(ng-if="providers.length > 0" ng-model="searchObj.provider" is-edit="true" label="Provider" collection="providers" field-name="providerID" flex)
+        %gd-dd-multiselect(ng-if="facilities.length > 0" ng-model="searchObj.facility" is-edit="true" label="Facility" collection="facilities" field-name="facilityID" flex)
+
+      %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+        %gd-dd-multiselect(ng-if="incidentToProviders.length > 0" ng-model="searchObj.incidentToProviders" is-edit="true" label="Incident To Provider" collection="incidentToProviders" field-name="incidentToProviderID" flex)
+
+      %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+        %gd-date(ng-model="searchObj.from" is-edit="true" label="From" field-name="from" flex)
+        %gd-date(ng-model="searchObj.to" is-edit="true" label="To" field-name="to" flex)
+
+      %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+        %gd-date(ng-model="searchObj.birth_date_from" is-edit="true" label="Birth Date From" field-name="birth_date_from" flex)
+        %gd-date(ng-model="searchObj.birth_date_to" is-edit="true" label="Birth Date To" field-name="birth_date_to" flex)
+
+      %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+        %gd-dd-multiselect(ng-model="searchObj.gender" is-edit="true" label="Gender" collection="genders" field-name="gender" flex)
+        %gd-dd-multiselect(ng-model="searchObj.diagnosis" is-edit="true" label="Diagnosis" collection="diagnoses" field-name="diagnosis" flex)
+
+      %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+        %md-input-container.md-block(flex)
+          %label Primary Insurance
+          %md-select(ng-model="searchObj.primary_insurance" ng-model-options="{trackBy: '$value.name'}")
+            %md-select-header.dd-search-header
+              %input.md-text.dd-search-filter(ng-model="primaryInsuranceFilter" type="search" placeholder="Filter list...")
+            %md-optgroup
+              %md-option(ng-value="{}")
+                Select primary insurance
+              %md-option(ng-repeat="insurance in insurances | filter:primaryInsuranceFilter" ng-value="{val:insurance.keyvalue, name:insurance.keyname}")
+                {{ ::insurance.keyvalue }}
+        %md-input-container.md-block(flex)
+          %label Secondary Insurance
+          %md-select(ng-model="searchObj.secondary_insurance" ng-model-options="{trackBy: '$value.name'}")
+            %md-select-header.dd-search-header
+              %input.md-text.dd-search-filter(ng-model="secondaryInsuranceFilter" type="search" placeholder="Filter list...")
+            %md-optgroup
+              %md-option(ng-value="{}")
+                Select secondary insurance
+              %md-option(ng-repeat="insurance in insurances | filter:secondaryInsuranceFilter" ng-value="{val:insurance.keyvalue, name:insurance.keyname}")
+                {{ ::insurance.keyvalue }}
+
+      %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+        %a(ng-click="advancedSearch = !advancedSearch")
+          %i(class="fa fa-search-plus" ng-show="!advancedSearch")
+          %i(class="fa fa-search-minus" ng-show="advancedSearch")
+          Advanced Search
+
+      %div(layout-gt-xs="row" layout-xs="column" layout-padding ng-show="advancedSearch")
+        %md-input-container.md-block(flex)
+          %label SSN
+          %input.md-text.dd-search-filter(ng-model="searchObj.ssn" type="text")
+        %gd-dd-multiselect(ng-model="searchObj.status" is-edit="true" label="Status" collection="statuses" field-name="status" flex)
+        %gd-dd-multiselect(ng-model="searchObj.facility_pos_code" is-edit="true" label="Facility POS Code" collection="facility_pos_codes" field-name="facility_pos_code" flex)
+
+      %div(layout-gt-xs="row" layout-xs="column" layout-padding ng-show="advancedSearch")
+        %md-input-container.md-block(flex)
+          %label Room #
+          %input.md-text.dd-search-filter(ng-model="searchObj.room_num" type="text")
+        %span(flex)
+
+      %div(flex layout="row")
+        %md-button.md-raised.md-primary(ng-click="filter()") Submit
+        %span(flex)
+        %md-button.md-raised(ng-click="export()" ng-if="patients.length > 0")
+          %md-icon(md-svg-icon="image:ic_picture_as_pdf_24px" aria-label="print")
+          Export PDF
+
+    %md-divider
+
+    %md-content.md-padding(ng-if="patients.length > 0")
+      %div(flex layout="row")
+        %span(flex) Name
+        %span(flex) Dates
+        %span(flex) Pri. Insurance
+        %span(flex) Sec. Insurance
+        %span(flex) Facility
+        %span(flex) Providers
+
+      %div(flex layout="row" ng-repeat="patient in patients")
+        %span(flex) {{ patient.full_name }}
+        %span(flex) {{ patient.dates }}
+        %span(flex ng-repeat="insType in ['primary', 'secondary']")
+          %span(ng-if="patient.insurance[insType].insurer")
+            {{ patient.insurance[insType].insurer.name }}: {{ patient.insurance[insType].number }}
+        %span(flex) {{ patient.facility_name }}
+        %span(flex) {{ patient.providers }}
+
+    %md-content.md-padding(ng-if="patients.length == 0")
+      %md-list
+        %md-list-item.md-2-line
+          .md-list-item-text
+            %h3 Nothing to display
+        %md-divider
+

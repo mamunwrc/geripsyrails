@@ -1,0 +1,23 @@
+%md-dialog(aria-label="User Settings" ng-cloak)
+  %form(name="ctrl.userForm")
+    %md-toolbar
+      .md-toolbar-tools
+        %h2 User Settings Panel
+        %span(flex)
+        %md-button.md-icon-button(ng-click="cancel()")
+          %md-icon(md-svg-icon="navigation:ic_close_24px" aria-label="close panel")
+
+    %md-dialog-content
+      .md-dialog-content
+        %md-input-container
+          %label Timezone
+          %md-select(ng-model="user.timezone")
+            %md-select-header.dd-search-header
+              %input.md-text.dd-search-filter(ng-model="searchTxt" type="search" placeholder="Select Timezone")
+            %md-option(ng-repeat="tz in timezones|filter:searchTxt" ng-value="tz") {{ tz }}
+
+      %md-dialog-actions(layout="row")
+        %span(flex)
+        %md-button(ng-click="cancel()") Cancel
+        %md-button(ng-click="submit()" ng-disabled="submitted || ctrl.userForm.$invalid") Submit
+

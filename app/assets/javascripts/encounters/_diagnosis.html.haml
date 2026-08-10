@@ -1,0 +1,6 @@
+.odd(layout-gt-xs="row" layout-padding)
+  %gd-drop-down(form="formsec.sections.diagnosis.form" ng-blur="formsec.sections.diagnosis.revalidate" ng-required="true" is-edit="isEditing" filterable dd-type="icds" label="Primary Diagnosis" ng-model="myEncounter.diagnosis.primary" flex)
+  %gd-drop-down(form="formsec.sections.diagnosis.form" is-edit="isEditing" filterable dd-type="icds" label="Secondary Diagnosis" ng-model="myEncounter.diagnosis.secondary" flex)
+.even(layout-gt-xs="row" layout-padding)
+  %gd-drop-down(form="formsec.sections.diagnosis.form" ng-blur="formsec.sections.diagnosis.revalidate" ng-required="true" is-edit="isEditing" dd-type="encounter" keyprefix="PROGNOSIS" label="Prognosis" ng-model="myEncounter.diagnosis.prognosis" flex)
+  %gd-input(form="formsec.sections.diagnosis.form" is-edit="isEditing" label="Comments and general goals" ng-model="myEncounter.diagnosis.comment" flex)

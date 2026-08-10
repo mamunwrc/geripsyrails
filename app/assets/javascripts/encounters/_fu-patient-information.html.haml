@@ -1,0 +1,33 @@
+%div(layout-gt-xs="row" layout-xs="column" layout-padding)
+  %span(flex)
+    %span( flex="30" class="label") Last Name:
+    %span( flex="70" class="md-caption") {{myPatient.last_name}}
+  %span(flex)
+    %span( flex="30" class="label") First Name:
+    %span( flex="70" class="md-caption") {{myPatient.first_name}}
+  %span(flex)
+    %span( flex="30" class="label") DOB:
+    %span( flex="70" class="md-caption") {{myPatient.dob | dateonly}}
+
+%div(layout-gt-xs="row" layout-xs="column" layout-padding)
+  %span(flex)
+    %span( flex="30" class="label") Facility:
+    %span( flex="70" class="md-caption") {{myPatient.facility.name}}
+  %span(flex)
+    %span( flex="30" class="label") Gender:
+    %span( flex="70" class="md-caption") {{myPatient.gender.val || myPatient.gender}}
+  %span(flex)
+    %gd-date(ng-blur="formsec.sections.info.revalidate" ng-required="true" field-name="service_date" form="formsec.sections.info.form" is-edit="isEditing" label="Date of Service" ng-model="myEncounter.referral.service_date" flex)
+
+%div(ng-if="isEditing")
+  %md-divider
+
+  %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+    %div(flex)
+      %md-checkbox(ng-model="myEncounter.referral.covering" aria-label="covering for provider")
+        I am covering for this patients primary care provider
+
+  %md-divider
+
+  %facility-pos(ng-model="myEncounter.facility_pos_code")
+

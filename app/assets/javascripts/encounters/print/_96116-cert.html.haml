@@ -1,0 +1,5 @@
+%div(layout="column")
+  %strong.md-caption(flex)
+    {{ ::encresource.signer.user.full_name }}, {{ ::format(encresource.signer.degree) }}
+  %span.md-caption(flex)
+    {{ ::encounter.referral.service_date | dateonly}}

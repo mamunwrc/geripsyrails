@@ -1,0 +1,25 @@
+%md-dialog(aria-label="encounter type")
+  %md-toolbar
+    .md-toolbar-tools
+      %h2 Choose encounter type
+  %md-dialog-content
+    .md-dialog-content
+      %p
+        %em {{ msg }}
+      %form(ng-cloak)
+        %md-input-container
+          %label Encounter Type
+          %md-select(ng-model="encounterType" ng-required="true")
+            %md-option(value="90791") Initial Note (90791)
+            %md-option(value="90832") Follow-up Note (90832)
+            %md-option(value="90839") Psychotherapy in Crisis (90839)
+            %md-option(value="90853") Group Psychotherapy (90853)
+            %md-option(value="TP") Treatment Plan
+            %md-option(value="GBH1") General Behavioral Health Integration (G0323)
+            %md-option(value="96116") Testing Note (9611x)
+            %md-option(value="98966") Telephone assessment and management service (98966)
+
+        %md-button.md-primary(ng-click="close()" ng-disabled="!encounterType")
+          Go
+
+

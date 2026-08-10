@@ -1,0 +1,88 @@
+%div#printable(ui-view="print" layout-align="center center")
+
+%md-sidenav#side-menu.md-sidenav-left.md-whiteframe-1dp(layout="column"  md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-show='signedIn()' ng-if="!printView")
+  %header.nav-header
+    %a.hdr-logo(href="/" flex layout="column")
+      %img(alt="logo" src="#{image_url('logo.png')}")
+      %h1.md-heading GeriPSY EHR
+
+  %md-content(flex role="navigation")
+    %md-subheader.dark
+      %span(flex)
+      .md-body-2
+        {{user.first_name}} {{user.last_name}}
+      .md-body-1 {{user.email}}
+      .md-body-1 {{ user.practice_name }}
+    %md-list
+      %md-list-item.md-2-line(ng-repeat="item in myMenus" role="link" md-ink-ripple ui-sref="{{item.link}}" ng-click="closeSidenav('left')")
+        %md-icon(md-svg-icon="{{item.icon}}" aria-label="{{item.title}}")
+        .md-list-item-text
+          %span.md-body-2 {{item.title}}
+
+    %div(ng-if="hasPatients")
+      %md-subheader.dark
+        .md-text Current Patient:
+      %md-input-container.dark.md-block(layout-padding style="margin:1px 0 0" md-no-float="true")
+        %md-select(ng-model="globalPatients.currentPatient" ng-model-options="{trackBy: '$value.id'}" ng-change="globalPatients.switchPatient()" aria-label="current patient")
+          %md-select-header.dd-search-header
+            %input.dd-search-filter(ng-model="patientFilterTxt" type="search" placeholder="Filter list...")
+          %md-option(ng-value="patient" ng-repeat="patient in globalPatients.patients | status:'active' | filter:patientFilterTxt" ng-click="globalPatients.navigateOnSwitch()")
+            {{ patient.full_name }} [{{ patient.dob | dateonly }}]
+
+.relative( layout="column" layout-fill role="main" ng-cloak ng-if="!printView")
+  %md-fab-speed-dial.md-scale.md-fab-bottom-right(md-direction="up" md-open="appCtl.speedDialOpened")
+    %md-fab-trigger
+      %md-button.md-fab.md-warn(aria-label="Add..." ng-show='signedIn()')
+        %md-icon(md-svg-icon="content:ic_add_24px" aria-label="Plus") 
+
+    %md-fab-actions
+      %md-button.md-fab.md-raised.md-mini(ng-repeat="item in speedDialMenus" aria-label="{{item.title | singular}}" ng-click="item.onClick(ev)" ui-sref="{{item.link + 'New'}}")
+        %md-tooltip(md-direction="left" md-visible="appCtl.tooltipsVisible")
+          Add {{ item.title | singular}}
+        %md-icon(md-svg-icon="{{item.icon}}" aria-label="Add {{item.title | singular}}")
+
+  %md-toolbar.animate-show.dark(ng-show="!showSearch && signedIn()")
+    .md-toolbar-tools.topbar-content.dark
+      %md-button.md-icon-button(ng-click="toggleSidenav('left')" hide-gt-md aria-label="Menu")
+        %md-icon(md-svg-icon="navigation:ic_menu_24px" aria-label="Menu")
+
+      %h3 {{currentSection.title}}
+
+      %span(flex)
+      %md-button.md-icon-button(aria-label="Search" ng-click="toggleSearch()")
+        %md-icon(md-svg-icon="action:ic_search_24px" aria-label="Search")
+
+      %md-menu
+        %md-button.md-icon-button(aria-label="Open Settings" ng-click="$mdOpenMenu($event)")
+          %md-icon(md-svg-icon="navigation:ic_more_vert_24px" aria-label="More")
+        %md-menu-content(width="4")
+          %md-menu-item
+            %md-button(ng-click="openSettings()")
+              %md-icon(md-svg-icon="action:ic_settings_24px" aria-label="Settings")
+              Settings
+          %md-menu-divider
+          %md-menu-item
+            %md-button(ng-click="logout()")
+              %md-icon(md-svg-icon="action:ic_exit_to_app_24px")
+              Log Out
+
+    %span(flex)
+
+  %md-toolbar.animate-show.dark(ng-show="showSearch")
+    .md-toolbar-tools.topbar-content
+      %md-button.md-icon-button(ng-click="toggleSearch()" aria-label="Menu")
+        %md-icon(md-svg-icon="navigation:ic_arrow_back_24px" aria-label="Back")
+
+      %h3(role="button" ng-click="toggleSearch()")
+        Back
+
+      %span(flex="5")
+      -#%span(ng-controller="DemoCtrl as ctrl" flex)
+      %span(flex)
+        %form(ng-submit="applySearch($event)")
+          %md-input-container.md-block
+            %input(type="text" ng-model="global.search.filter" aria-label="global search" focus-on="showingSearchNow" ng-keyup="toggleSearchOnEsc($event)")
+
+  %md-content(layout="row" flex)
+    %ui-view.layout-content(layout="column" flex)
+

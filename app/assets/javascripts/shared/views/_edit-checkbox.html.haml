@@ -1,0 +1,6 @@
+%md-input-container.md-block(flex-gt-sm)
+  %md-checkbox(ng-model="myData" ng-disabled="::!isEdit" name="{{::fieldName}}" flex)
+    {{ label }}
+  %span.md-caption(flex ng-if="::!isEdit && freetext") {{ ftModel }}
+
+%gd-input(is-edit="true" ng-show="::isEdit && freetext && myData" ng-model="ftModel" label="")

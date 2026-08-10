@@ -1,0 +1,140 @@
+%div.md-inline-form(layout="column" ng-cloak)
+  %form.gd-form(name="ctrl.patientForm")
+    %md-content(layout-padding)
+      %div(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-input(label="First Name" ng-model="myPatient.first_name" field-name="first_name" ng-blur="checkNameConflict" ng-required="true" form="ctrl.patientForm" is-edit="isEditing" flex)
+          %gd-input(label="Last name" ng-model="myPatient.last_name" field-name="last_name" ng-blur="checkNameConflict" ng-required="true" form="ctrl.patientForm" is-edit="isEditing" flex)
+
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-date(label="Date of Birth" ng-model="myPatient.dob" field-name="dob" ng-required="true" form="ctrl.patientForm" is-edit="isEditing" flex)
+          %gd-drop-down(keyprefix="GENDER" field-name="gender" label="Gender" ng-model="myPatient.gender" ng-required="true" form="ctrl.patientForm" is-edit="isEditing" flex)
+
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-input(label="SSN" ng-model="myPatient.ssn" field-name="ssn" form="ctrl.patientForm" is-edit="isEditing" flex)
+          %gd-drop-down(label="Status" field-name="status" keyprefix="PATIENTSTATUS" ng-model="myPatient.status" ng-required="true" form="ctrl.patientForm" is-edit="isEditing" flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-drop-down(label="Facility" field-name="facility_id" collection="facilities" ng-model="myPatient.facility_id" ng-required="true" form="ctrl.patientForm" is-edit="isEditing" flex)
+          %gd-input(label="Room #" ng-model="myPatient.room_num" field-name="room_num" form="ctrl.patientForm" is-edit="isEditing" flex)
+
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding ng-if="user.user_type === 'Usr::Admin'")
+          %gd-simple-select(label="Facility POS Code" field-name="facility_pos_code" options="[31, 32]" ng-model="myPatient.facility_pos_code" form="ctrl.patientForm" is-edit="isEditing" flex)
+          %gd-drop-down(label="Primary Provider" field-name="primary_provider_id" collection="providers" ng-model="myPatient.primary_provider_id" ng-required="hasProviders" form="ctrl.patientForm" is-edit="isEditing" flex)
+
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding ng-if="user.user_type !== 'Usr::Admin'")
+          %gd-simple-select(label="Facility POS Code" field-name="facility_pos_code" options="[31, 32]" ng-model="myPatient.facility_pos_code" form="ctrl.patientForm" is-edit="isEditing" flex)
+          %span(flex)
+
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-drop-down(label="Testing Provider" field-name="testing_provider_id" collection="testings_list" ng-model="myPatient.testing_provider_id" ng-required="primaryProvider" form="ctrl.patientForm" is-edit="isEditing" flex)
+          %gd-input(label="Prior Authorization Number" field-name="prior_authorization_number" ng-model="myPatient.prior_authorization_number" form="ctrl.patientForm" is-edit="isEditing" flex)
+
+    %md-divider
+
+    %md-content(layout="column" layout-padding ng-if="!isEditing")
+      %md-subheader.md-primary Patient Notes
+
+      %md-list(flex)
+        %md-list-item.md-2-line(ng-repeat="note in myPatient.notes")
+          .md-list-item-text
+            %h3 [{{ note.date | dateonly }}] - {{ note.writer }}
+            %p {{ note.text }}
+            %md-divider(ng-if="!$last || canSubmitNote")
+
+      %div(layout-padding flex ng-if="canSubmitNote")
+        %md-input-container.md-block(flex)
+          %label(style="font-weight:normal") Note text
+          %input(ng-model="myPatient.newNoteText" ng-disabled='submittingNote()')
+          %md-button.md-raised(ng-click="submitNote()" ng-disabled='submittingNote()') Submit Note
+
+    %md-divider(ng-if="!isEditing")
+
+    %md-content(layout-padding)
+      %md-subheader
+        %span Insurance Information
+      %div(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding ng-repeat="tier in insuranceTiers")
+          %md-input-container(flex)
+            %label {{ tier.tier }} Insurance
+            %md-select(ng-model="myPatient[tier.id]" ng-disabled="!isEditing")
+              %md-option(value="NONE")
+              %md-option(ng-repeat="insurer in insurers" ng-value="insurer.hp_id_code")
+                {{ insurer.name }}
+          %md-input-container(flex)
+            %label Policy #
+            %input(ng-model="myPatient[tier.number]" ng-disabled="!isEditing")
+
+    %md-divider
+
+    %md-content(layout-padding)
+      %div(flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %md-input-container(flex)
+            %label Incident To Provider
+            %md-select(ng-model="myPatient.incident_to_provider_id" ng-disabled="!isEditing")
+              %md-option(value="NONE")
+              %md-option(ng-repeat="provider in incidentToProviders" ng-value="provider.id")
+                {{ provider.full_name }}
+
+    %md-divider
+
+    %div(layout-padding ng-if="!isEditing")
+      %md-content
+        %md-subheader
+          %span Treatment Plan
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding ng-if="myPatient.treatment_plan.exists")
+          %div(flex)
+            %span.label Initial
+            %span.md-caption {{ myPatient.treatment_plan.initial.date | dateonly2 }}
+          %div(flex)
+            %span.label Latest
+            %span.md-caption
+              %a(ui-sref="encounter.print({id: myPatient.treatment_plan.latest.id})")
+                {{ myPatient.treatment_plan.latest.date | dateonly2 }}
+          %div(flex ng-if="user.user_type=='Usr::Provider'")
+            %md-button.md-raised(ui-sref="encountersNew({enc_type:'TP'})")
+              New Treatment Plan
+
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding ng-if="!myPatient.treatment_plan.exists")
+          %div(flex)
+            %span.label No treatment plan exists for this patient
+          %div(flex ng-if="user.user_type=='Usr::Provider'")
+            %md-button.md-raised(ui-sref="encountersNew({enc_type:'TP'})")
+              New Treatment Plan
+
+
+    %md-divider
+
+    %div(layout-padding ng-if="!isEditing")
+      %md-content
+        %md-subheader
+          %span Screening History
+
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %md-list(flex)
+            %md-list-item(ng-repeat="screening in myPatient.screenings" ng-click="displayScreening($event, screening)")
+              %p {{screening.screening_type|uppercase}}
+              %p.md-secondary {{screening.created_at | dateonly2}}
+              %md-divider(ng-if="!$last")
+
+    %md-divider
+
+    %div(layout-padding ng-if="!isEditing && user.user_type=='Usr::Admin'")
+      %md-content(layout-padding ng-if="!isEditing")
+        %md-subheader
+          %span Billing Printout
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-drop-down(ng-model="searchObj.provider" is-edit="true" label="Provider" collection="providers" field-name="providerID" flex)
+        %div(layout-gt-xs="row" layout-xs="column" layout-padding)
+          %gd-date(ng-model="searchObj.from" is-edit="true" label="From" field-name="from" flex)
+          %gd-date(ng-model="searchObj.to" is-edit="true" label="To" field-name="to" flex)
+
+        %div(flex layout="row")
+          %md-button.md-raised.md-primary(ng-click="filter()") Submit
+
+      %md-divider
+
+      %div(layout="column")
+        %md-button.md-raised(ng-click="print()") Print
+        %div(layout="fill")
+          %iframe(name="billingcontent" ng-src="{{billingUrl}}" frameborder="0" style="height:10.8in;width:8in" flex)

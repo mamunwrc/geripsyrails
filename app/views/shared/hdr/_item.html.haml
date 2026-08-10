@@ -1,0 +1,7 @@
+%div( flex="10" layout-align="#{local_assigns.fetch(:align, 'left')}")
+  %div(layout="column")
+    %span.md-caption( flex layout-align="right")
+      = image_tag("#{name}-icon.png", width: "42", 'ui-sref': "#{name.pluralize}", style: 'cursor: pointer;')
+    %span.md-caption( flex layout-align="right" )
+      %a( ui-sref="#{name.pluralize}")= name.capitalize.pluralize
+

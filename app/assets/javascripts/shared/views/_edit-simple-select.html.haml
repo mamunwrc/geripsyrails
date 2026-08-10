@@ -1,0 +1,8 @@
+%md-input-container.md-block.md-input-invalid(flex-gt-sm ng-show="::isEdit")
+  %label {{ ::label }}
+  %md-select(ng-model="myData" name="{{::fieldName}}" ng-required="::isRequired")
+    %md-option(ng-repeat="opt in options" ng-value="{{opt}}") {{opt}}
+
+%div(ng-if="::!isEdit")
+  %span.label(flex="20") {{::label}}:
+  %span.md-caption(flex="30") {{ myData }}

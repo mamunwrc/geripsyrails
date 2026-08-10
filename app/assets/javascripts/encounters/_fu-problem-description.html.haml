@@ -1,0 +1,8 @@
+.odd(layout-gt-xs="row" layout-padding)
+  %gd-dd-multiselect(ng-blur="formsec.sections.necessity.revalidate" ng-required="true" form="formsec.sections.necessity.form" freetext="true" is-edit="isEditing" dd-type="encounter" keyprefix="MAJORTARGETSYM" label="Major target symptom" ng-model="myEncounter.problem.major_target_symptom" flex)
+.even(layout-gt-xs="row" layout-padding)
+  %gd-drop-down(form="formsec.sections.necessity.form" ng-blur="formsec.sections.necessity.revalidate" ng-required="true" freetext="true" ft-model="myEncounter.problem.onset_freetext" is-edit="isEditing" dd-type="encounter" keyprefix="PROBLEMONSET" label="Primary onset" ng-model="myEncounter.problem.onset" flex)
+  %gd-drop-down(form="formsec.sections.necessity.form" ng-blur="formsec.sections.necessity.revalidate" ng-required="true" freetext="true" ft-model="myEncounter.problem.frequency_text" is-edit="isEditing" dd-type="encounter" keyprefix="PROBLEMFREQ" label="Frequency" ng-model="myEncounter.problem.frequency" flex)
+  %gd-drop-down(form="formsec.sections.necessity.form" ng-blur="formsec.sections.necessity.revalidate" ng-required="true" freetext="true" ft-model="myEncounter.problem.intensity_text" is-edit="isEditing" dd-type="encounter" keyprefix="PROBLEMINTENSITY" label="Intensity" ng-model="myEncounter.problem.intensity" flex)
+.odd(layout-gt-xs="row" layout-padding)
+  %gd-dd-multiselect(form="formsec.sections.necessity.form" ng-blur="formsec.sections.necessity.revalidate" ng-required="true" freetext="true" ft-model="myEncounter.problem.other_freetext" is-edit="isEditing" dd-type="encounter" keyprefix="PROBLEMSOTHER" label="Other Reported Problems" ng-model="myEncounter.problem.other" flex)
