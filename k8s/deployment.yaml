@@ -17,6 +17,12 @@ spec:
         image: mamunacr.azurecr.io/geripsy-app:latest
         ports:
         - containerPort: 3000
+        env:
+        - name: SECRET_KEY_BASE
+          valueFrom:
+            secretKeyRef:
+              name: rails-secrets
+              key: SECRET_KEY_BASE
 ---
 apiVersion: v1
 kind: Service
