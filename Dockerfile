@@ -14,7 +14,8 @@ ENV CPATH="$RUBY_INC:$CPATH"
 ADD . /app
 WORKDIR /app
 RUN bundle install --without development test
-RUN set -a && . /app/.aptible.env && bundle exec rake assets:precompile --trace
+
+RUN SECRET_KEY_BASE=dummy_build_time_key bundle exec rake assets:precompile --trace
 
 ENV PORT 3000
 EXPOSE 3000
