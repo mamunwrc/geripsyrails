@@ -14,3 +14,13 @@ development:
 test:
   <<: *local
   database: geripsy_test
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DB_HOST'] %>
+  port: <%= ENV['DB_PORT'] || 5432 %>
+  pool: <%= ENV['RAILS_MAX_THREADS'] || 5 %>
