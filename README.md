@@ -84,4 +84,3 @@ encounters.delete_if { |enc| !enc.billable? }
 encounters.update_all(shipped_hp_billing: nil)
 ShipBillingToClaimMdJob.perform_now(encounters.map(&:id))
 ```
-
